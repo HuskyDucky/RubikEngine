@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1571567865 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik.cpp
+	"Rubik.h"
+
+1571567857 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik.h
+	<cmath>
+	<array>
+	<vector>
+	<iostream>
+	<algorithm>
+
+1572709639 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
+	"Rubik_run.h"
+
+1572708334 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
+	"Rubik_Block.h"
+
+1572708394 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+	<vector>
+	<cinttypes>
+
+1572708454 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+	"Rubik_Cube.h"
+
+1572708334 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+	<cmath>
+	<array>
+	<cstdio>
+	<chrono>
+	<random>
+	<algorithm>
+	"Rubik_Block.h"
+
+1572683014 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.h
+	<cmath>
+	<iostream>
+	"Rubik_Cube.h"
+
+1572703405 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.cpp
+	"Rubik_run.h"
+
+1572703405 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.h
+	<cmath>
+	<iostream>
+	"Rubik_Cube.h"
+
