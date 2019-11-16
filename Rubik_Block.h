@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20191101.1
+    Created : 2019.10.23            Version: 20191111.3
 
     Rubik Program - Block Definition
 
@@ -12,31 +12,34 @@
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
 #include <vector>
+#include <limits>
+#include <optional>
 #include <cinttypes>
 
 using namespace std;
 
-typedef uint8_t Color_T;
-typedef uint8_t Position_T;
-typedef uint8_t Direction_T;
-typedef uint8_t BlockPosition_T;
+typedef uint8_t  Color_T;
+typedef uint8_t  Position_T;
+typedef uint8_t  Direction_T;
+typedef uint32_t BlockPosition_T;
 
 enum Color : Color_T {
      WHITE,
      YELLOW,
      RED,
      ORANGE,
-     GREEN,
-     BLUE
+     BLUE,
+     GREEN
 };
 
 enum PositioningOn : Position_T {
-     TOP,
-     BACK,
-     LEFT,
      FRONT,
+     BACK,
+     TOP,
+     BOTTOM,
+     LEFT,
      RIGHT,
-     BOTTOM
+     NONEPOSITION = numeric_limits<Position_T>::max()
 };
 
 enum FlipBlocksAt : Direction_T {
@@ -51,15 +54,21 @@ enum TurnBlocks : bool {
 };
 
 using ColorPosition_T = pair<Color_T, Position_T>;
+using ColorPositionList_T = vector<ColorPosition_T>;
+
+
 struct Block {
        Block(const BlockPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
                                                                                  ColorPositionList(ColorPos) {}
 
-    void moveColors(FlipBlocksAt BlockGroupDir, TurnBlocks isClockWise) noexcept;
     BlockPosition_T OriginalBlockPosition() const noexcept;
-    vector<ColorPosition_T> Colors() const noexcept;
+
+    ColorPositionList_T ColorsAndPositions() const noexcept;
+    Position_T ColorPosition(Color_T color) const noexcept;    //returns PositioningOn::NONEPOSITION if doesn't find
+
+    void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
 
     private:
         BlockPosition_T originalBlockPosition;
-        vector<ColorPosition_T> ColorPositionList;
+        ColorPositionList_T ColorPositionList;
 };

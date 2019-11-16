@@ -36,8 +36,10 @@
 		<Unit filename="Rubik_Cube.cpp" />
 		<Unit filename="Rubik_Cube.h" />
 		<Unit filename="Rubik_run.cpp" />
-		<Unit filename="Rubik_run.h" />
-		<Unit filename="Rubik_run_ShowCube.cpp" />
+		<Unit filename="Rubik_run_AuxFuncs.cpp" />
+		<Unit filename="Rubik_run_AuxFuncs.h" />
+		<Unit filename="Rubik_run_Tests.cpp" />
+		<Unit filename="Rubik_run_Tests.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

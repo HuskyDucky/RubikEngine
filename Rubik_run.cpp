@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191026.4
+    Created : 2019.10.22            Version: 20191115.2
 
     Rubik Program
 
@@ -11,25 +11,17 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-#include "Rubik_run.h"
+#include "Rubik_run_Tests.h"
+
+//Godś number - https://ruwix.com/the-rubiks-cube/gods-number/
 
 int main() {
 
-    RubikCube Cube;
+    Test_RandomazidedCube();
 
-    ShowCube(Cube, true, true);
-    ShowCube(Cube, false, false);
+    ShowFlippedCube();
 
-    Cube.Flip(FlipBlocksAt::LAYER,  0, TurnBlocks::CLOCKWISE);
-    Cube.Flip(FlipBlocksAt::LINE,   1, TurnBlocks::COUNTERCLOCKWISE);
-    Cube.Flip(FlipBlocksAt::COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE);
-
-    Cube.Randomize(1000);
-
-   ShowCube(Cube, false, false);
-   ShowCube(Cube, true, false);
-
-    cout << "\nPress <ENTER>..."; cin.get();
+    PressEnter();
 
     return 0;
 }

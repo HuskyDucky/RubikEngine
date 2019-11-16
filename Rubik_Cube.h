@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191102.1
+    Created : 2019.10.22            Version: 20191115.1
 
     Rubik Program - Cube Definition
 
@@ -20,7 +20,9 @@
 
 #include "Rubik_Block.h"
 
-typedef uint8_t CubeSize_T;
+typedef uint8_t CubeSize_T;                 //max 256
+typedef BlockPosition_T QTofBlocks_T;       //CubeSize_T(256) ^ 3 = 16.777.216
+
 using Cube_T = vector<Block>;
 using FromTo = pair<CubeSize_T, CubeSize_T>;
 using AxisAOPosition_T = pair<CubeSize_T, CubeSize_T>;
@@ -30,20 +32,29 @@ using AxisAOPosition_T = pair<CubeSize_T, CubeSize_T>;
 #define LayerLto0 {this->CubeSize-1, 0}
 #define LayerLtoL  {this->CubeSize-1, this->CubeSize-1}
 
-struct RubikCube {
-       RubikCube();
+struct Rubik {
+       Rubik();
+
+       Cube_T CurrentBlocksPositions() const noexcept;
+
+       bool isFinished() const noexcept;
+       float PercentDone() const noexcept;
+
+       BlockPosition_T BlockPosition(const CubeSize_T xyz[3]) const noexcept;
 
        void Flip(const FlipBlocksAt Layer, const CubeSize_T Level, const TurnBlocks isClockWise) noexcept;
 
-       Cube_T Array() const noexcept;
-       BlockPosition_T BlockPosition(const CubeSize_T xyz[3]) const noexcept;
+       Cube_T Randomize(uint16_t NoInterations) noexcept;       //Automatically save this new randomization
+       void RecoverRandomizedCube() noexcept;
 
-       void Randomize(uint16_t NoInterations);
+       Cube_T Reset() noexcept;
 
     private:
         const CubeSize_T CubeSize;
+        const QTofBlocks_T QTofBlocks;
 
         Cube_T Cube;
+        Cube_T CubeRandomized;
 
         CubeSize_T XYZ[3] = {0, 0, 0};
 

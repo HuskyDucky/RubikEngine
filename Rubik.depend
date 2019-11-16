@@ -9,20 +9,22 @@
 	<iostream>
 	<algorithm>
 
-1572709639 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
-	"Rubik_run.h"
+1573916061 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
+	"Rubik_run_Tests.h"
 
-1572708334 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
+1573834236 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1572708394 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+1573834236 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
 	<vector>
+	<limits>
+	<optional>
 	<cinttypes>
 
-1572708454 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1573832824 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
 
-1572708334 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+1573832840 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<cmath>
 	<array>
 	<cstdio>
@@ -36,11 +38,26 @@
 	<iostream>
 	"Rubik_Cube.h"
 
-1572703405 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.cpp
+1573807409 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.cpp
 	"Rubik_run.h"
 
-1572703405 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.h
+1573807409 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.h
 	<cmath>
 	<iostream>
 	"Rubik_Cube.h"
+
+1573916061 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.h
+	"Rubik_run_AuxFuncs.h"
+
+1573916583 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.h
+	<cmath>
+	<iostream>
+	<algorithm>
+	"Rubik_Cube.h"
+
+1573915618 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
+	"Rubik_run_AuxFuncs.h"
+
+1573916632 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
+	"Rubik_run_AuxFuncs.h"
 
