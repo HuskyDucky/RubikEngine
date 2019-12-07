@@ -9,28 +9,29 @@
 	<iostream>
 	<algorithm>
 
-1573916061 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
+1575743113 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
 	"Rubik_run_Tests.h"
 
-1573834236 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
+1575741733 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1573834236 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+1575741673 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
 	<vector>
 	<limits>
 	<optional>
 	<cinttypes>
 
-1573832824 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1575742281 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
+	"Rubik_run_AuxFuncs.h"
 
-1573832840 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+1575741679 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<cmath>
 	<array>
-	<cstdio>
 	<chrono>
 	<random>
 	<algorithm>
+	<iostream>
 	"Rubik_Block.h"
 
 1572683014 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.h
@@ -46,18 +47,21 @@
 	<iostream>
 	"Rubik_Cube.h"
 
-1573916061 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.h
+1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.h
 	"Rubik_run_AuxFuncs.h"
 
-1573916583 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.h
-	<cmath>
+1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.h
+	<iomanip>
 	<iostream>
 	<algorithm>
 	"Rubik_Cube.h"
 
-1573915618 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
+1575741500 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
 	"Rubik_run_AuxFuncs.h"
 
-1573916632 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
-	"Rubik_run_AuxFuncs.h"
+1575743809 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
+	"Rubik_run_Tests.h"
+
+1575742033 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Private.cpp
+	"Rubik_Cube.h"
 

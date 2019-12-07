@@ -1,9 +1,9 @@
 /**
     File    : Rubik_run_AuxFuncs.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20191115.1
+    Created : 2019.10.27            Version: 20191207.1
 
-    Rubik Program Show Cube
+    Rubik Program - auxiliary functions to test Cube
 
     Menashe Rosemberg   Israel +972-52-323-0538
     Copyright(c) 2019      All rights reserved.
@@ -13,31 +13,31 @@
 **/
 #include "Rubik_run_AuxFuncs.h"
 
-void PressEnter() { cout << "\nPress <ENTER> to continue..."; cin.get(); }
+void PressEnter() { cout << "\n\nPress <ENTER> to continue..."; cin.get(); }
 
 const char* TheColorIs(const uint8_t C) noexcept {
       switch (C) {
-             case Color::WHITE  : return "WHITE";
-             case Color::YELLOW : return "YELLOW";
-             case Color::RED    : return "RED";
-             case Color::ORANGE : return "ORANGE";
-             case Color::GREEN  : return "GREEN";
-             default:             return "BLUE";
+             case Color_E::WHITE  : return "WHITE";
+             case Color_E::YELLOW : return "YELLOW";
+             case Color_E::RED    : return "RED";
+             case Color_E::ORANGE : return "ORANGE";
+             case Color_E::GREEN  : return "GREEN";
+             default:               return "BLUE";
       }
 }
 
 const char* ThePositionIs(const uint8_t P) noexcept {
       switch (P) {
-             case PositioningOn::TOP   : return "TOP";
-             case PositioningOn::BACK  : return "BACK";
-             case PositioningOn::LEFT  : return "LEFT";
-             case PositioningOn::FRONT : return "FRONT";
-             case PositioningOn::RIGHT : return "RIGHT";
-             default:                    return "BOTTOM";
+             case Position_E::TOP   : return "TOP";
+             case Position_E::BACK  : return "BACK";
+             case Position_E::LEFT  : return "LEFT";
+             case Position_E::FRONT : return "FRONT";
+             case Position_E::RIGHT : return "RIGHT";
+             default:                 return "BOTTOM";
       }
 }
 
-string CubeIsFinishORNot(const Rubik& Cube) {
+static string CubeIsFinishORNot(const Rubik& Cube) {
        string Msg = "The Cube is ";
 
        if (!Cube.isFinished())
@@ -47,31 +47,31 @@ string CubeIsFinishORNot(const Rubik& Cube) {
 }
 
 void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColors, const bool ShowPercentual) {
-     Cube_T CubeArray = Cube.CurrentBlocksPositions();
-     CubeSize_T CubeSize = cbrt(CubeArray.size());
-     CubeSize_T xyz[3] = {0, 0, 0};
-
      if (ShowSize)
-        cout << CubeArray.size() << '\n';
-
-     cout << '\n';
+        cout << "Cube size is: " << Cube.TofBlocks << '\n';
 
      if (ShowColors)
-        for (uint32_t IIt = 0; IIt < CubeArray.size(); ++IIt) {
-            cout << "\nBlock Original  : " << static_cast<uint16_t>(CubeArray[IIt].OriginalBlockPosition())
-                 << "\nCurrent Position: " << IIt << ": ";
-            ColorPositionList_T BlocksColors = CubeArray[IIt].ColorsAndPositions();
-            for (auto& Z : BlocksColors)
-                cout << "\n\t\t" << TheColorIs(Z.first) << ' ' << ThePositionIs(Z.second);
-        }
-     else {
-          const uint8_t ascii = CubeSize == 3 ? 97 :
-                               (CubeSize == 4 ? 48 : 33);
+        for (Coord_T xyz({0, 0, 0}); xyz[2] < Cube.SideSize; ++xyz[2])
+            for (xyz[0] = 0; xyz[0] < Cube.SideSize; ++xyz[0])
+                for (xyz[1] = 0; xyz[1] < Cube.SideSize; ++xyz[1]) {
+                    QofBlocks_T Pos = xyz[0] * Cube.SideSize +                      //Line
+                                      xyz[1] +                                      //Column
+                                      xyz[2] * Cube.SideSize * Cube.SideSize;       //Layer
+                    cout << "\nBlock Original  : " << static_cast<uint16_t>(Cube.Block_OriginalPosition(xyz))
+                         << "\nCurrent Position: " << Pos << ": ";
 
-          for (xyz[0] = 0; xyz[0] < CubeSize; ++xyz[0]) {
-              for (xyz[2] = 0; xyz[2] < CubeSize; ++xyz[2]) {
-                   for (xyz[1] = 0; xyz[1] < CubeSize; ++xyz[1])
-                       cout << static_cast<char>(ascii + CubeArray[Cube.BlockPosition(xyz)].OriginalBlockPosition());
+                    ColorPositionList_T BlocksColors = Cube.Block_ColorsAndPositions(xyz);
+                    for (auto& Z : BlocksColors)
+                        cout << "\n\t\t" << TheColorIs(Z.first) << ' ' << ThePositionIs(Z.second);
+                }
+     else {
+          const uint8_t ascii = Cube.SideSize == 3 ? 97 :
+                               (Cube.SideSize == 4 ? 48 : 33);
+
+          for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube.SideSize; ++xyz[0]) {
+              for (xyz[2] = 0; xyz[2] < Cube.SideSize; ++xyz[2]) {
+                   for (xyz[1] = 0; xyz[1] < Cube.SideSize; ++xyz[1])
+                       cout << static_cast<char>(ascii + Cube.Block_OriginalPosition(xyz));
                    cout << ' ';
               }
               cout << '\n';
@@ -79,31 +79,31 @@ void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColors, con
      }
 
      if (ShowPercentual)
-        cout << "\n\nPercentual Resolved: " << Cube.PercentDone() << ". " << CubeIsFinishORNot(Cube) << '\n';
+        cout << "\nPercentual Resolved: " << setprecision(3) << Cube.PercentualDone() << "%. " << CubeIsFinishORNot(Cube) << '\n';
 }
 
-bool CompareBlocks(const Block blk1, const Block blk2) {
-     ColorPositionList_T blk1_ColPosList = blk1.ColorsAndPositions();
-     ColorPositionList_T blk2_ColPosList = blk2.ColorsAndPositions();
+static bool CompareBlocks(const Coord_T& xyz, const Rubik& Cube1, const Rubik& Cube2) {
+       ColorPositionList_T blk1_ColPosList = Cube1.Block_ColorsAndPositions(xyz);
+       ColorPositionList_T blk2_ColPosList = Cube2.Block_ColorsAndPositions(xyz);
 
-     if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
+       if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
 
-     for (auto& C1_CP : blk1_ColPosList)
-         if (find(blk2_ColPosList.cbegin(), blk2_ColPosList.cend(), C1_CP) == blk2_ColPosList.cend()) return false;
+       for (auto& C1_CP : blk1_ColPosList)
+           if (find(blk2_ColPosList.cbegin(), blk2_ColPosList.cend(), C1_CP) == blk2_ColPosList.cend()) return false;
 
-     return true;   //the blocks are equal
+       return true;
 }
 
-bool CompareCubes(const Cube_T& Cube1, const Cube_T& Cube2) {
-     const auto C1Size = Cube1.size();
+bool AreThesesCubesEqual(const Rubik& Cube1, const Rubik& Cube2) {
 
-     if (C1Size != Cube2.size()) return false;
+     if (Cube1.TofBlocks != Cube2.TofBlocks) return false;
 
-     for (uint32_t IIt = 0; IIt < C1Size; ++IIt) {
-         if (Cube1[IIt].OriginalBlockPosition() != Cube2[IIt].OriginalBlockPosition()) return false;
+     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SideSize; ++xyz[0])
+         for (xyz[2] = 0; xyz[2] < Cube1.SideSize; ++xyz[2])
+             for (xyz[1] = 0; xyz[1] < Cube1.SideSize; ++xyz[1])
+                 if (Cube1.Block_OriginalPosition(xyz) != Cube2.Block_OriginalPosition(xyz) ||
+                    !CompareBlocks(xyz, Cube1, Cube2))
+                    return false;
 
-         if (!CompareBlocks(Cube1[IIt], Cube2[IIt])) return false;
-     }
-
-     return true;   //the cubes are equal
+     return true;
 }

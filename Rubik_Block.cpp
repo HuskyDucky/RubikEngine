@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20191111.2
+    Created : 2019.10.23            Version: 20191129.1.1
 
     Rubik Program - Block Definition
 
@@ -13,68 +13,73 @@
 **/
 #include "Rubik_Block.h"
 
-BlockPosition_T Block::OriginalBlockPosition() const noexcept { return this->originalBlockPosition; }
-ColorPositionList_T Block::ColorsAndPositions() const noexcept { return this->ColorPositionList; }
+BlkPosition_T Block::OriginalBlockPosition() const noexcept { return this->originalBlockPosition; }
+ColorPositionList_T Block::ColorsAndPositionsList() const noexcept { return this->ColorPositionList; }
+NofFaces_T Block::NofFaces() const noexcept { return this->ColorPositionList.size(); }
 
-Position_T Block::ColorPosition(Color_T color) const noexcept {
-           for (uint8_t Pos = 0; Pos < this->ColorPositionList.size(); ++Pos)
-               if (ColorPositionList[Pos].first == color)
-                  return ColorPositionList[Pos].second;
+bool Block::HasColors(const vector<Color_E>& colors) const noexcept {
 
-           return PositioningOn::NONEPOSITION;
+     if (this->ColorPositionList.size() != colors.size()) return false;
+
+     NofFaces_T FacesFound = 0;
+     for (auto& CPList : this->ColorPositionList)
+         for (auto& Clrs : colors)
+             if (CPList.first == Clrs) ++FacesFound;
+
+     return FacesFound == this->ColorPositionList.size();
 }
 
 void Block::moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept {
-     uint8_t Pos = 0;
+     NofFaces_T Pos = 0;
 
      if (BlockGroupDir == FlipBlocksAt::LINE) {
         if (isClockWise)
            for (; Pos < this->ColorPositionList.size(); ++Pos)
                switch (this->ColorPositionList[Pos].second) {
-                      case PositioningOn::FRONT : this->ColorPositionList[Pos].second = PositioningOn::LEFT;  break;
-                      case PositioningOn::LEFT  : this->ColorPositionList[Pos].second = PositioningOn::BACK;  break;
-                      case PositioningOn::BACK  : this->ColorPositionList[Pos].second = PositioningOn::RIGHT; break;
-                      case PositioningOn::RIGHT : this->ColorPositionList[Pos].second = PositioningOn::FRONT;
+                      case Position_E::FRONT : this->ColorPositionList[Pos].second = Position_E::LEFT;  break;
+                      case Position_E::LEFT  : this->ColorPositionList[Pos].second = Position_E::BACK;  break;
+                      case Position_E::BACK  : this->ColorPositionList[Pos].second = Position_E::RIGHT; break;
+                      case Position_E::RIGHT : this->ColorPositionList[Pos].second = Position_E::FRONT;
                }
         else
            for (; Pos < this->ColorPositionList.size(); ++Pos)
                switch (this->ColorPositionList[Pos].second) {
-                      case PositioningOn::FRONT : this->ColorPositionList[Pos].second = PositioningOn::RIGHT; break;
-                      case PositioningOn::RIGHT : this->ColorPositionList[Pos].second = PositioningOn::BACK;  break;
-                      case PositioningOn::BACK  : this->ColorPositionList[Pos].second = PositioningOn::LEFT;  break;
-                      case PositioningOn::LEFT  : this->ColorPositionList[Pos].second = PositioningOn::FRONT;
+                      case Position_E::FRONT : this->ColorPositionList[Pos].second = Position_E::RIGHT; break;
+                      case Position_E::RIGHT : this->ColorPositionList[Pos].second = Position_E::BACK;  break;
+                      case Position_E::BACK  : this->ColorPositionList[Pos].second = Position_E::LEFT;  break;
+                      case Position_E::LEFT  : this->ColorPositionList[Pos].second = Position_E::FRONT;
                }
      } else if (BlockGroupDir == FlipBlocksAt::COLUMN) {
             if (isClockWise)
                for (; Pos < this->ColorPositionList.size(); ++Pos)
                    switch (this->ColorPositionList[Pos].second) {
-                          case PositioningOn::FRONT  : this->ColorPositionList[Pos].second = PositioningOn::BOTTOM; break;
-                          case PositioningOn::BOTTOM : this->ColorPositionList[Pos].second = PositioningOn::BACK;   break;
-                          case PositioningOn::BACK   : this->ColorPositionList[Pos].second = PositioningOn::TOP;    break;
-                          case PositioningOn::TOP    : this->ColorPositionList[Pos].second = PositioningOn::FRONT;
+                          case Position_E::FRONT  : this->ColorPositionList[Pos].second = Position_E::BOTTOM; break;
+                          case Position_E::BOTTOM : this->ColorPositionList[Pos].second = Position_E::BACK;   break;
+                          case Position_E::BACK   : this->ColorPositionList[Pos].second = Position_E::TOP;    break;
+                          case Position_E::TOP    : this->ColorPositionList[Pos].second = Position_E::FRONT;
                    }
             else
                for (; Pos < this->ColorPositionList.size(); ++Pos)
                    switch (this->ColorPositionList[Pos].second) {
-                          case PositioningOn::FRONT  : this->ColorPositionList[Pos].second = PositioningOn::TOP;    break;
-                          case PositioningOn::TOP    : this->ColorPositionList[Pos].second = PositioningOn::BACK;   break;
-                          case PositioningOn::BACK   : this->ColorPositionList[Pos].second = PositioningOn::BOTTOM; break;
-                          case PositioningOn::BOTTOM : this->ColorPositionList[Pos].second = PositioningOn::FRONT;
+                          case Position_E::FRONT  : this->ColorPositionList[Pos].second = Position_E::TOP;    break;
+                          case Position_E::TOP    : this->ColorPositionList[Pos].second = Position_E::BACK;   break;
+                          case Position_E::BACK   : this->ColorPositionList[Pos].second = Position_E::BOTTOM; break;
+                          case Position_E::BOTTOM : this->ColorPositionList[Pos].second = Position_E::FRONT;
                    }
      } else if (isClockWise)
             for (; Pos < this->ColorPositionList.size(); ++Pos)
                 switch (this->ColorPositionList[Pos].second) {
-                       case PositioningOn::TOP    : this->ColorPositionList[Pos].second = PositioningOn::RIGHT;  break;
-                       case PositioningOn::RIGHT  : this->ColorPositionList[Pos].second = PositioningOn::BOTTOM; break;
-                       case PositioningOn::BOTTOM : this->ColorPositionList[Pos].second = PositioningOn::LEFT;   break;
-                       case PositioningOn::LEFT   : this->ColorPositionList[Pos].second = PositioningOn::TOP;
+                       case Position_E::TOP    : this->ColorPositionList[Pos].second = Position_E::RIGHT;  break;
+                       case Position_E::RIGHT  : this->ColorPositionList[Pos].second = Position_E::BOTTOM; break;
+                       case Position_E::BOTTOM : this->ColorPositionList[Pos].second = Position_E::LEFT;   break;
+                       case Position_E::LEFT   : this->ColorPositionList[Pos].second = Position_E::TOP;
                 }
        else
             for (; Pos < this->ColorPositionList.size(); ++Pos)
                 switch (this->ColorPositionList[Pos].second) {
-                       case PositioningOn::TOP    : this->ColorPositionList[Pos].second = PositioningOn::LEFT;  break;
-                       case PositioningOn::LEFT   : this->ColorPositionList[Pos].second = PositioningOn::BOTTOM; break;
-                       case PositioningOn::BOTTOM : this->ColorPositionList[Pos].second = PositioningOn::RIGHT; break;
-                       case PositioningOn::RIGHT  : this->ColorPositionList[Pos].second = PositioningOn::TOP;
+                       case Position_E::TOP    : this->ColorPositionList[Pos].second = Position_E::LEFT;  break;
+                       case Position_E::LEFT   : this->ColorPositionList[Pos].second = Position_E::BOTTOM; break;
+                       case Position_E::BOTTOM : this->ColorPositionList[Pos].second = Position_E::RIGHT; break;
+                       case Position_E::RIGHT  : this->ColorPositionList[Pos].second = Position_E::TOP;
                 }
 }

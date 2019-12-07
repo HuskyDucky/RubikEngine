@@ -1,9 +1,9 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20191116.1
+    Created : 2019.11.15            Version: 20191207.1
 
-    Rubik Program Show Cube
+    Rubik Program - Test Cube
 
     Menashe Rosemberg   Israel +972-52-323-0538
     Copyright(c) 2019      All rights reserved.
@@ -11,64 +11,69 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-#include "Rubik_run_AuxFuncs.h"
 
-void Test_RandomazidedCube() {
-     auto Test = [](Rubik& Cube, const char* Msg,
-                    function<void(Rubik& Cube)> RunFunc,
-                    const uint8_t ExpectedComparationResult) -> void {
+///The function member 'void UpdateThe(Cube_T& Cube2Update) const noexcept' wasn't used in this test, but is plenty functional
 
-                   if (ExpectedComparationResult) cout << '\n';
-                   cout << '\n' << Msg << ": ";
+#include "Rubik_run_Tests.h"
 
-                   Cube_T CurrCube = Cube.CurrentBlocksPositions();
-                   RunFunc(Cube);
-
-                   if (ExpectedComparationResult < 2)
-                      cout << (ExpectedComparationResult == CompareCubes(CurrCube, Cube.CurrentBlocksPositions()) ? "PASSED" : "FAILED");
-                   else
-                      ShowCube(Cube, HideSize, HideColors, HidePercentual);
-     };
-
-     cout << "\nTest cube's Randomization.\n\nCube created:\n";
+bool Test(const char* Msg, TestFunction& Execute) {
+     cout << string(50, '=') << "\nTest " << Msg << ".\n" << string(50, '-') << "\nCreating main cube: " << flush;
      Rubik Cube;
-     Rubik const AuxCube;
-     ShowCube(Cube, HideSize, HideColors, HidePercentual);
+     cout << "done." << endl;
+
+     bool Result = Execute(Cube);
+
+     cout << "\nTest Result: " << (Result ? "PASSED" :  "FAILED");
 
      PressEnter();
 
-     Test(Cube, "Check Saved initial state of cube's randomization", [](Rubik& Cube){ Cube.RecoverRandomizedCube(); }, IsEqual);
-     Test(Cube, "Randomize Cube 1000 times",                         [](Rubik& Cube){ Cube.Randomize(1000); },         NotCompare);
-
-     const Cube_T RandomizedState = Cube.CurrentBlocksPositions();
-
-     {
-     cout << "\n\nAlso, Are the colors blocks randomized? ";
-     bool IsPassed = false;
-     const Cube_T AuxCubeState = AuxCube.CurrentBlocksPositions();
-     for (CubeSize_T blk = 0; blk < RandomizedState.size(); ++blk)
-         if (!CompareBlocks(RandomizedState[blk], AuxCubeState[blk])) {
-            IsPassed = true;    //find the first block were the colors changes then confirm it was randomized
-            break;
-         }
-     cout << (IsPassed ? "Yes" : "No");
-     }
-
-     Test(Cube, "Check cube's randomization saved",                  [](Rubik& Cube){ Cube.RecoverRandomizedCube(); }, IsEqual);
-     Test(Cube, "Cube has been Reset",                               [](Rubik& Cube){ Cube.Reset(); },                 NotCompare);
-
-     cout << "\nIs the Cube in its original state? "
-          << (CompareCubes(AuxCube.CurrentBlocksPositions(), Cube.CurrentBlocksPositions()) ? "Yes" : "No");
-
-     Test(Cube, "Compare Reset Cube with the saved randomazed State.", [](Rubik& Cube){ Cube.RecoverRandomizedCube(); }, IsDifferent);
-
-     cout << '\n';
-
-     PressEnter();
+     return Result;
 }
 
+TestFunction Test_CreationCube = [](Rubik& Cube) -> bool {
+             ShowCube(Cube, ShowSize, HideColors, ShowPercentual);
+             return pow(Cube.SideSize, 3) == Cube.TofBlocks &&
+                    Cube.isFinished()                       &&
+                    Cube.PercentualDone() == 100.0;
+};
+
+TestFunction Test_RandomizeCube = [](Rubik& Cube) -> bool {
+             ShowCube(Cube, HideSize, HideColors, ShowPercentual);
+             cout << "Randomized 1000 times: " << flush;
+             Cube.Randomize(1000);
+             cout << "done." << endl;
+             ShowCube(Cube, HideSize, HideColors, ShowPercentual);
+
+             return !Cube.isFinished() && Cube.PercentualDone() < 100.0 && !AreThesesCubesEqual(Rubik(), Cube);
+};
+
+TestFunction Test_ResetCube = [](Rubik& Cube) -> bool {
+             cout << "Randomized 1000 times: " << flush;
+             Cube.Randomize(1000);
+             cout << "done." << endl;
+             cout << "Reseting cube: " << flush;
+             Cube.Reset();
+             cout << "done." << endl;
+
+             return Cube.isFinished() && Cube.PercentualDone() == 100.0 && AreThesesCubesEqual(Rubik(), Cube);
+};
+
+TestFunction Test_CopyCube = [](Rubik& Cube) -> bool {
+             cout << "Creating auxiliary cube: " << flush;
+             Rubik AuxCube;
+             cout << "done." << endl;
+             cout << "Randomized auxiliary cube 1000 times: " << flush;
+             AuxCube.Randomize(1000);
+             cout << "done." << endl;
+             cout << "Copy auxiliary cube to main cube: " << flush;
+             Cube(AuxCube);
+             cout << "done." << endl;
+
+             return AreThesesCubesEqual(AuxCube, Cube); //Include check the colors
+};
+
 void ShowFlippedCube() {
-     cout << "\n\nTeste Flipping.\n\nCube created:\n";
+     cout << "\n\nTest Flipping.\n\nCube created:";
 
      Rubik Cube;
 
@@ -77,9 +82,9 @@ void ShowFlippedCube() {
 
      PressEnter();
 
-     Cube.Flip(FlipBlocksAt::LAYER,  0, TurnBlocks::CLOCKWISE);
-     Cube.Flip(FlipBlocksAt::LINE,   1, TurnBlocks::COUNTERCLOCKWISE);
-     Cube.Flip(FlipBlocksAt::COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE);
+     Cube.Flip(LAYER,  0, TurnBlocks::CLOCKWISE);
+     Cube.Flip(LINE,   1, TurnBlocks::COUNTERCLOCKWISE);
+     Cube.Flip(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE);
 
      cout << "\nCube was flipped few times 'manually'";
      ShowCube(Cube, HideSize, HideColors);
@@ -89,8 +94,10 @@ void ShowFlippedCube() {
 
      Cube.Randomize(1000);
      ShowCube(Cube, HideSize, ShowColors, HidePercentual);
-     ShowCube(Cube, HideSize, HideColors, HidePercentual);
+     ShowCube(Cube, HideSize, HideColors, ShowPercentual);
 
-     cout << "\n\nCube after randomize 1000 times.\n";
+     cout << "\n\nCube after 1000 flips.";
+
+     PressEnter();
 }
 

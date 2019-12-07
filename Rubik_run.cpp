@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191115.2
+    Created : 2019.10.30            Version: 20191207.1
 
     Rubik Program
 
@@ -13,15 +13,13 @@
 **/
 #include "Rubik_run_Tests.h"
 
-//Godś number - https://ruwix.com/the-rubiks-cube/gods-number/
-
 int main() {
 
-    Test_RandomazidedCube();
-
-    ShowFlippedCube();
-
-    PressEnter();
+    if (Test("Creating a Cube", Test_CreationCube) &&
+        Test("Randomize Cube", Test_RandomizeCube) &&
+        Test("Reset Cube", Test_ResetCube)         &&
+        Test("Copy Cube", Test_CopyCube))
+        ShowFlippedCube();
 
     return 0;
 }

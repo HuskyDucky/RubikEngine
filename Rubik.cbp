@@ -35,6 +35,7 @@
 		<Unit filename="Rubik_Block.h" />
 		<Unit filename="Rubik_Cube.cpp" />
 		<Unit filename="Rubik_Cube.h" />
+		<Unit filename="Rubik_Cube_Private.cpp" />
 		<Unit filename="Rubik_run.cpp" />
 		<Unit filename="Rubik_run_AuxFuncs.cpp" />
 		<Unit filename="Rubik_run_AuxFuncs.h" />

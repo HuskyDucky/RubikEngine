@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20191111.3
+    Created : 2019.10.23            Version: 20191129.3
 
     Rubik Program - Block Definition
 
@@ -11,6 +11,9 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
+#ifndef BLOCK_H
+#define BLOCK_H
+
 #include <vector>
 #include <limits>
 #include <optional>
@@ -18,12 +21,19 @@
 
 using namespace std;
 
+
 typedef uint8_t  Color_T;
 typedef uint8_t  Position_T;
-typedef uint8_t  Direction_T;
-typedef uint32_t BlockPosition_T;
+typedef uint8_t  NofFaces_T;
 
-enum Color : Color_T {
+typedef uint8_t  Direction_T;
+typedef uint32_t BlkPosition_T;
+
+using ColorPosition_T = pair<Color_T, Position_T>;
+using ColorPositionList_T = vector<ColorPosition_T>;
+
+
+enum Color_E : Color_T {
      WHITE,
      YELLOW,
      RED,
@@ -32,7 +42,7 @@ enum Color : Color_T {
      GREEN
 };
 
-enum PositioningOn : Position_T {
+enum Position_E : Position_T {
      FRONT,
      BACK,
      TOP,
@@ -53,22 +63,22 @@ enum TurnBlocks : bool {
      CLOCKWISE
 };
 
-using ColorPosition_T = pair<Color_T, Position_T>;
-using ColorPositionList_T = vector<ColorPosition_T>;
-
-
 struct Block {
-       Block(const BlockPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
-                                                                                 ColorPositionList(ColorPos) {}
+       Block(const BlkPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
+                                                                               ColorPositionList(ColorPos) {}
 
-    BlockPosition_T OriginalBlockPosition() const noexcept;
+    BlkPosition_T OriginalBlockPosition() const noexcept;
 
-    ColorPositionList_T ColorsAndPositions() const noexcept;
-    Position_T ColorPosition(Color_T color) const noexcept;    //returns PositioningOn::NONEPOSITION if doesn't find
+    NofFaces_T NofFaces() const noexcept;
+    bool HasColors(const vector<Color_E>& colors) const noexcept;       //If the size of colors != of NofFaces also return false
+    ColorPositionList_T ColorsAndPositionsList() const noexcept;
+    //Position_E ColorPosition(const Color_E color) const noexcept;     //returns Position_E::NONEPOSITION if doesn't find
 
     void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
 
     private:
-        BlockPosition_T originalBlockPosition;
+        BlkPosition_T originalBlockPosition;
         ColorPositionList_T ColorPositionList;
 };
+
+#endif

@@ -1,9 +1,9 @@
 /**
     File    : Rubik_run.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20191115.2
+    Created : 2019.10.27            Version: 20191206.2
 
-    Rubik Program Show Cube
+    Rubik Program - Test Cube
 
     Menashe Rosemberg   Israel +972-52-323-0538
     Copyright(c) 2019      All rights reserved.
@@ -11,8 +11,20 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
+#ifndef RUN_TEST_H
+#define RUN_TEST_H
+
 #include "Rubik_run_AuxFuncs.h"
 
-void Test_RandomazidedCube();
+using TestFunction = function<bool(Rubik& Cube)>;
+
+bool Test(const char* Msg, TestFunction& Execute);
+
+extern TestFunction Test_CreationCube;
+extern TestFunction Test_RandomizeCube;
+extern TestFunction Test_ResetCube;
+extern TestFunction Test_CopyCube;
+
 void ShowFlippedCube();
 
+#endif
