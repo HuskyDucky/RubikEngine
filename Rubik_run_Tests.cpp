@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20191207.1
+    Created : 2019.11.15            Version: 20191207.1.2
 
     Rubik Program - Test Cube
 
@@ -40,7 +40,7 @@ TestFunction Test_CreationCube = [](Rubik& Cube) -> bool {
 TestFunction Test_RandomizeCube = [](Rubik& Cube) -> bool {
              ShowCube(Cube, HideSize, HideColors, ShowPercentual);
              cout << "Randomized 1000 times: " << flush;
-             Cube.Randomize(1000);
+             Cube.randomize(1000);
              cout << "done." << endl;
              ShowCube(Cube, HideSize, HideColors, ShowPercentual);
 
@@ -49,10 +49,10 @@ TestFunction Test_RandomizeCube = [](Rubik& Cube) -> bool {
 
 TestFunction Test_ResetCube = [](Rubik& Cube) -> bool {
              cout << "Randomized 1000 times: " << flush;
-             Cube.Randomize(1000);
+             Cube.randomize(1000);
              cout << "done." << endl;
              cout << "Reseting cube: " << flush;
-             Cube.Reset();
+             Cube.reset();
              cout << "done." << endl;
 
              return Cube.isFinished() && Cube.PercentualDone() == 100.0 && AreThesesCubesEqual(Rubik(), Cube);
@@ -63,7 +63,7 @@ TestFunction Test_CopyCube = [](Rubik& Cube) -> bool {
              Rubik AuxCube;
              cout << "done." << endl;
              cout << "Randomized auxiliary cube 1000 times: " << flush;
-             AuxCube.Randomize(1000);
+             AuxCube.randomize(1000);
              cout << "done." << endl;
              cout << "Copy auxiliary cube to main cube: " << flush;
              Cube(AuxCube);
@@ -82,18 +82,19 @@ void ShowFlippedCube() {
 
      PressEnter();
 
-     Cube.Flip(LAYER,  0, TurnBlocks::CLOCKWISE);
-     Cube.Flip(LINE,   1, TurnBlocks::COUNTERCLOCKWISE);
-     Cube.Flip(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE);
+     Cube.flip(LAYER,  0, TurnBlocks::CLOCKWISE);
+     Cube.flip(LINE,   1, TurnBlocks::COUNTERCLOCKWISE);
+     Cube.flip(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE);
 
-     cout << "\nCube was flipped few times 'manually'";
+     cout << "\nCube was flipped few times 'manually'\n";
      ShowCube(Cube, HideSize, HideColors);
      cout << "(Expected less than 100)";
 
      PressEnter();
 
-     Cube.Randomize(1000);
+     Cube.randomize(1000);
      ShowCube(Cube, HideSize, ShowColors, HidePercentual);
+     cout << '\n';
      ShowCube(Cube, HideSize, HideColors, ShowPercentual);
 
      cout << "\n\nCube after 1000 flips.";

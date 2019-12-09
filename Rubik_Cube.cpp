@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191207.1
+    Created : 2019.10.22            Version: 20191207.1.1
 
     Rubik Program - Cube Definition
 
@@ -44,12 +44,6 @@ float Rubik::PercentualDone() const noexcept {
       return 100.0 * Done / this->TofBlocks;
 }
 
-BlkPosition_T Rubik::Block_Coordenate(const Coord_T& xyz) const noexcept {
-              return xyz[LINE  ] * this->SideSize +
-                     xyz[COLUMN] +
-                     xyz[LAYER ] * this->SideSize * this->SideSize;
-}
-
 bool Rubik::isBlockInPosition(const Coord_T& xyz) const noexcept {
      const QofBlocks_T Pos = this->Block_Coordenate(xyz);
      return Pos < this->TofBlocks && Pos == this->Cube[Pos].OriginalBlockPosition();
@@ -63,7 +57,7 @@ ColorPositionList_T Rubik::Block_ColorsAndPositions(const Coord_T& xyz) const no
                     return this->Cube[this->Block_Coordenate(xyz)].ColorsAndPositionsList();
 }
 
-BlkPosition_T Rubik::FindNearestBlockWith(const vector<Color_E>&& colors, BlkPosition_T StartSearchPos) const noexcept {
+BlkPosition_T Rubik::findNearestBlockWith(const vector<Color_E>&& colors, BlkPosition_T StartSearchPos) const noexcept {
               for (; StartSearchPos < this->TofBlocks; ++StartSearchPos)
                   if (this->Cube[StartSearchPos].HasColors(colors))   //N of colors also need to match to be true
                      return StartSearchPos;
@@ -71,7 +65,7 @@ BlkPosition_T Rubik::FindNearestBlockWith(const vector<Color_E>&& colors, BlkPos
               return Position_E::NONEPOSITION;
 }
 
-void Rubik::Flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept {
+void Rubik::flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept {
 
      if (Level < this->SideSize) {
 
@@ -104,7 +98,7 @@ void Rubik::Flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const Tur
      }
 }
 
-Cube_T Rubik::Randomize(uint16_t NoInterations) noexcept {
+Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
        mt19937 RandBase(chrono::steady_clock::now().time_since_epoch().count());
 
        uniform_real_distribution<float> ClockWiseOrOtherWise(0.0, 1.0);
@@ -114,7 +108,7 @@ Cube_T Rubik::Randomize(uint16_t NoInterations) noexcept {
 
        while (NoInterations) {
              --NoInterations;
-             this->Flip(static_cast<FlipBlocksAt>(Layer(RandBase)),
+             this->flip(static_cast<FlipBlocksAt>(Layer(RandBase)),
                         Level(RandBase),
                         static_cast<TurnBlocks>(isClockWise(RandBase)));
        }
@@ -123,7 +117,7 @@ Cube_T Rubik::Randomize(uint16_t NoInterations) noexcept {
 }
 
 
-void Rubik::Reset() noexcept {
+void Rubik::reset() noexcept {
 
      this->Cube.clear();
 

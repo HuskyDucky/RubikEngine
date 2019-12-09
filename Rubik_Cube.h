@@ -44,6 +44,7 @@ struct Rubik {
        const CubeSideSize_T SideSize;
        const QofBlocks_T TofBlocks;
 
+       //Copy Cube
        void operator()(const Rubik& OriCube);
 
        //Info
@@ -56,14 +57,14 @@ struct Rubik {
        ColorPositionList_T Block_ColorsAndPositions(const Coord_T& xyz) const noexcept;
 
        //Search
-       BlkPosition_T FindNearestBlockWith(const vector<Color_E>&& colors, BlkPosition_T StartSearchPos = 0) const noexcept;
+       BlkPosition_T findNearestBlockWith(const vector<Color_E>&& colors, BlkPosition_T StartSearchPos = 0) const noexcept;
 
        //Move layers
-       void Flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
+       void flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
 
        //others actions
-       Cube_T Randomize(uint16_t NoInterations) noexcept;       //Automatically save this new randomization
-       void Reset() noexcept;
+       Cube_T randomize(uint16_t NoInterations) noexcept;       //Automatically save this new randomization
+       void reset() noexcept;
 
     private:
         Cube_T Cube;

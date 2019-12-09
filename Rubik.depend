@@ -15,17 +15,17 @@
 1575741733 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1575741673 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+1575914489 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
 	<vector>
 	<limits>
 	<optional>
 	<cinttypes>
 
-1575742281 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1575914757 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
 	"Rubik_run_AuxFuncs.h"
 
-1575741679 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+1575914925 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<cmath>
 	<array>
 	<chrono>
@@ -59,9 +59,9 @@
 1575741500 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
 	"Rubik_run_AuxFuncs.h"
 
-1575743809 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
+1575914804 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
 	"Rubik_run_Tests.h"
 
-1575742033 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Private.cpp
+1575914729 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Private.cpp
 	"Rubik_Cube.h"
 
