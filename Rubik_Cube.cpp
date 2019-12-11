@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191207.1.1
+    Created : 2019.10.22            Version: 20191207.2
 
     Rubik Program - Cube Definition
 
@@ -103,8 +103,8 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
 
        uniform_real_distribution<float> ClockWiseOrOtherWise(0.0, 1.0);
        bernoulli_distribution isClockWise(ClockWiseOrOtherWise(RandBase));
-       uniform_int_distribution<Direction_T> Layer(0, 3);                //Enum FlipBlocksAt
-       uniform_int_distribution<CubeSideSize_T>  Level(0, this->SideSize);
+       uniform_int_distribution<Direction_T> Layer(0, 2);                //Enum FlipBlocksAt
+       uniform_int_distribution<CubeSideSize_T>  Level(0, this->SideSize-1);
 
        while (NoInterations) {
              --NoInterations;
