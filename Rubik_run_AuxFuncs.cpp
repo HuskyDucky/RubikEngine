@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_AuxFuncs.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20191207.1
+    Created : 2019.10.27            Version: 20200130.1
 
     Rubik Program - auxiliary functions to test Cube
 
@@ -14,6 +14,15 @@
 #include "Rubik_run_AuxFuncs.h"
 
 void PressEnter() { cout << "\n\nPress <ENTER> to continue..."; cin.get(); }
+
+string StepCounter(bool Reset) {
+       static uint16_t Counter = 0;
+
+       if (Reset)
+          Counter = 0;
+
+       return string("step X - ").replace(5, 1, to_string(++Counter));
+}
 
 const char* TheColorIs(const uint8_t C) noexcept {
       switch (C) {
@@ -46,11 +55,11 @@ static string CubeIsFinishORNot(const Rubik& Cube) {
        return Msg + "finished";
 }
 
-void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColors, const bool ShowPercentual) {
+void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColorsAndPositions, const bool ShowPercentual) {
      if (ShowSize)
         cout << "Cube size is: " << Cube.TofBlocks << '\n';
 
-     if (ShowColors)
+     if (ShowColorsAndPositions) {
         for (Coord_T xyz({0, 0, 0}); xyz[2] < Cube.SideSize; ++xyz[2])
             for (xyz[0] = 0; xyz[0] < Cube.SideSize; ++xyz[0])
                 for (xyz[1] = 0; xyz[1] < Cube.SideSize; ++xyz[1]) {
@@ -64,7 +73,8 @@ void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColors, con
                     for (auto& Z : BlocksColors)
                         cout << "\n\t\t" << TheColorIs(Z.first) << ' ' << ThePositionIs(Z.second);
                 }
-     else {
+        cout << '\n';
+     } else {
           const uint8_t ascii = Cube.SideSize == 3 ? 97 :
                                (Cube.SideSize == 4 ? 48 : 33);
 
@@ -79,7 +89,7 @@ void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColors, con
      }
 
      if (ShowPercentual)
-        cout << "\nPercentual Resolved: " << setprecision(3) << Cube.PercentualDone() << "%. " << CubeIsFinishORNot(Cube) << '\n';
+        cout << "Percentual Resolved: " << setprecision(3) << Cube.PercentualDone() << "%. " << CubeIsFinishORNot(Cube) << '\n';
 }
 
 static bool CompareBlocks(const Coord_T& xyz, const Rubik& Cube1, const Rubik& Cube2) {

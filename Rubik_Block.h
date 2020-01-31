@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20191129.3
+    Created : 2019.10.23            Version: 20200129.1
 
     Rubik Program - Block Definition
 
@@ -11,16 +11,15 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
+///ATTENTION! All enum needs to keep the order as it is.
 #ifndef BLOCK_H
 #define BLOCK_H
 
 #include <vector>
 #include <limits>
-#include <optional>
 #include <cinttypes>
 
 using namespace std;
-
 
 typedef uint8_t  Color_T;
 typedef uint8_t  Position_T;
@@ -29,11 +28,7 @@ typedef uint8_t  NofFaces_T;
 typedef uint8_t  Direction_T;
 typedef uint32_t BlkPosition_T;
 
-using ColorPosition_T = pair<Color_T, Position_T>;
-using ColorPositionList_T = vector<ColorPosition_T>;
-
-
-enum Color_E : Color_T {
+enum Color_E : Color_T {        //Colors must have the same absolute value than its face position
      WHITE,
      YELLOW,
      RED,
@@ -42,17 +37,17 @@ enum Color_E : Color_T {
      GREEN
 };
 
-enum Position_E : Position_T {
+enum Position_E : Position_T {  //Face Position must have the same absolute value than its Color
      FRONT,
+     RIGHT,
      BACK,
+     LEFT,
      TOP,
      BOTTOM,
-     LEFT,
-     RIGHT,
-     NONEPOSITION = numeric_limits<Position_T>::max()
+     NONEPOSITION
 };
 
-enum FlipBlocksAt : Direction_T {
+enum FlipBlocksAt : Direction_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
      LINE,
      COLUMN,
      LAYER
@@ -63,22 +58,25 @@ enum TurnBlocks : bool {
      CLOCKWISE
 };
 
-struct Block {
-       Block(const BlkPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
-                                                                               ColorPositionList(ColorPos) {}
+using ColorPosition_T = pair<Color_E, Position_T>;
+using ColorPositionList_T = vector<ColorPosition_T>;
 
-    BlkPosition_T OriginalBlockPosition() const noexcept;
+struct ClassBlock {
+       struct Block {
+              Block(const BlkPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
+                                                                                      ColorPositionList(ColorPos) {}
 
-    NofFaces_T NofFaces() const noexcept;
-    bool HasColors(const vector<Color_E>& colors) const noexcept;       //If the size of colors != of NofFaces also return false
-    ColorPositionList_T ColorsAndPositionsList() const noexcept;
-    //Position_E ColorPosition(const Color_E color) const noexcept;     //returns Position_E::NONEPOSITION if doesn't find
+           BlkPosition_T OriginalBlockPosition() const noexcept;
 
-    void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
+           bool HasColors(const ColorPositionList_T& colors) const noexcept;
+           ColorPositionList_T ColorsAndPositionsList() const noexcept;
 
-    private:
-        BlkPosition_T originalBlockPosition;
-        ColorPositionList_T ColorPositionList;
+           void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
+
+           private:
+               BlkPosition_T originalBlockPosition;
+               ColorPositionList_T ColorPositionList;
+       };
 };
 
 #endif

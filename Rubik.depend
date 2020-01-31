@@ -9,30 +9,27 @@
 	<iostream>
 	<algorithm>
 
-1575743113 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
+1580473798 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
 	"Rubik_run_Tests.h"
 
-1575741733 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
+1580325681 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1575914489 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+1580325796 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
 	<vector>
 	<limits>
-	<optional>
 	<cinttypes>
 
-1575914757 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1580325718 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
-	"Rubik_run_AuxFuncs.h"
 
-1575914925 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
-	<cmath>
-	<array>
+1580325778 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<chrono>
 	<random>
-	<algorithm>
+	<memory>
 	<iostream>
-	"Rubik_Block.h"
+	"Rubik_Cube_Global.h"
+	"Rubik_ScanFaces.h"
 
 1572683014 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_ShowCube.h
 	<cmath>
@@ -47,64 +44,49 @@
 	<iostream>
 	"Rubik_Cube.h"
 
-1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.h
+1580473854 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.h
 	"Rubik_run_AuxFuncs.h"
 
-1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.h
+1580474311 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.h
 	<iomanip>
 	<iostream>
 	<algorithm>
 	"Rubik_Cube.h"
 
-1575741500 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
+1580474414 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_AuxFuncs.cpp
 	"Rubik_run_AuxFuncs.h"
 
-1575914804 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
+1580474304 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run_Tests.cpp
 	"Rubik_run_Tests.h"
 
-1575914729 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Private.cpp
+1580232942 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Private.cpp
 	"Rubik_Cube.h"
 
-1575741733 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Block.cpp
-	"Rubik_Block.h"
-
-1575914489 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Block.h
-	<vector>
-	<limits>
-	<optional>
-	<cinttypes>
-
-1576094041 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube.cpp
+1576858188 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_ScanFaces.cpp
 	"Rubik_Cube.h"
-	"Rubik_run_AuxFuncs.h"
 
-1575914925 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube.h
+1580146337 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces.h
 	<cmath>
-	<array>
-	<chrono>
-	<random>
-	<algorithm>
+	"Rubik_Cube_Global.h"
+
+1578648152 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces.cpp
+	"Rubik_ScanFaces.h"
 	<iostream>
+	"Rubik_run_AuxFuncs.h"
+
+1580323998 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Global.h
+	<array>
+	<vector>
+	<algorithm>
+	<functional>
 	"Rubik_Block.h"
 
-1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_run_AuxFuncs.h
-	<iomanip>
-	<iostream>
-	<algorithm>
-	"Rubik_Cube.h"
+1580146518 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Commit.cpp
+	"Rubik_ScanFaces.h"
 
-1575914729 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube_Private.cpp
-	"Rubik_Cube.h"
+1580146440 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_CreateProtoCube.cpp
+	"Rubik_ScanFaces.h"
 
-1575743113 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_run.cpp
-	"Rubik_run_Tests.h"
-
-1575741493 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_run_Tests.h
-	"Rubik_run_AuxFuncs.h"
-
-1575741500 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_run_AuxFuncs.cpp
-	"Rubik_run_AuxFuncs.h"
-
-1575914804 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_run_Tests.cpp
-	"Rubik_run_Tests.h"
+1579968100 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Scan.cpp
+	"Rubik_ScanFaces.h"
 

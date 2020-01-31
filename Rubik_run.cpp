@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.30            Version: 20191207.1
+    Created : 2019.10.30            Version: 20200131.1
 
     Rubik Program
 
@@ -15,11 +15,18 @@
 
 int main() {
 
-    if (Test("Creating a Cube", Test_CreationCube) &&
-        Test("Randomize Cube", Test_RandomizeCube) &&
-        Test("Reset Cube", Test_ResetCube)         &&
-        Test("Copy Cube", Test_CopyCube))
-        ShowFlippedCube();
+    if (Test("Cube Properties - Creating a Cube", Test_CreationCube) &&
+        Test("Cube Properties - Randomize Cube", Test_RandomizeCube) &&
+        Test("Cube Properties - Reset Cube", Test_ResetCube)         &&
+        Test("Cube Properties - Copy Cube", Test_CopyCube)           &&
+        Test("Cube Properties - Scan Cube Faces - Pass a valid randomize Cube (Cube3x3)"     , Test_ScannedFaces_ValidRandomScanFaces3x3)   &&
+        Test("Cube Properties - Scan Cube Faces - Pass a INvalid randomize Cube (Cube3x3)"   , Test_ScannedFaces_InvalidRandomScanFaces3x3) &&
+        Test("Cube Properties - Scan Cube Faces - Commit without all faces scanned (Cube3x3)", Test_ScannedFaces_NoScannedFace3x3)          &&
+        Test("Cube Properties - Scan Cube Faces - Pass a face with a wrong size (Cube3x3)"   , Test_ScannedFaces_WrongSizeScanFaces3x3)     &&
+        Test("Cube Properties - Scan Cube Faces - Commit the scanned faces (Cube3x3)"        , Test_ScannedFaces_commitScannedFaces3x3)
+        ) {
+            ShowFlippedCube();
+        }
 
     return 0;
 }

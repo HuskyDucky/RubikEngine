@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20191206.1
+    Created : 2019.10.27            Version: 20200130.1
 
     Rubik Program - auxiliary functions to test Cube
 
@@ -14,7 +14,6 @@
 #ifndef RUN_AUX_H
 #define RUN_AUX_H
 
-//#include <cmath>
 #include <iomanip>
 #include <iostream>
 #include <algorithm>
@@ -25,11 +24,14 @@ constexpr bool HideSize       = false;
 constexpr bool HideColors     = false;
 constexpr bool HidePercentual = false;
 
-constexpr bool ShowSize       = true;
-constexpr bool ShowColors     = true;
-constexpr bool ShowPercentual = true;
+constexpr bool ShowSize               = true;
+constexpr bool ShowColorsAndPositions = true;
+constexpr bool ShowPercentual         = true;
 
 void PressEnter();
+
+constexpr bool RESET = true;
+string StepCounter(bool Reset = false);
 
 const char* TheColorIs(const uint8_t C) noexcept;
 const char* ThePositionIs(const uint8_t P) noexcept;

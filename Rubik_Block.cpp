@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20191129.1.1
+    Created : 2019.10.23            Version: 20200129.1.1
 
     Rubik Program - Block Definition
 
@@ -13,23 +13,22 @@
 **/
 #include "Rubik_Block.h"
 
-BlkPosition_T Block::OriginalBlockPosition() const noexcept { return this->originalBlockPosition; }
-ColorPositionList_T Block::ColorsAndPositionsList() const noexcept { return this->ColorPositionList; }
-NofFaces_T Block::NofFaces() const noexcept { return this->ColorPositionList.size(); }
+BlkPosition_T ClassBlock::Block::OriginalBlockPosition() const noexcept { return this->originalBlockPosition; }
+ColorPositionList_T ClassBlock::Block::ColorsAndPositionsList() const noexcept { return this->ColorPositionList; }
 
-bool Block::HasColors(const vector<Color_E>& colors) const noexcept {
+bool ClassBlock::Block::HasColors(const ColorPositionList_T& colors) const noexcept {
 
      if (this->ColorPositionList.size() != colors.size()) return false;
 
      NofFaces_T FacesFound = 0;
      for (auto& CPList : this->ColorPositionList)
          for (auto& Clrs : colors)
-             if (CPList.first == Clrs) ++FacesFound;
+             if (CPList.first == Clrs.first) ++FacesFound;
 
      return FacesFound == this->ColorPositionList.size();
 }
 
-void Block::moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept {
+void ClassBlock::Block::moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept {
      NofFaces_T Pos = 0;
 
      if (BlockGroupDir == FlipBlocksAt::LINE) {

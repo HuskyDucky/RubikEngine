@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191207.2
+    Created : 2019.10.22            Version: 20200131.1
 
     Rubik Program - Cube Definition
 
@@ -13,16 +13,13 @@
 **/
 #include "Rubik_Cube.h"
 
-#include "Rubik_run_AuxFuncs.h"
-
 void Rubik::operator()(const Rubik& OriCube) {
      if (OriCube.TofBlocks == this->TofBlocks) {
         this->Cube.clear();
-        for (this->XYZ[LAYER] = 0; this->XYZ[LAYER] < this->SideSize; ++this->XYZ[LAYER ])
+        for (this->XYZ[LAYER] = 0; this->XYZ[LAYER] < this->SideSize; ++this->XYZ[LAYER])
             for (this->XYZ[LINE] = 0; this->XYZ[LINE] < this->SideSize; ++this->XYZ[LINE])
                 for (this->XYZ[COLUMN] = 0; this->XYZ[COLUMN] < this->SideSize; ++this->XYZ[COLUMN])
-                    this->Cube.emplace_back(OriCube.Block_OriginalPosition(XYZ),
-                                            OriCube.Block_ColorsAndPositions(XYZ));
+                    this->Cube.emplace_back(OriCube.Block_OriginalPosition(XYZ), OriCube.Block_ColorsAndPositions(XYZ));
      }
 }
 
@@ -55,14 +52,6 @@ BlkPosition_T Rubik::Block_OriginalPosition(const Coord_T& xyz) const noexcept {
 
 ColorPositionList_T Rubik::Block_ColorsAndPositions(const Coord_T& xyz) const noexcept {
                     return this->Cube[this->Block_Coordenate(xyz)].ColorsAndPositionsList();
-}
-
-BlkPosition_T Rubik::findNearestBlockWith(const vector<Color_E>&& colors, BlkPosition_T StartSearchPos) const noexcept {
-              for (; StartSearchPos < this->TofBlocks; ++StartSearchPos)
-                  if (this->Cube[StartSearchPos].HasColors(colors))   //N of colors also need to match to be true
-                     return StartSearchPos;
-
-              return Position_E::NONEPOSITION;
 }
 
 void Rubik::flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept {
@@ -116,32 +105,75 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
        return this->Cube;
 }
 
-
 void Rubik::reset() noexcept {
-
      this->Cube.clear();
+     this->Cube.reserve(this->TofBlocks);
 
      BlkPosition_T BlockPos = 0;
-     for (XYZ[LINE] = 0; XYZ[LINE] < this->SideSize; ++XYZ[LINE])
-         for (XYZ[COLUMN] = 0; XYZ[COLUMN] < this->SideSize; ++XYZ[COLUMN])
-             for (XYZ[LAYER] = 0; XYZ[LAYER] < this->SideSize; ++XYZ[LAYER]) {
-                 vector<ColorPosition_T> ColorPos;
+     for (this->XYZ[LINE] = 0; this->XYZ[LINE] < this->SideSize; ++this->XYZ[LINE])
+         for (this->XYZ[COLUMN] = 0; this->XYZ[COLUMN] < this->SideSize; ++this->XYZ[COLUMN])
+             for (this->XYZ[LAYER] = 0; this->XYZ[LAYER] < this->SideSize; ++this->XYZ[LAYER]) {
 
-                 if (XYZ[LINE] == 0)
+                 ColorPositionList_T ColorPos;
+
+                 if (this->XYZ[LINE] == 0)
                     ColorPos.emplace_back(Color_E::WHITE, Position_E::FRONT);
-                 else if (XYZ[LINE] == this->SideSize-1)
+                 else if (this->XYZ[LINE] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::YELLOW, Position_E::BACK);
 
-                 if (XYZ[COLUMN] == 0)
+                 if (this->XYZ[COLUMN] == 0)
                     ColorPos.emplace_back(Color_E::RED, Position_E::TOP);
-                 else if (XYZ[COLUMN] == this->SideSize-1)
+                 else if (this->XYZ[COLUMN] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::ORANGE, Position_E::BOTTOM);
 
-                 if (XYZ[LAYER ] == 0)
+                 if (this->XYZ[LAYER ] == 0)
                     ColorPos.emplace_back(Color_E::BLUE, Position_E::LEFT);
-                 else if (XYZ[LAYER ] == this->SideSize-1)
+                 else if (this->XYZ[LAYER ] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::GREEN, Position_E::RIGHT);
 
                  this->Cube.emplace_back(BlockPos++, move(ColorPos));
              }
+}
+
+bool Rubik::scan(const Position_E Face, vector<Color_E>&& Colors) noexcept {
+     if (this->ScannedFaces.get() == nullptr)
+        this->ScannedFaces.reset(new ScanFaces(this->Cube, Block_Coordenate));
+
+     return this->ScannedFaces->scan(Face, move(Colors));
+}
+
+bool Rubik::commitScannedFaces() noexcept {
+     if (this->ScannedFaces.get() != nullptr) {
+        ProtoCube_T ProtoCube = this->ScannedFaces->commitScannedFaces();
+        if (ProtoCube.size()) {
+           Cube_T NewCube;
+           BlkPosition_T ProtoBlkIndex = 0;
+           do {
+               for (auto& oldBlock : this->Cube)
+                   if (oldBlock.HasColors(ProtoCube[ProtoBlkIndex]) &&
+                      none_of(NewCube.cbegin(), NewCube.cend(), [&](const Block& b) { return b.OriginalBlockPosition() == oldBlock.OriginalBlockPosition(); })) {
+                      NewCube.emplace_back(oldBlock.OriginalBlockPosition(), move(ProtoCube[ProtoBlkIndex]));
+                      break;
+                   }
+
+               if (ProtoBlkIndex != NewCube.size() - 1)
+                  return false;
+
+           } while (++ProtoBlkIndex != this->TofBlocks);
+
+           this->Cube.swap(NewCube);
+
+           this->ReleaseScannedFaces();
+           return true;
+        }
+    }
+
+    return false;
+}
+
+void Rubik::ReleaseScannedFaces() noexcept {
+    if (this->ScannedFaces.get() != nullptr) {
+       ScanFaces* ptr = ScannedFaces.release();
+       delete ptr;
+    }
 }

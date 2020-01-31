@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_Private.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191129.4.1
+    Created : 2019.10.22            Version: 20191223.2
 
     Rubik Program - Cube Definition
 
@@ -22,19 +22,19 @@ Rubik::Rubik() : SideSize(3),                           //This class is not read
                     abort();
                  }
 
-                 const BlkPosition_T NofBlocks = pow(this->SideSize, 3);
-                 this->Cube.reserve(NofBlocks);
+                 //It could be a regular function but inheritaged class will use it by passing it as parameter (better than use friend)
+                 this->Block_Coordenate = [&](const Coord_T& xyz) -> BlkPosition_T {
+                                          return xyz[LINE  ] * this->SideSize +
+                                                 xyz[COLUMN] +
+                                                 xyz[LAYER ] * this->SideSize * this->SideSize;
+                 };
 
                  this->reset();
 }
 
-BlkPosition_T Rubik::Block_Coordenate(const Coord_T& xyz) const noexcept {
-              return xyz[LINE  ] * this->SideSize +
-                     xyz[COLUMN] +
-                     xyz[LAYER ] * this->SideSize * this->SideSize;
-}
+Rubik::~Rubik() { this->ReleaseScannedFaces(); }
 
-BlkPosition_T Rubik::CalcBlockPosition(const AxisAOPosition_T AxesAO) noexcept {
+BlkPosition_T Rubik::CalcBlockPosition(const AxisPosition_T AxesAO) noexcept {
               switch (this->CurrLayer2Move) {
                      case LINE   :
                           this->XYZ[COLUMN] = AxesAO.first;
@@ -54,19 +54,19 @@ BlkPosition_T Rubik::CalcBlockPosition(const AxisAOPosition_T AxesAO) noexcept {
                      this->XYZ[LAYER ] * this->SideSize * this->SideSize;
 }
 
-AxisAOPosition_T Rubik::Next_Coords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept  {
-                 AxisAOPosition_T AxesAO = { (*&Abs_Axis[CubeFace]).first,
-                                             (*&Ord_Axis[CubeFace]).first };
+AxisPosition_T Rubik::Next_Coords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept  {
+               AxisPosition_T AxesAO = { (*&Abs_Axis[CubeFace]).first,
+                                         (*&Ord_Axis[CubeFace]).first };
 
-                 if (AxesAO.first < this->Abs_Axis[CubeFace].second)
-                     AxesAO.first += BlockNo;
-                 else if (AxesAO.first > this->Abs_Axis[CubeFace].second)
-                          AxesAO.first -= BlockNo;
+               if (AxesAO.first < this->Abs_Axis[CubeFace].second)
+                   AxesAO.first += BlockNo;
+               else if (AxesAO.first > this->Abs_Axis[CubeFace].second)
+                        AxesAO.first -= BlockNo;
 
-                 if (AxesAO.second < this->Ord_Axis[CubeFace].second)
-                     AxesAO.second += BlockNo;
-                 else if (AxesAO.second > this->Ord_Axis[CubeFace].second)
-                          AxesAO.second -= BlockNo;
+               if (AxesAO.second < this->Ord_Axis[CubeFace].second)
+                   AxesAO.second += BlockNo;
+               else if (AxesAO.second > this->Ord_Axis[CubeFace].second)
+                        AxesAO.second -= BlockNo;
 
-                 return AxesAO;
+               return AxesAO;
 }
