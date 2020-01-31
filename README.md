@@ -6,8 +6,8 @@ written on gcc 9.2.
 ### Cube commands
 
 ## Scanning a real cube
-  'rubik::scan'   -> scan a cube's face
-  'rubik::commit  -> update the cube with the scanned faces
+  `rubik::scan`   -> scan a cube's face
+  'rubik::commit' -> update the cube with the scanned faces
   
 ## Moving layers
   'rubik::flip' -> move the cube's blocks
