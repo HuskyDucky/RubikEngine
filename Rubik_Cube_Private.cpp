@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_Private.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20191223.2
+    Created : 2019.10.22            Version: 20200206.1
 
     Rubik Program - Cube Definition
 
@@ -13,23 +13,33 @@
 **/
 #include "Rubik_Cube.h"
 
-Rubik::Rubik() : SideSize(3),                           //This class is not ready yet to more than 3 blocks per corner
+Rubik::Rubik() : SideSize(3),   //This class is not ready yet to more than 3 blocks per corner
                  TofBlocks(pow(SideSize, 3)),
                  XYZ({0,0,0}) {
+      this->Rubik_Initializer();
 
-                 if (this->SideSize < 3 && this->SideSize < numeric_limits<CubeSideSize_T>::max()-2) {
-                    cout << "\n\nThis rubik cube can have 3 to " << static_cast<uint64_t>(numeric_limits<CubeSideSize_T>::max()-2) << " blocks size to every face only\n" << endl;
-                    abort();
-                 }
+      this->reset();
+}
 
-                 //It could be a regular function but inheritaged class will use it by passing it as parameter (better than use friend)
-                 this->Block_Coordenate = [&](const Coord_T& xyz) -> BlkPosition_T {
-                                          return xyz[LINE  ] * this->SideSize +
-                                                 xyz[COLUMN] +
-                                                 xyz[LAYER ] * this->SideSize * this->SideSize;
-                 };
+Rubik::Rubik(const Rubik& OriCube) : SideSize(3),   //This class is not ready yet to more than 3 blocks per corner
+                                     TofBlocks(pow(SideSize, 3)),
+                                     XYZ({0,0,0}) {
+      this->Rubik_Initializer();
 
-                 this->reset();
+      this->operator()(OriCube);
+}
+
+void Rubik::Rubik_Initializer() noexcept {
+     if (this->SideSize < 3 && this->SideSize < numeric_limits<CubeSideSize_T>::max()-2) {
+        cout << "\n\nThis rubik cube can have 3 to " << static_cast<uint64_t>(numeric_limits<CubeSideSize_T>::max()-2) << " blocks size to every face only\n" << endl;
+        abort();
+     }
+     //It could be a regular function but inheritaged class will use it by passing it as parameter (better than use friend)
+     this->Block_Coordenate = [&](const Coord_T& xyz) -> BlkPosition_T {
+                                                         return xyz[LINE  ] * this->SideSize +
+                                                         xyz[COLUMN] +
+                                                         xyz[LAYER ] * this->SideSize * this->SideSize;
+     };
 }
 
 Rubik::~Rubik() { this->ReleaseScannedFaces(); }

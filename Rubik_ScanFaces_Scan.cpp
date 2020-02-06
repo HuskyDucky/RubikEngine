@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ScanFaces_Scan.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.12.09            Version: 20200110.1.2
+    Created : 2019.12.09            Version: 20200110.1.3
 
     Rubik Program - ScanFace Definition
 
@@ -18,7 +18,7 @@ ClassScanFaces::ScanFaces::ScanFaces(Cube_T& cubebase, function<BlkPosition_T(co
                                                                                                                     FaceSize(SideSize * SideSize),
                                                                                                                     Block_Coordenate(block_coordenate) {}
 
-bool ClassScanFaces::ScanFaces::scan(const Position_E Face, vector<Color_E>&& FaceColors) noexcept {
+bool ClassScanFaces::ScanFaces::scan(const FacePosition_E Face, vector<Color_E>&& FaceColors) noexcept {
      vector<Color_E> OldScannedFace;                    //Will keep the current Face State
 
      if (Face >= TofFACES ||

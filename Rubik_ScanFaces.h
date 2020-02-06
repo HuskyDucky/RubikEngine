@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ScanFaces.h
     Author  : Menashe Rosemberg
-    Created : 2019.12.21            Version: 20200125.1.1
+    Created : 2019.12.21            Version: 20200125.2
 
     Rubik Program - ScanFace Definition
 
@@ -38,7 +38,7 @@ class ClassScanFaces {
        struct ScanFaces {
               ScanFaces(Cube_T& cubebase, function<BlkPosition_T(const Coord_T&)>& block_coordenate);
 
-           bool scan(const Position_E Face, vector<Color_E>&& FaceColors) noexcept;
+           bool scan(const FacePosition_E Face, vector<Color_E>&& FaceColors) noexcept;
            ProtoCube_T commitScannedFaces() noexcept;
 
            private:
@@ -59,7 +59,7 @@ class ClassScanFaces {
 
                ProtoCube_T CreateProtoCube() const noexcept;
 
-               inline BlocksPosToFace_T BlocksPositionsToThe(const Position_E Face) const noexcept; //Return a list of blocks' position basede on the face
+               inline BlocksPosToFace_T BlocksPositionsToThe(const FacePosition_E Face) const noexcept; //Return a list of blocks' position basede on the face
                inline bool scan_ValidateNewFace(const vector<Color_E>& FaceColors) const noexcept;
                void AlignBackLeftTopFaces() noexcept;
        };

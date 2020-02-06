@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ScanFaces_CreateProtoCube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.12.09            Version: 20200125.1.3
+    Created : 2019.12.09            Version: 20200125.1.4
 
     Rubik Program - ScanFace Definition
 
@@ -16,19 +16,19 @@
 ProtoCube_T ClassScanFaces::ScanFaces::CreateProtoCube() const noexcept {
             ProtoCube_T ProtoCube(pow(this->SideSize, 3), ColorPositionList_T());
             //Associate the the scanned faces - colors - with the proto blocks (this->ScannedFaces)
-            Position_E Face = FRONT;
+            FacePosition_E Face = FRONT;
             do {
                 BlocksPosToFace_T BlockPosList = this->BlocksPositionsToThe(Face);
                 QofBlksPerFace_T IIt = BlockPosList.size();
                 do {--IIt;
                     ProtoCube[BlockPosList[IIt]].emplace_back(this->ScannedFaces[Face][IIt], Face);
                 } while (IIt != 0);
-            } while ( (Face = Position_E(Face + 1)) != NONEPOSITION);
+            } while ( (Face = FacePosition_E(Face + 1)) != NONEPOSITION);
 
     return ProtoCube;
 }
 
-BlocksPosToFace_T ClassScanFaces::ScanFaces::BlocksPositionsToThe(const Position_E Face) const noexcept {
+BlocksPosToFace_T ClassScanFaces::ScanFaces::BlocksPositionsToThe(const FacePosition_E Face) const noexcept {
                   CubeSideSize_T CPIPC = this->ColorPositionOnProtoCube[Face];
                   auto setInitialCoord = [&](uint8_t Bit) -> CubeSideSize_T { if (~CPIPC & (1 << Bit) && (CPIPC & 1))
                                                                                  return this->SideSize-1;

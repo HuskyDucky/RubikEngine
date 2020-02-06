@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200131.1
+    Created : 2019.10.22            Version: 20200206.1
 
     Rubik Program - Cube Definition
 
@@ -39,12 +39,21 @@ using AxisPosition_T = pair<CubeSideSize_T, CubeSideSize_T>;
 #define LayerLto0 {this->SideSize-1, 0}
 #define LayerLtoL {this->SideSize-1, this->SideSize-1}
 
+struct Move2Directions_T {
+       Move2Directions_T(const FlipBlocksAt layer, const CubeSideSize_T level, const TurnBlocks isclockwise) :
+                         Layer(layer), Level(level), isClockWise(isclockwise) {}
+       const FlipBlocksAt Layer;
+       const CubeSideSize_T Level;
+       const TurnBlocks isClockWise;
+};
+
 struct Rubik : private ClassBlock, ClassScanFaces {
        Rubik();
+       Rubik(const Rubik& OriCube);
       ~Rubik();
 
-       const CubeSideSize_T SideSize;           //The max blocks is 255 not 256. This last value is reserved to internal use of this class
-       const QofBlocks_T TofBlocks;
+       CubeSideSize_T SidesSize() const noexcept;
+       QofBlocks_T TotalOfBlocks() const noexcept;
 
        //Cube info
             bool isFinished() const noexcept;
@@ -56,18 +65,21 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             ColorPositionList_T Block_ColorsAndPositions(const Coord_T& xyz) const noexcept;
 
        //Move blocks
+            void flip(const Move2Directions_T& MoveThe) noexcept;
             void flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
 
        //feed the class with a real Rubik Cube
-            bool scan(const Position_E Face, vector<Color_E>&& Colors) noexcept;     //If some Face was ill-scanned just pass it again to scan
+            bool scan(const FacePosition_E Face, vector<Color_E>&& Colors) noexcept; //If some Face was ill-scanned just pass it again to scan
             bool commitScannedFaces() noexcept;                                      //Inconsistences can be fixed just pass to scan the correction of ill-scanned Faces
 
        //others actions
             Cube_T randomize(uint16_t NoInterations) noexcept;       //Automatically save this new randomization
-            void operator()(const Rubik& OriCube);                   //Copy Cube
+            void operator()(const Rubik& OriCube) noexcept;          //Copy Cube
             void reset() noexcept;
 
     private:
+        const CubeSideSize_T SideSize;           //The max blocks is 255 not 256. This last value is reserved to internal use of this class
+        const QofBlocks_T TofBlocks;
         Cube_T Cube;
 
         //Cube Aux variables
@@ -90,7 +102,7 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             unique_ptr<ScanFaces> ScannedFaces; //Used only when the user wants to scan a real cube
             void ReleaseScannedFaces() noexcept;
 
-        Rubik(const Rubik&) = delete;
+        void Rubik_Initializer() noexcept;
         Rubik& operator=(const Rubik&) = delete;
 };
 

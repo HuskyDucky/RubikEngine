@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200129.1
+    Created : 2019.10.23            Version: 20200206.1
 
     Rubik Program - Block Definition
 
@@ -22,10 +22,10 @@
 using namespace std;
 
 typedef uint8_t  Color_T;
-typedef uint8_t  Position_T;
 typedef uint8_t  NofFaces_T;
+typedef uint8_t  FacePosition_T;
 
-typedef uint8_t  Direction_T;
+typedef uint8_t  Layer_T;
 typedef uint32_t BlkPosition_T;
 
 enum Color_E : Color_T {        //Colors must have the same absolute value than its face position
@@ -37,7 +37,7 @@ enum Color_E : Color_T {        //Colors must have the same absolute value than 
      GREEN
 };
 
-enum Position_E : Position_T {  //Face Position must have the same absolute value than its Color
+enum FacePosition_E : FacePosition_T {  //Face Position must have the same absolute value than its Color
      FRONT,
      RIGHT,
      BACK,
@@ -47,7 +47,7 @@ enum Position_E : Position_T {  //Face Position must have the same absolute valu
      NONEPOSITION
 };
 
-enum FlipBlocksAt : Direction_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
+enum FlipBlocksAt : Layer_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
      LINE,
      COLUMN,
      LAYER
@@ -58,7 +58,7 @@ enum TurnBlocks : bool {
      CLOCKWISE
 };
 
-using ColorPosition_T = pair<Color_E, Position_T>;
+using ColorPosition_T = pair<Color_E, FacePosition_T>;
 using ColorPositionList_T = vector<ColorPosition_T>;
 
 struct ClassBlock {
