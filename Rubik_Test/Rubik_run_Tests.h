@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200131.1
+    Created : 2019.10.27            Version: 20200206.1
 
     Rubik Program - Test Cube
 
@@ -24,6 +24,7 @@ extern TestFunction Test_CreationCube;
 extern TestFunction Test_RandomizeCube;
 extern TestFunction Test_ResetCube;
 extern TestFunction Test_CopyCube;
+extern TestFunction Test_InitCopyCube;
 extern TestFunction Test_ScannedFaces_ValidRandomScanFaces3x3;
 extern TestFunction Test_ScannedFaces_InvalidRandomScanFaces3x3;
 extern TestFunction Test_ScannedFaces_NoScannedFace3x3;
