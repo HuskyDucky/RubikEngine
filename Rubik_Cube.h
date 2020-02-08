@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.1
+    Created : 2019.10.22            Version: 20200206.2
 
     Rubik Program - Cube Definition
 
@@ -39,9 +39,10 @@ using AxisPosition_T = pair<CubeSideSize_T, CubeSideSize_T>;
 #define LayerLto0 {this->SideSize-1, 0}
 #define LayerLtoL {this->SideSize-1, this->SideSize-1}
 
-struct Move2Directions_T {
-       Move2Directions_T(const FlipBlocksAt layer, const CubeSideSize_T level, const TurnBlocks isclockwise) :
-                         Layer(layer), Level(level), isClockWise(isclockwise) {}
+struct MoveTo_T {
+       MoveTo_T(const FlipBlocksAt layer, const CubeSideSize_T level, const TurnBlocks isclockwise) : Layer(layer),
+                                                                                                      Level(level),
+                                                                                                      isClockWise(isclockwise) {}
        const FlipBlocksAt Layer;
        const CubeSideSize_T Level;
        const TurnBlocks isClockWise;
@@ -65,7 +66,7 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             ColorPositionList_T Block_ColorsAndPositions(const Coord_T& xyz) const noexcept;
 
        //Move blocks
-            void flip(const Move2Directions_T& MoveThe) noexcept;
+            void flip(const MoveTo_T& MoveThe) noexcept;
             void flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
 
        //feed the class with a real Rubik Cube

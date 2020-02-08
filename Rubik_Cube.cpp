@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.1
+    Created : 2019.10.22            Version: 20200206.2
 
     Rubik Program - Cube Definition
 
@@ -48,9 +48,9 @@ ColorPositionList_T Rubik::Block_ColorsAndPositions(const Coord_T& xyz) const no
 }
 
 void Rubik::flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept {
-     this->flip(Move2Directions_T(Layer, Level, isClockWise));
+     this->flip(MoveTo_T(Layer, Level, isClockWise));
 }
-void Rubik::flip(const Move2Directions_T& MoveThe) noexcept {
+void Rubik::flip(const MoveTo_T& MoveThe) noexcept {
 
      if (MoveThe.Level < this->SideSize) {
 
@@ -93,7 +93,7 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
 
        while (NoInterations) {
              --NoInterations;
-             this->flip(Move2Directions_T(static_cast<FlipBlocksAt>(Layer(RandBase)),
+             this->flip(MoveTo_T(static_cast<FlipBlocksAt>(Layer(RandBase)),
                         Level(RandBase),
                         static_cast<TurnBlocks>(isClockWise(RandBase))));
        }
