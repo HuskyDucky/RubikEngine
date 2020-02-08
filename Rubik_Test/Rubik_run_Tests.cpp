@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200206.1
+    Created : 2019.11.15            Version: 20200206.2
 
     Rubik Program - Test Cube
 
@@ -179,8 +179,8 @@ void ShowFlippedCube() {
      PressEnter();
 
      Cube.flip(LAYER,  0, TurnBlocks::CLOCKWISE);
-     Cube.flip(Move2Directions_T(LINE,   1, TurnBlocks::COUNTERCLOCKWISE));
-     Cube.flip(Move2Directions_T(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE));
+     Cube.flip(MoveTo_T(LINE,   1, TurnBlocks::COUNTERCLOCKWISE));
+     Cube.flip(MoveTo_T(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE));
 
      cout << "\nCube was flipped few times 'manually'\n";
      ShowCube(Cube, HideSize, HideColors);

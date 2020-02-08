@@ -20,10 +20,10 @@
 	<limits>
 	<cinttypes>
 
-1580993065 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1581156931 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
 
-1580993076 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+1581156885 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<chrono>
 	<random>
 	<memory>
@@ -104,65 +104,6 @@
 1580981472 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_AuxFuncs.cpp
 	"Rubik_run_AuxFuncs.h"
 
-1580993094 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.cpp
-	"Rubik_run_Tests.h"
-
-1580978246 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Block.cpp
-	"Rubik_Block.h"
-
-1580978209 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Block.h
-	<vector>
-	<limits>
-	<cinttypes>
-
-1580993065 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube.cpp
-	"Rubik_Cube.h"
-
-1580993076 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube.h
-	<chrono>
-	<random>
-	<memory>
-	<iostream>
-	"Rubik_Cube_Global.h"
-	"Rubik_ScanFaces.h"
-
-1580475285 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube_Global.h
-	<array>
-	<vector>
-	<algorithm>
-	"Rubik_Block.h"
-
-1580978266 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_ScanFaces.h
-	<cmath>
-	"Rubik_Cube_Global.h"
-
-1580986311 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Cube_Private.cpp
-	"Rubik_Cube.h"
-
-1580146518 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_ScanFaces_Commit.cpp
-	"Rubik_ScanFaces.h"
-
-1580978335 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_ScanFaces_CreateProtoCube.cpp
-	"Rubik_ScanFaces.h"
-
-1580978356 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_ScanFaces_Scan.cpp
-	"Rubik_ScanFaces.h"
-
-1580985644 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Test/Rubik_run.cpp
-	"Rubik_run_Tests.h"
-
-1580985463 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Test/Rubik_run_Tests.h
-	"Rubik_run_AuxFuncs.h"
-
-1580563643 /home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Test/Rubik_run_AuxFuncs.h
-	<iomanip>
-	<iostream>
-	<algorithm>
-	"../Rubik_Cube.h"
-
-1580981472 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Test/Rubik_run_AuxFuncs.cpp
-	"Rubik_run_AuxFuncs.h"
-
-1580993094 source:/home/thearquitect/Desktop/C++_Projects/Rubik GitHub/Rubik_Test/Rubik_run_Tests.cpp
+1581180433 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.cpp
 	"Rubik_run_Tests.h"
 
