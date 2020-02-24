@@ -35,6 +35,7 @@
 		<Unit filename="../Rubik_Block.h" />
 		<Unit filename="../Rubik_Cube.cpp" />
 		<Unit filename="../Rubik_Cube.h" />
+		<Unit filename="../Rubik_Cube_FlipTo.h" />
 		<Unit filename="../Rubik_Cube_Global.h" />
 		<Unit filename="../Rubik_Cube_Private.cpp" />
 		<Unit filename="../Rubik_ScanFaces.h" />

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_AuxFuncs.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.1
+    Created : 2019.10.27            Version: 20200206.3
 
     Rubik Program - auxiliary functions to test Cube
 
@@ -69,7 +69,7 @@ void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColorsAndPo
                     cout << "\nBlock Original  : " << static_cast<uint16_t>(Cube.Block_OriginalPosition(xyz))
                          << "\nCurrent Position: " << Pos << ": ";
 
-                    ColorPositionList_T BlocksColors = Cube.Block_ColorsAndPositions(xyz);
+                    FaceList_T BlocksColors = Cube.Block_FacesList(xyz);
                     for (auto& Z : BlocksColors)
                         cout << "\n\t\t" << TheColorIs(Z.first) << ' ' << ThePositionIs(Z.second);
                 }
@@ -93,8 +93,8 @@ void ShowCube(const Rubik& Cube, const bool ShowSize, const bool ShowColorsAndPo
 }
 
 static bool CompareBlocks(const Coord_T& xyz, const Rubik& Cube1, const Rubik& Cube2) {
-       ColorPositionList_T blk1_ColPosList = Cube1.Block_ColorsAndPositions(xyz);
-       ColorPositionList_T blk2_ColPosList = Cube2.Block_ColorsAndPositions(xyz);
+       FaceList_T blk1_ColPosList = Cube1.Block_FacesList(xyz);
+       FaceList_T blk2_ColPosList = Cube2.Block_FacesList(xyz);
 
        if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
 
@@ -104,8 +104,7 @@ static bool CompareBlocks(const Coord_T& xyz, const Rubik& Cube1, const Rubik& C
        return true;
 }
 
-bool AreThesesCubesEqual(const Rubik& Cube1, const Rubik& Cube2) {
-
+bool AreThesesCubesDifferent(const Rubik& Cube1, const Rubik& Cube2) {
      if (Cube1.TotalOfBlocks() != Cube2.TotalOfBlocks()) return false;
 
      for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SidesSize(); ++xyz[0])
@@ -113,7 +112,7 @@ bool AreThesesCubesEqual(const Rubik& Cube1, const Rubik& Cube2) {
              for (xyz[1] = 0; xyz[1] < Cube1.SidesSize(); ++xyz[1])
                  if (Cube1.Block_OriginalPosition(xyz) != Cube2.Block_OriginalPosition(xyz) ||
                     !CompareBlocks(xyz, Cube1, Cube2))
-                    return false;
+                    return true;
 
-     return true;
+     return false;
 }

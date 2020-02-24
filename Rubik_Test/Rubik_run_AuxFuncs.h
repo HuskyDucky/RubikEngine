@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200130.2
+    Created : 2019.10.27            Version: 20200130.3
 
     Rubik Program - auxiliary functions to test Cube
 
@@ -36,7 +36,7 @@ string StepCounter(bool Reset = false);
 const char* TheColorIs(const uint8_t C) noexcept;
 const char* ThePositionIs(const uint8_t P) noexcept;
 
-bool AreThesesCubesEqual(const Rubik& Cube1, const Rubik& Cube2);
+bool AreThesesCubesDifferent(const Rubik& Cube1, const Rubik& Cube2);
 
 void ShowCube(const Rubik& Cube, const bool ShowSize = true, const bool ShowColors = true, const bool ShowPercentual = true);
 

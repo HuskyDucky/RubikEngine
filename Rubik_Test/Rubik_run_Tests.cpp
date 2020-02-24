@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200206.2
+    Created : 2019.11.15            Version: 20200223.1
 
     Rubik Program - Test Cube
 
@@ -11,9 +11,7 @@
     Software distributed under the MIT License is distributed on an "AS IS" BASIS,
     NO WARRANTIES OR CONDITIONS OF ANY KIND, explicit or implicit.
 **/
-
 ///The function member 'void UpdateThe(Cube_T& Cube2Update) const noexcept' wasn't used in this test, but is plenty functional
-
 #include "Rubik_run_Tests.h"
 
 bool Test(const char* Msg, TestFunction& Execute) {
@@ -49,18 +47,33 @@ TestFunction Test_RandomizeCube = [](Rubik& Cube) -> bool {
              cout << "done." << endl;
              ShowCube(Cube, HideSize, HideColors, ShowPercentual);
 
-             return !Cube.isFinished() && Cube.PercentualDone() < 100.0 && !AreThesesCubesEqual(Rubik(), Cube);
+             return !Cube.isFinished() && Cube.PercentualDone() < 100.0 && AreThesesCubesDifferent(Rubik(), Cube);
 };
 
-TestFunction Test_ResetCube = [](Rubik& Cube) -> bool {
-             cout << StepCounter() << "Randomized 1000 times: " << flush;
-             Cube.randomize(1000);
+TestFunction Test_CompareCube = [](Rubik& Cube) -> bool {
+             cout << StepCounter() << "Creating auxiliary cube: " << flush;
+             Rubik AuxCube;
              cout << "done." << endl;
-             cout << StepCounter() << "Reseting cube: " << flush;
-             Cube.reset();
-             cout << "done." << endl;
+             cout << StepCounter() << "Compare cubes: " << flush;
+             if (Cube == AuxCube) {
+                cout << "done." << endl;
 
-             return Cube.isFinished() && Cube.PercentualDone() == 100.0 && AreThesesCubesEqual(Rubik(), Cube);
+                cout << '\n' << StepCounter() << "Make some flips: " << flush;
+                Cube.flip(LINE,   0, TurnBlock::CLOCKWISE);
+                Cube.flip(LINE,   0, TurnBlock::CLOCKWISE);
+                Cube.flip(LAYER,  2, TurnBlock::COUNTERCLOCKWISE);
+                Cube.flip(COLUMN, 2, TurnBlock::CLOCKWISE);
+                Cube.flip(LAYER,  1, TurnBlock::COUNTERCLOCKWISE);
+                Cube.flip(COLUMN, 1, TurnBlock::COUNTERCLOCKWISE);
+                cout << "done." << endl;
+
+                bool Result = Cube == AuxCube;
+
+                return !Result;
+             }
+
+             cout << "ERROR" << endl;
+             return false;
 };
 
 TestFunction Test_CopyCube = [](Rubik& Cube) -> bool {
@@ -74,8 +87,9 @@ TestFunction Test_CopyCube = [](Rubik& Cube) -> bool {
              Cube(AuxCube);
              cout << "done." << endl;
 
-             return AreThesesCubesEqual(AuxCube, Cube); //Also it checks the colors
+             return AuxCube == Cube; //Also it checks the colors
 };
+
 
 TestFunction Test_InitCopyCube = [](Rubik& AuxCube) -> bool {
              cout << StepCounter() << "Randomized auxiliary cube 1000 times: " << flush;
@@ -85,7 +99,18 @@ TestFunction Test_InitCopyCube = [](Rubik& AuxCube) -> bool {
              Rubik Cube(AuxCube);
              cout << "done." << endl;
 
-             return AreThesesCubesEqual(AuxCube, Cube);
+             return AuxCube == Cube;
+};
+
+TestFunction Test_ResetCube = [](Rubik& Cube) -> bool {
+             cout << StepCounter() << "Randomized 1000 times: " << flush;
+             Cube.randomize(1000);
+             cout << "done." << endl;
+             cout << StepCounter() << "Reseting cube: " << flush;
+             Cube.reset();
+             cout << "done." << endl;
+
+             return Cube.isFinished() && Cube.PercentualDone() == 100.0 && Rubik() == Cube;
 };
 
 ///Create a general test to ScanFaces to read the scanned faces and commit
@@ -101,7 +126,7 @@ static bool ScanFaces_feedCubeWithFaces(Rubik& Cube,
             if (!Faces.empty())
                 for (FacePosition_E Face = FRONT; Face < NONEPOSITION; Face = FacePosition_E(Face + 1)) {
                     if (!Cube.scan(Face, move(Faces[Face]))) {
-                       cout << "error." << endl;
+                       cout << "ERROR" << endl;
                        return false;
                     }
                 }
@@ -178,9 +203,9 @@ void ShowFlippedCube() {
 
      PressEnter();
 
-     Cube.flip(LAYER,  0, TurnBlocks::CLOCKWISE);
-     Cube.flip(MoveTo_T(LINE,   1, TurnBlocks::COUNTERCLOCKWISE));
-     Cube.flip(MoveTo_T(COLUMN, 2, TurnBlocks::COUNTERCLOCKWISE));
+     Cube.flip(LAYER,  0, TurnBlock::CLOCKWISE);
+     Cube.flip(FlipTo_T(LINE,   1, TurnBlock::COUNTERCLOCKWISE));
+     Cube.flip(FlipTo_T(COLUMN, 2, TurnBlock::COUNTERCLOCKWISE));
 
      cout << "\nCube was flipped few times 'manually'\n";
      ShowCube(Cube, HideSize, HideColors);
