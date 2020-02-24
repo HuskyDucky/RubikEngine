@@ -35,6 +35,6 @@ using Cube_T = vector<ClassBlock::Block>;
 using Coord_T = array<CubeSideSize_T, 3>;
 //Scanfaces (and Cube)
 using BlocksPosToFace_T = vector<QofBlksPerFace_T>;
-using ProtoCube_T = vector<ColorPositionList_T>;
+using ProtoCube_T = vector<FaceList_T>;
 
 #endif

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ScanFaces_CreateProtoCube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.12.09            Version: 20200125.1.4
+    Created : 2019.12.09            Version: 20200125.2
 
     Rubik Program - ScanFace Definition
 
@@ -14,7 +14,7 @@
 #include "Rubik_ScanFaces.h"
 
 ProtoCube_T ClassScanFaces::ScanFaces::CreateProtoCube() const noexcept {
-            ProtoCube_T ProtoCube(pow(this->SideSize, 3), ColorPositionList_T());
+            ProtoCube_T ProtoCube(pow(this->SideSize, 3), FaceList_T());
             //Associate the the scanned faces - colors - with the proto blocks (this->ScannedFaces)
             FacePosition_E Face = FRONT;
             do {

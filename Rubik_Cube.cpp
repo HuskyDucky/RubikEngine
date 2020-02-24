@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.2
+    Created : 2019.10.22            Version: 20200222.1
 
     Rubik Program - Cube Definition
 
@@ -34,6 +34,24 @@ float Rubik::PercentualDone() const noexcept {
       return 100.0 * Done / this->TofBlocks;
 }
 
+bool Rubik::operator==(const Rubik& CompCube) noexcept {
+     if (CompCube.TotalOfBlocks() == this->TofBlocks) {
+        this->XYZ[LAYER] = 0;
+        do {
+            this->XYZ[LINE] = 0;
+            do {
+                this->XYZ[COLUMN] = 0;
+                do {
+                    if (this->Cube[this->Block_Coordenate(XYZ)] != CompCube.Block_FacesList(XYZ))
+                        return false;
+                } while (++this->XYZ[COLUMN] < this->SideSize);
+            } while (++this->XYZ[LINE] < this->SideSize);
+        } while (++this->XYZ[LAYER] != this->SideSize);
+     }
+
+     return true;
+}
+
 bool Rubik::isBlockInPosition(const Coord_T& xyz) const noexcept {
      const QofBlocks_T Pos = this->Block_Coordenate(xyz);
      return Pos < this->TofBlocks && Pos == this->Cube[Pos].OriginalBlockPosition();
@@ -43,21 +61,21 @@ BlkPosition_T Rubik::Block_OriginalPosition(const Coord_T& xyz) const noexcept {
               return this->Cube[this->Block_Coordenate(xyz)].OriginalBlockPosition();
 }
 
-ColorPositionList_T Rubik::Block_ColorsAndPositions(const Coord_T& xyz) const noexcept {
-                    return this->Cube[this->Block_Coordenate(xyz)].ColorsAndPositionsList();
+FaceList_T Rubik::Block_FacesList(const Coord_T& xyz) const noexcept {
+           return this->Cube[this->Block_Coordenate(xyz)].FacesList();
 }
 
 void Rubik::flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept {
-     this->flip(MoveTo_T(Layer, Level, isClockWise));
+     this->flip(FlipTo_T(Layer, Level, isClockWise));
 }
-void Rubik::flip(const MoveTo_T& MoveThe) noexcept {
+void Rubik::flip(const FlipTo_T& FlipThe) noexcept {
 
-     if (MoveThe.Level < this->SideSize) {
+     if (FlipThe.Level < this->SideSize) {
 
-        this->CurrLayer2Move = MoveThe.Layer;
-        this->XYZ[MoveThe.Layer] = MoveThe.Level;   //Define which layer will be moved: Line, column or face(center)
+        this->CurrLayer2Move = FlipThe.Layer;
+        this->XYZ[FlipThe.Layer] = FlipThe.Level;   //Define which layer will be moved: Line, column or face(center)
 
-        if (MoveThe.isClockWise) {
+        if (FlipThe.isClockWise) {
            Abs_Axis = CW_Abs_Axis;
            Ord_Axis = CW_Ord_Axis;
         } else {
@@ -70,10 +88,10 @@ void Rubik::flip(const MoveTo_T& MoveThe) noexcept {
             const BlkPosition_T Coords0 = this->CalcBlockPosition(this->Next_Coords(0, Block2Move));
             const BlkPosition_T Coords1 = this->CalcBlockPosition(this->Next_Coords(1, Block2Move));
 
-            Block NextBlock = this->Cube[Coords1];                                                     NextBlock.moveColors(this->CurrLayer2Move, MoveThe.isClockWise);
-            this->Cube[Coords1] = this->Cube[Coords0];                                                 this->Cube[Coords1].moveColors(this->CurrLayer2Move, MoveThe.isClockWise);
-            swap(NextBlock, this->Cube[this->CalcBlockPosition(this->Next_Coords(2, Block2Move))]);    NextBlock.moveColors(this->CurrLayer2Move, MoveThe.isClockWise);
-            swap(NextBlock, this->Cube[this->CalcBlockPosition(this->Next_Coords(3, Block2Move))]);    NextBlock.moveColors(this->CurrLayer2Move, MoveThe.isClockWise);
+            Block NextBlock = this->Cube[Coords1];                                                     NextBlock.moveColors(this->CurrLayer2Move, FlipThe.isClockWise);
+            this->Cube[Coords1] = this->Cube[Coords0];                                                 this->Cube[Coords1].moveColors(this->CurrLayer2Move, FlipThe.isClockWise);
+            swap(NextBlock, this->Cube[this->CalcBlockPosition(this->Next_Coords(2, Block2Move))]);    NextBlock.moveColors(this->CurrLayer2Move, FlipThe.isClockWise);
+            swap(NextBlock, this->Cube[this->CalcBlockPosition(this->Next_Coords(3, Block2Move))]);    NextBlock.moveColors(this->CurrLayer2Move, FlipThe.isClockWise);
             this->Cube[Coords0] = NextBlock;
 
             ++Block2Move;
@@ -93,7 +111,7 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
 
        while (NoInterations) {
              --NoInterations;
-             this->flip(MoveTo_T(static_cast<FlipBlocksAt>(Layer(RandBase)),
+             this->flip(FlipTo_T(static_cast<FlipBlocksAt>(Layer(RandBase)),
                         Level(RandBase),
                         static_cast<TurnBlocks>(isClockWise(RandBase))));
        }
@@ -104,10 +122,17 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
 void Rubik::operator()(const Rubik& OriCube) noexcept {
      if (OriCube.TofBlocks == this->TofBlocks) {
         this->Cube.clear();
-        for (this->XYZ[LAYER] = 0; this->XYZ[LAYER] < this->SideSize; ++this->XYZ[LAYER])
-            for (this->XYZ[LINE] = 0; this->XYZ[LINE] < this->SideSize; ++this->XYZ[LINE])
-                for (this->XYZ[COLUMN] = 0; this->XYZ[COLUMN] < this->SideSize; ++this->XYZ[COLUMN])
-                    this->Cube.emplace_back(OriCube.Block_OriginalPosition(XYZ), OriCube.Block_ColorsAndPositions(XYZ));
+
+        this->XYZ[LAYER] = 0;
+        do {
+            this->XYZ[LINE] = 0;
+            do {
+                this->XYZ[COLUMN] = 0;
+                do {
+                    this->Cube.emplace_back(OriCube.Block_OriginalPosition(XYZ), OriCube.Block_FacesList(XYZ));
+                } while (++this->XYZ[COLUMN] < this->SideSize);
+            } while (++this->XYZ[LINE] < this->SideSize);
+        } while (++this->XYZ[LAYER] != this->SideSize);
      }
 }
 
@@ -116,11 +141,13 @@ void Rubik::reset() noexcept {
      this->Cube.reserve(this->TofBlocks);
 
      BlkPosition_T BlockPos = 0;
-     for (this->XYZ[LINE] = 0; this->XYZ[LINE] < this->SideSize; ++this->XYZ[LINE])
-         for (this->XYZ[COLUMN] = 0; this->XYZ[COLUMN] < this->SideSize; ++this->XYZ[COLUMN])
-             for (this->XYZ[LAYER] = 0; this->XYZ[LAYER] < this->SideSize; ++this->XYZ[LAYER]) {
-
-                 ColorPositionList_T ColorPos;
+     this->XYZ[LINE] = 0;
+     do {
+        this->XYZ[COLUMN] = 0;
+         do {
+             this->XYZ[LAYER] = 0;
+             do {
+                 FaceList_T ColorPos;
 
                  if (this->XYZ[LINE] == 0)
                     ColorPos.emplace_back(Color_E::WHITE, FacePosition_E::FRONT);
@@ -138,12 +165,15 @@ void Rubik::reset() noexcept {
                          ColorPos.emplace_back(Color_E::GREEN, FacePosition_E::RIGHT);
 
                  this->Cube.emplace_back(BlockPos++, move(ColorPos));
-             }
+
+             } while (++this->XYZ[LAYER] != this->SideSize);
+         } while (++this->XYZ[COLUMN] != this->SideSize);
+     } while (++this->XYZ[LINE] != this->SideSize);
 }
 
 bool Rubik::scan(const FacePosition_E Face, vector<Color_E>&& Colors) noexcept {
      if (this->ScannedFaces.get() == nullptr)
-        this->ScannedFaces.reset(new ScanFaces(this->Cube, Block_Coordenate));
+        this->ScannedFaces.reset(new ScanFaces(this->Cube, this->Block_Coordenate));
 
      return this->ScannedFaces->scan(Face, move(Colors));
 }

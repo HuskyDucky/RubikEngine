@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200206.1
+    Created : 2019.10.23            Version: 20200222.2
 
     Rubik Program - Block Definition
 
@@ -18,6 +18,7 @@
 #include <vector>
 #include <limits>
 #include <cinttypes>
+#include <algorithm>
 
 using namespace std;
 
@@ -53,29 +54,32 @@ enum FlipBlocksAt : Layer_T {//Test commit with blocks with wrong colors as bloc
      LAYER
 };
 
-enum TurnBlocks : bool {
-     COUNTERCLOCKWISE,
-     CLOCKWISE
-};
+using TurnBlocks = bool;
 
-using ColorPosition_T = pair<Color_E, FacePosition_T>;
-using ColorPositionList_T = vector<ColorPosition_T>;
+namespace TurnBlock {
+     constexpr bool COUNTERCLOCKWISE = false;
+     constexpr bool CLOCKWISE = true;
+}
+
+using Face_T = pair<Color_E, FacePosition_T>;
+using FaceList_T = vector<Face_T>;
 
 struct ClassBlock {
        struct Block {
-              Block(const BlkPosition_T BlockP, vector<ColorPosition_T>&& ColorPos) : originalBlockPosition(BlockP),
-                                                                                      ColorPositionList(ColorPos) {}
+              Block(const BlkPosition_T BlockP, FaceList_T&& ColorPos) : originalBlockPosition(BlockP),
+                                                                         FaceList(ColorPos) {}
 
            BlkPosition_T OriginalBlockPosition() const noexcept;
 
-           bool HasColors(const ColorPositionList_T& colors) const noexcept;
-           ColorPositionList_T ColorsAndPositionsList() const noexcept;
+           bool HasColors(const FaceList_T& colors) const noexcept;
+           bool operator!=(const FaceList_T& FaceList2Comp) const noexcept;
+           FaceList_T FacesList() const noexcept;
 
            void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
 
            private:
                BlkPosition_T originalBlockPosition;
-               ColorPositionList_T ColorPositionList;
+               FaceList_T FaceList;
        };
 };
 

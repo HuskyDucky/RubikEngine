@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.2
+    Created : 2019.10.22            Version: 20200222.1
 
     Rubik Program - Cube Definition
 
@@ -27,6 +27,7 @@
 #include <iostream>
 
 #include "Rubik_Cube_Global.h"
+#include "Rubik_Cube_FlipTo.h"
 #include "Rubik_ScanFaces.h"
 
 typedef BlkPosition_T QofBlocks_T;        //CubeSideSize_T(255) ^ 3 = 16,581,375 free to use
@@ -39,15 +40,6 @@ using AxisPosition_T = pair<CubeSideSize_T, CubeSideSize_T>;
 #define LayerLto0 {this->SideSize-1, 0}
 #define LayerLtoL {this->SideSize-1, this->SideSize-1}
 
-struct MoveTo_T {
-       MoveTo_T(const FlipBlocksAt layer, const CubeSideSize_T level, const TurnBlocks isclockwise) : Layer(layer),
-                                                                                                      Level(level),
-                                                                                                      isClockWise(isclockwise) {}
-       const FlipBlocksAt Layer;
-       const CubeSideSize_T Level;
-       const TurnBlocks isClockWise;
-};
-
 struct Rubik : private ClassBlock, ClassScanFaces {
        Rubik();
        Rubik(const Rubik& OriCube);
@@ -59,14 +51,15 @@ struct Rubik : private ClassBlock, ClassScanFaces {
        //Cube info
             bool isFinished() const noexcept;
             float PercentualDone() const noexcept;
+            bool operator==(const Rubik& CompCube) noexcept;
 
        //Block info
             bool isBlockInPosition(const Coord_T& xyz) const noexcept;
+            FaceList_T Block_FacesList(const Coord_T& xyz) const noexcept;
             BlkPosition_T Block_OriginalPosition(const Coord_T& xyz) const noexcept;
-            ColorPositionList_T Block_ColorsAndPositions(const Coord_T& xyz) const noexcept;
 
        //Move blocks
-            void flip(const MoveTo_T& MoveThe) noexcept;
+            void flip(const FlipTo_T& FlipThe) noexcept;
             void flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
 
        //feed the class with a real Rubik Cube
@@ -99,6 +92,7 @@ struct Rubik : private ClassBlock, ClassScanFaces {
 
         //General
             function<BlkPosition_T(const Coord_T&)> Block_Coordenate;  //Calculate the block position in the cube - will be passed to ScannedFaces
+
 
             unique_ptr<ScanFaces> ScannedFaces; //Used only when the user wants to scan a real cube
             void ReleaseScannedFaces() noexcept;
