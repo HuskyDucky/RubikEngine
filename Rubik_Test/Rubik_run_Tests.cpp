@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200223.1
+    Created : 2019.11.15            Version: 20200223.2
 
     Rubik Program - Test Cube
 
@@ -58,13 +58,13 @@ TestFunction Test_CompareCube = [](Rubik& Cube) -> bool {
              if (Cube == AuxCube) {
                 cout << "done." << endl;
 
-                cout << '\n' << StepCounter() << "Make some flips: " << flush;
-                Cube.flip(LINE,   0, TurnBlock::CLOCKWISE);
-                Cube.flip(LINE,   0, TurnBlock::CLOCKWISE);
-                Cube.flip(LAYER,  2, TurnBlock::COUNTERCLOCKWISE);
-                Cube.flip(COLUMN, 2, TurnBlock::CLOCKWISE);
-                Cube.flip(LAYER,  1, TurnBlock::COUNTERCLOCKWISE);
-                Cube.flip(COLUMN, 1, TurnBlock::COUNTERCLOCKWISE);
+                cout << '\n' << StepCounter() << "Make some spins: " << flush;
+                Cube.spin(LINE,   0, TurnBlock::CLOCKWISE);
+                Cube.spin(LINE,   0, TurnBlock::CLOCKWISE);
+                Cube.spin(LAYER,  2, TurnBlock::COUNTERCLOCKWISE);
+                Cube.spin(COLUMN, 2, TurnBlock::CLOCKWISE);
+                Cube.spin(LAYER,  1, TurnBlock::COUNTERCLOCKWISE);
+                Cube.spin(COLUMN, 1, TurnBlock::COUNTERCLOCKWISE);
                 cout << "done." << endl;
 
                 bool Result = Cube == AuxCube;
@@ -193,8 +193,8 @@ TestFunction Test_ScannedFaces_commitScannedFaces3x3 = [](Rubik& Cube) -> bool {
              return Result;
 };
 
-void ShowFlippedCube() {
-     cout << "\n\nTest Flipping.\n\nCube created:\n";
+void ShowSpinnedCube() {
+     cout << "\n\nTest spinping.\n\nCube created:\n";
 
      Rubik Cube;
 
@@ -203,11 +203,11 @@ void ShowFlippedCube() {
 
      PressEnter();
 
-     Cube.flip(LAYER,  0, TurnBlock::CLOCKWISE);
-     Cube.flip(FlipTo_T(LINE,   1, TurnBlock::COUNTERCLOCKWISE));
-     Cube.flip(FlipTo_T(COLUMN, 2, TurnBlock::COUNTERCLOCKWISE));
+     Cube.spin(LAYER,  0, TurnBlock::CLOCKWISE);
+     Cube.spin(SpinTo_T(LINE,   1, TurnBlock::COUNTERCLOCKWISE));
+     Cube.spin(SpinTo_T(COLUMN, 2, TurnBlock::COUNTERCLOCKWISE));
 
-     cout << "\nCube was flipped few times 'manually'\n";
+     cout << "\nCube was spinped few times 'manually'\n";
      ShowCube(Cube, HideSize, HideColors);
      cout << "(Expected less than 100)";
 
@@ -218,7 +218,7 @@ void ShowFlippedCube() {
      cout << '\n';
      ShowCube(Cube, HideSize, HideColors, ShowPercentual);
 
-     cout << "\n\nCube after 1000 flips.";
+     cout << "\n\nCube after 1000 spins.";
 
      PressEnter();
 }

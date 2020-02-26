@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.2
+    Created : 2019.10.27            Version: 20200206.2.1
 
     Rubik Program - Test Cube
 
@@ -33,6 +33,6 @@ extern TestFunction Test_ScannedFaces_WrongSizeScanFaces3x3;
 extern TestFunction Test_ScannedFaces_commitScannedFaces3x3;
 //Invalid color test doesn't compile due to Color_E enum
 
-void ShowFlippedCube();
+void ShowSpinnedCube();
 
 #endif

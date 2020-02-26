@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.30            Version: 20200206.2
+    Created : 2019.10.30            Version: 20200206.2.1
 
     Rubik Program
 
@@ -27,7 +27,7 @@ int main() {
         Test("Cube Properties - Scan Cube Faces - Pass a face with a wrong size (Cube3x3)"   , Test_ScannedFaces_WrongSizeScanFaces3x3)     &&
         Test("Cube Properties - Scan Cube Faces - Commit the scanned faces (Cube3x3)"        , Test_ScannedFaces_commitScannedFaces3x3)
         )
-        ShowFlippedCube();
+        ShowSpinnedCube();
 
     return 0;
 }
