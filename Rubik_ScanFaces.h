@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ScanFaces.h
     Author  : Menashe Rosemberg
-    Created : 2019.12.21            Version: 20200125.2
+    Created : 2019.12.21            Version: 20200125.3
 
     Rubik Program - ScanFace Definition
 
@@ -23,8 +23,6 @@
 
 #include <cmath>
 #include "Rubik_Cube_Global.h"
-
-constexpr uint8_t TofFACES = 6;
 
 constexpr uint8_t LIN = 0;
 constexpr uint8_t COL = 1;

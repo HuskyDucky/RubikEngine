@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_Global.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.26            Version: 20191228.1.3
+    Created : 2019.10.26            Version: 20191228.2
 
     Rubik Program - Cube General Definition
 
@@ -26,6 +26,8 @@
 #include <algorithm>
 
 #include "Rubik_Block.h"
+
+constexpr uint8_t TofFACES = 6;
 
 typedef uint8_t CubeSideSize_T;           //max blocks is 255 (the last value - 256 - is reserved to internal use of the class)
 typedef uint16_t QofBlksPerFace_T;        //255 x 255 = 65.025 free to use

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200222.1
+    Created : 2019.10.22            Version: 20200222.2
 
     Rubik Program - Cube Definition
 
@@ -72,7 +72,7 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             void reset() noexcept;
 
     private:
-        const CubeSideSize_T SideSize;           //The max blocks is 255 not 256. This last value is reserved to internal use of this class
+        const CubeSideSize_T SideSize;                              //The max blocks is 255 not 256. This last value is reserved to internal use of this class
         const QofBlocks_T TofBlocks;
         Cube_T Cube;
 
@@ -87,14 +87,14 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             const From_To CCWOrd_Axis[4] = {Layer0toL, Layer0to0, LayerLto0, LayerLtoL};     //CurrLayer2Move to CounterClockwise flip
 
         //Flip
-            AxisPosition_T Next_Coords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept;
-            BlkPosition_T CalcBlockPosition(const AxisPosition_T AxesHV) noexcept;
+            AxisPosition_T flip_NextCoords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept;
+            BlkPosition_T flip_CalcBlockPosition(const AxisPosition_T AxesHV) noexcept;
 
         //General
             function<BlkPosition_T(const Coord_T&)> Block_Coordenate;  //Calculate the block position in the cube - will be passed to ScannedFaces
 
 
-            unique_ptr<ScanFaces> ScannedFaces; //Used only when the user wants to scan a real cube
+            unique_ptr<ScanFaces> ScannedFaces;                         //Used only when the user wants to scan a real cube
             void ReleaseScannedFaces() noexcept;
 
         void Rubik_Initializer() noexcept;
