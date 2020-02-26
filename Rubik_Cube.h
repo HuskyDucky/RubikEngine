@@ -27,7 +27,7 @@
 #include <iostream>
 
 #include "Rubik_Cube_Global.h"
-#include "Rubik_Cube_FlipTo.h"
+#include "Rubik_Cube_SpinTo.h"
 #include "Rubik_ScanFaces.h"
 
 typedef BlkPosition_T QofBlocks_T;        //CubeSideSize_T(255) ^ 3 = 16,581,375 free to use
@@ -59,8 +59,8 @@ struct Rubik : private ClassBlock, ClassScanFaces {
             BlkPosition_T Block_OriginalPosition(const Coord_T& xyz) const noexcept;
 
        //Move blocks
-            void flip(const FlipTo_T& FlipThe) noexcept;
-            void flip(const FlipBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
+            void spin(const SpinTo_T& SpinThe) noexcept;
+            void spin(const SpinBlocksAt Layer, const CubeSideSize_T Level, const TurnBlocks isClockWise) noexcept;
 
        //feed the class with a real Rubik Cube
             bool scan(const FacePosition_E Face, vector<Color_E>&& Colors) noexcept; //If some Face was ill-scanned just pass it again to scan
@@ -78,17 +78,17 @@ struct Rubik : private ClassBlock, ClassScanFaces {
 
         //Cube Aux variables
             Coord_T XYZ;
-            FlipBlocksAt CurrLayer2Move;
+            SpinBlocksAt CurrLayer2Move;
             const From_To *Abs_Axis = nullptr;
             const From_To *Ord_Axis = nullptr;
             const From_To CW_Abs_Axis[4] = {Layer0to0, Layer0toL, LayerLtoL, LayerLto0};     //Abs and Ord Axes determine the block position on the
-            const From_To CW_Ord_Axis[4] = {Layer0toL, LayerLtoL, LayerLto0, Layer0to0};     //CurrLayer2Move to Clockwise flip
+            const From_To CW_Ord_Axis[4] = {Layer0toL, LayerLtoL, LayerLto0, Layer0to0};     //CurrLayer2Move to Clockwise spin
             const From_To CCWAbs_Axis[4] = {Layer0to0, LayerLto0, LayerLtoL, Layer0toL};     //Abs and Ord Axes determine the block position on the
-            const From_To CCWOrd_Axis[4] = {Layer0toL, Layer0to0, LayerLto0, LayerLtoL};     //CurrLayer2Move to CounterClockwise flip
+            const From_To CCWOrd_Axis[4] = {Layer0toL, Layer0to0, LayerLto0, LayerLtoL};     //CurrLayer2Move to CounterClockwise spin
 
-        //Flip
-            AxisPosition_T flip_NextCoords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept;
-            BlkPosition_T flip_CalcBlockPosition(const AxisPosition_T AxesHV) noexcept;
+        //Spin
+            AxisPosition_T spin_NextCoords(const CubeSideSize_T CubeFace, const CubeSideSize_T BlockNo) const noexcept;
+            BlkPosition_T spin_CalcBlockPosition(const AxisPosition_T AxesHV) noexcept;
 
         //General
             function<BlkPosition_T(const Coord_T&)> Block_Coordenate;  //Calculate the block position in the cube - will be passed to ScannedFaces

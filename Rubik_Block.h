@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200222.2
+    Created : 2019.10.23            Version: 20200222.2.1
 
     Rubik Program - Block Definition
 
@@ -48,7 +48,7 @@ enum FacePosition_E : FacePosition_T {  //Face Position must have the same absol
      NONEPOSITION
 };
 
-enum FlipBlocksAt : Layer_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
+enum SpinBlocksAt : Layer_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
      LINE,
      COLUMN,
      LAYER
@@ -75,7 +75,7 @@ struct ClassBlock {
            bool operator!=(const FaceList_T& FaceList2Comp) const noexcept;
            FaceList_T FacesList() const noexcept;
 
-           void moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
+           void moveColors(const SpinBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept;
 
            private:
                BlkPosition_T originalBlockPosition;

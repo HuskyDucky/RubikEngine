@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200222.2
+    Created : 2019.10.23            Version: 20200222.3.1
 
     Rubik Program - Block Definition
 
@@ -39,10 +39,10 @@ bool ClassBlock::Block::operator!=(const FaceList_T& FaceList2Comp) const noexce
      return false;
 }
 
-void ClassBlock::Block::moveColors(const FlipBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept {
+void ClassBlock::Block::moveColors(const SpinBlocksAt BlockGroupDir, const TurnBlocks isClockWise) noexcept {
      NofFaces_T Pos = 0;
 
-     if (BlockGroupDir == FlipBlocksAt::LINE) {
+     if (BlockGroupDir == SpinBlocksAt::LINE) {
         if (isClockWise)
            for (; Pos < this->FaceList.size(); ++Pos)
                switch (this->FaceList[Pos].second) {
@@ -59,7 +59,7 @@ void ClassBlock::Block::moveColors(const FlipBlocksAt BlockGroupDir, const TurnB
                       case FacePosition_E::BACK  : this->FaceList[Pos].second = FacePosition_E::LEFT;  break;
                       case FacePosition_E::LEFT  : this->FaceList[Pos].second = FacePosition_E::FRONT;
                }
-     } else if (BlockGroupDir == FlipBlocksAt::COLUMN) {
+     } else if (BlockGroupDir == SpinBlocksAt::COLUMN) {
             if (isClockWise)
                for (; Pos < this->FaceList.size(); ++Pos)
                    switch (this->FaceList[Pos].second) {

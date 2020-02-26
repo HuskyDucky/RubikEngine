@@ -18,12 +18,12 @@ Cube_T Rubik::randomize(uint16_t NoInterations) noexcept {
 
        uniform_real_distribution<float> ClockWiseOrOtherWise(0.0, 1.0);
        bernoulli_distribution isClockWise(ClockWiseOrOtherWise(RandBase));
-       uniform_int_distribution<Layer_T> Layer(0, 2);                //Enum FlipBlocksAt
+       uniform_int_distribution<Layer_T> Layer(0, 2);                //Enum SpinBlocksAt
        uniform_int_distribution<CubeSideSize_T>  Level(0, this->SideSize-1);
 
        while (NoInterations) {
              --NoInterations;
-             this->flip(FlipTo_T(static_cast<FlipBlocksAt>(Layer(RandBase)),
+             this->spin(SpinTo_T(static_cast<SpinBlocksAt>(Layer(RandBase)),
                         Level(RandBase),
                         static_cast<TurnBlocks>(isClockWise(RandBase))));
        }
