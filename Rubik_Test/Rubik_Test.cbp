@@ -35,9 +35,12 @@
 		<Unit filename="../Rubik_Block.h" />
 		<Unit filename="../Rubik_Cube.cpp" />
 		<Unit filename="../Rubik_Cube.h" />
+		<Unit filename="../Rubik_Cube_Flip.cpp" />
 		<Unit filename="../Rubik_Cube_FlipTo.h" />
 		<Unit filename="../Rubik_Cube_Global.h" />
-		<Unit filename="../Rubik_Cube_Private.cpp" />
+		<Unit filename="../Rubik_Cube_Info.cpp" />
+		<Unit filename="../Rubik_Cube_OtherFunctions.cpp" />
+		<Unit filename="../Rubik_Cube_ScanFaceCall.cpp" />
 		<Unit filename="../Rubik_ScanFaces.h" />
 		<Unit filename="../Rubik_ScanFaces_Commit.cpp" />
 		<Unit filename="../Rubik_ScanFaces_CreateProtoCube.cpp" />
