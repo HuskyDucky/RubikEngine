@@ -12,19 +12,19 @@
 1580473798 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_run.cpp
 	"Rubik_run_Tests.h"
 
-1582739727 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
+1583852678 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1582739727 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
+1584183810 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Block.h
 	<vector>
 	<limits>
 	<cinttypes>
 	<algorithm>
 
-1582737987 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
+1584386728 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.cpp
 	"Rubik_Cube.h"
 
-1582739669 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
+1584558730 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube.h
 	<chrono>
 	<random>
 	<memory>
@@ -67,7 +67,7 @@
 1576858188 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_ScanFaces.cpp
 	"Rubik_Cube.h"
 
-1582568777 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces.h
+1584386788 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces.h
 	<cmath>
 	"Rubik_Cube_Global.h"
 
@@ -76,26 +76,25 @@
 	<iostream>
 	"Rubik_run_AuxFuncs.h"
 
-1582568795 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Global.h
-	<array>
+1583852584 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Global.h
 	<vector>
 	<algorithm>
 	"Rubik_Block.h"
 
-1580146518 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Commit.cpp
+1584386788 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Commit.cpp
 	"Rubik_ScanFaces.h"
 
-1582388481 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_CreateProtoCube.cpp
+1584386788 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_CreateProtoCube.cpp
 	"Rubik_ScanFaces.h"
 
-1580978356 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Scan.cpp
+1584386788 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_ScanFaces_Scan.cpp
 	"Rubik_ScanFaces.h"
 
-1582741466 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run.cpp
+1584386877 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run.cpp
 	"Rubik_run_Tests.h"
 
-1582741437 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.h
-	"Rubik_run_AuxFuncs.h"
+1585504474 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.h
+	"../Lib/Rubik_run_AuxFuncs.h"
 
 1582484127 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_AuxFuncs.h
 	<iomanip>
@@ -106,24 +105,101 @@
 1582484171 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_AuxFuncs.cpp
 	"Rubik_run_AuxFuncs.h"
 
-1582741483 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.cpp
+1585504568 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Test/Rubik_run_Tests.cpp
 	"Rubik_run_Tests.h"
+	"../Lib/Rubik_run_AuxFuncs.h"
+	"../Lib/Rubik_run_AuxFuncs_CompareCubes.h"
 
 1581781378 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_FlipTo.h
 	"Rubik_Cube_Global.h"
 
-1582741106 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_SpinTo.h
+1584559318 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_SpinTo.h
 	"Rubik_Cube_Global.h"
 
-1582737865 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Info.cpp
+1584386728 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Info.cpp
 	"Rubik_Cube.h"
 
-1582739756 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_OtherFunctions.cpp
+1584386728 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_OtherFunctions.cpp
 	"Rubik_Cube.h"
 
-1582737545 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_ScanFaceCall.cpp
+1584386788 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_ScanFaceCall.cpp
 	"Rubik_Cube.h"
 
-1582739826 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Spin.cpp
+1584386788 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_Spin.cpp
 	"Rubik_Cube.h"
+
+1582484171 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Lib/Rubik_run_AuxFuncs.cpp
+	"Rubik_run_AuxFuncs.h"
+
+1582484127 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Lib/Rubik_run_AuxFuncs.h
+	<iomanip>
+	<iostream>
+	<algorithm>
+	"../Rubik_Cube.h"
+
+1585504381 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs.cpp
+	"Rubik_run_AuxFuncs.h"
+
+1585504295 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs.h
+	<iomanip>
+	<iostream>
+	"../Rubik_Engine.h"
+
+1585314563 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_StartPosition.cpp
+	"Rubik_Cube.h"
+
+1585504424 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.cpp
+	"Rubik_run_AuxFuncs_CompareCubes.h"
+
+1585504321 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.h
+	<algorithm>
+	"../Rubik_Engine.h"
+
+1585504261 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine.h
+	<chrono>
+	<random>
+	<memory>
+	<iostream>
+	"Rubik_Engine_Global.h"
+	"Rubik_Engine_SpinTo.h"
+	"Rubik_Engine_ScanFaces.h"
+
+1585503661 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_Global.h
+	<vector>
+	<algorithm>
+	"Rubik_Block.h"
+
+1585503721 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_SpinTo.h
+	"Rubik_Engine_Global.h"
+
+1585503481 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_ScanFaces.h
+	<cmath>
+	"Rubik_Engine_Global.h"
+
+1585504431 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine.cpp
+	"Rubik_Engine.h"
+
+1585504337 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_Info.cpp
+	"Rubik_Engine.h"
+
+1585503841 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_OtherFunctions.cpp
+	"Rubik_Engine.h"
+
+1585504081 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_ScanFaceCall.cpp
+	"Rubik_Engine.h"
+
+1585504141 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_ScanFaces_Commit.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1585503541 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_ScanFaces_CreateProtoCube.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1585503601 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_ScanFaces_Scan.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1585504194 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_Spin.cpp
+	"Rubik_Engine.h"
+
+1585504441 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_StartPosition.cpp
+	"Rubik_Engine.h"
 
