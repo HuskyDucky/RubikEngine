@@ -1,9 +1,7 @@
 /**
-    File    : Rubik_run_AuxFuncs_CompareCubes.cpp
+    File    : Test.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.3.1
-
-    Rubik Engine - auxiliary functions to test Cube
+    Created : 2019.11.15            Version: 20190419.1.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -27,29 +25,50 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#include "Rubik_run_AuxFuncs_CompareCubes.h"
+#ifndef TEST_H
+#define TEST_H
 
-static bool CompareBlocks(const Coord_T& xyz, const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-       FaceList_T blk1_ColPosList = Cube1.Block_FacesList(xyz);
-       FaceList_T blk2_ColPosList = Cube2.Block_FacesList(xyz);
+#include <string>
+#include <iostream>
+#include <functional>
 
-       if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
+#include "QofDigitsOf.h"
 
-       for (auto& C1_CP : blk1_ColPosList)
-           if (find(blk2_ColPosList.cbegin(), blk2_ColPosList.cend(), C1_CP) == blk2_ColPosList.cend()) return false;
+using namespace std;
 
-       return true;
+void PressEnter() noexcept;
+
+constexpr bool RESET = true;
+string StepCounter(bool Reset = false) noexcept;
+
+void StepCounterMsg(const string& Msg) noexcept;
+
+void StepCounterInfo(const string& Msg) noexcept;
+
+template <typename T>
+using TestFunction = function<bool(T& InitObj)>;
+
+//Need to pass an initialable object
+template <typename T>
+bool Test(const char* Title, const char* ObjName, function<bool(T& InitObj)>& Execute) {
+     cout << '\n' << string(80, '=') << "\nTest " << Title << '\n' << string(80, '-') << "\n\n";
+
+
+     cout << StepCounter(RESET) << "Creating " << ObjName << ": " << flush;
+
+     T InitObj;
+
+     cout << "done." << flush;
+
+     bool Result = Execute(InitObj);
+
+     cout << '\n' << string(80, '-')
+          << '\n' << StepCounter() << "Test Result:\t<<<" << (Result ? "PASSED" :  "FAILED") << ">>>"
+          << '\n' << string(80, '=');
+
+     PressEnter();
+
+     return Result;
 }
 
-bool AreThesesCubesDifferent(const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-     if (Cube1.TotalOfBlocks() != Cube2.TotalOfBlocks()) return false;
-
-     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SidesSize(); ++xyz[0])
-         for (xyz[2] = 0; xyz[2] < Cube1.SidesSize(); ++xyz[2])
-             for (xyz[1] = 0; xyz[1] < Cube1.SidesSize(); ++xyz[1])
-                 if (Cube1.Block_OriginalPosition(xyz) != Cube2.Block_OriginalPosition(xyz) ||
-                    !CompareBlocks(xyz, Cube1, Cube2))
-                    return true;
-
-     return false;
-}
+#endif

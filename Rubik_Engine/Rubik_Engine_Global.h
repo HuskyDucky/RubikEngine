@@ -1,9 +1,7 @@
 /**
     File    : Rubik_Engine_Global.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.26            Version: 20191228.3.2
-
-    Rubik Engine - General Definition
+    Created : 2019.10.26            Version: 20191228.3.3
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -16,15 +14,15 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+    OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+    SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 ///ATTENTION: The procedure to scan the cube:
@@ -47,10 +45,11 @@ typedef uint8_t CubeSideSize_T;           //max blocks is 255 (the last value - 
 typedef uint16_t QofBlksPerFace_T;        //255 x 255 = 65.025 free to use
 
 //Cube (and ScanFaces)
-using Cube_T = vector<ClassBlock::Block>;
-using Coord_T = array<CubeSideSize_T, 3>;
+    using Cube_T = vector<ClassBlock::Block>;
+    using Coord_T = array<CubeSideSize_T, 3>;
+
 //Scanfaces (and Cube)
-using BlocksPosToFace_T = vector<QofBlksPerFace_T>;
-using ProtoCube_T = vector<FaceList_T>;
+    using BlocksPosToFace_T = vector<QofBlksPerFace_T>;
+    using ProtoCube_T = vector<FaceList_T>;
 
 #endif

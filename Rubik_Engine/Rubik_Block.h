@@ -1,9 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200222.4
-
-    Rubik Program - Block Definition
+    Created : 2019.10.23            Version: 20200222.4.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -16,15 +14,15 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+    OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+    SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 ///ATTENTION! don't change the order of the enums' elements
@@ -45,7 +43,7 @@ typedef uint8_t  FacePosition_T;
 typedef uint8_t  Layer_T;
 typedef uint32_t BlkPosition_T;
 
-enum Color_E : Color_T {        //Colors must have the same absolute value than its face position
+enum Color_E : Color_T {                //Colors must have the same absolute value than its face position
      WHITE,
      YELLOW,
      RED,
@@ -64,7 +62,7 @@ enum FacePosition_E : FacePosition_T {  //Face Position must have the same absol
      NONEPOSITION
 };
 
-enum SpinBlocksAt : Layer_T {//Test commit with blocks with wrong colors as block with more than one side with the same color more than one block with one color
+enum SpinBlocksAt : Layer_T {
      LINE,
      COLUMN,
      LAYER,

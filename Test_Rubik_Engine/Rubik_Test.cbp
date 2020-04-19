@@ -31,28 +31,30 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../Lib/Rubik_run_AuxFuncs.cpp" />
-		<Unit filename="../Lib/Rubik_run_AuxFuncs.h" />
+		<Unit filename="../Lib/QofDigitsOf.h" />
+		<Unit filename="../Lib/Rubik_ShowCube.cpp" />
+		<Unit filename="../Lib/Rubik_ShowCube.h" />
 		<Unit filename="../Lib/Rubik_run_AuxFuncs_CompareCubes.cpp" />
 		<Unit filename="../Lib/Rubik_run_AuxFuncs_CompareCubes.h" />
-		<Unit filename="../Rubik_Block.cpp" />
-		<Unit filename="../Rubik_Block.h" />
-		<Unit filename="../Rubik_Engine.cpp" />
-		<Unit filename="../Rubik_Engine.h" />
-		<Unit filename="../Rubik_Engine_Global.h" />
-		<Unit filename="../Rubik_Engine_Info.cpp" />
-		<Unit filename="../Rubik_Engine_OtherFunctions.cpp" />
-		<Unit filename="../Rubik_Engine_ScanFaceCall.cpp" />
-		<Unit filename="../Rubik_Engine_ScanFaces.h" />
-		<Unit filename="../Rubik_Engine_ScanFaces_Commit.cpp" />
-		<Unit filename="../Rubik_Engine_ScanFaces_CreateProtoCube.cpp" />
-		<Unit filename="../Rubik_Engine_ScanFaces_Scan.cpp" />
-		<Unit filename="../Rubik_Engine_Spin.cpp" />
-		<Unit filename="../Rubik_Engine_SpinTo.h" />
-		<Unit filename="../Rubik_Engine_StartPosition.cpp" />
+		<Unit filename="../Lib/Test.cpp" />
+		<Unit filename="../Lib/Test.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Block.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Block.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Global.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Info.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_MoveTypes.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_OtherFunctions.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Spin.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_StartPosition.cpp" />
 		<Unit filename="Rubik_run.cpp" />
 		<Unit filename="Rubik_run_Tests.cpp" />
-		<Unit filename="Rubik_run_Tests.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -1,9 +1,7 @@
 /**
     File    : Rubik_Engine_StartPosition.cpp
     Author  : Menashe Rosemberg
-    Created : 2020.03.10            Version: 20200316.3
-
-    Rubik Engine
+    Created : 2020.03.10            Version: 20200316.3.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -16,15 +14,15 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+    OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+    SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 #include "Rubik_Engine.h"
@@ -39,7 +37,7 @@ LofTurns_T Rubik_Engine::TurnCubeToStartPosition() noexcept {
                              (this->SideSize - 1) / 2,                  //Spin.Level       - reference the middlest layer. It won't change
                               CLOCKWISE);                               //Spin.isClockWise - direction to rotate
 
-               auto TurnOtherBlocks = [&]() {      //is cheapest rotate the other blocks after found the block position
+               auto TurnOtherBlocks = [&]() {      //it is cheaper rotate the others blocks after found the block position
                                        for (; spins2Make; --spins2Make) {
                                             TurningCube.emplace_back(Spin2.Layer, Spin2.isClockWise);
 

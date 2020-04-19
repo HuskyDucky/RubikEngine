@@ -1,11 +1,9 @@
 /**
-    File    : Rubik_run_AuxFuncs_CompareCubes.cpp
+    File    : QofDigitsOf.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.3.1
+    Created : 2020.04.18            Version: 20200418.1
 
-    Rubik Engine - auxiliary functions to test Cube
-
-    Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
+    Copyright (c) 2020 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
@@ -27,29 +25,19 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#include "Rubik_run_AuxFuncs_CompareCubes.h"
+#ifndef QOFDIGITS_H
+#define QOFDIGITS_H
 
-static bool CompareBlocks(const Coord_T& xyz, const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-       FaceList_T blk1_ColPosList = Cube1.Block_FacesList(xyz);
-       FaceList_T blk2_ColPosList = Cube2.Block_FacesList(xyz);
+#include <type_traits>
 
-       if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
+template <typename T, std::enable_if_t<std::is_integral<T>::value, bool> = true>
+uint8_t QofDigitsOf(T Number) {
+        uint8_t qofDigits = (Number < 0);   //The minus is added if Number is negative
+        do {
+            ++qofDigits;
+        } while (Number /= 10);
 
-       for (auto& C1_CP : blk1_ColPosList)
-           if (find(blk2_ColPosList.cbegin(), blk2_ColPosList.cend(), C1_CP) == blk2_ColPosList.cend()) return false;
-
-       return true;
+        return qofDigits;
 }
 
-bool AreThesesCubesDifferent(const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-     if (Cube1.TotalOfBlocks() != Cube2.TotalOfBlocks()) return false;
-
-     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SidesSize(); ++xyz[0])
-         for (xyz[2] = 0; xyz[2] < Cube1.SidesSize(); ++xyz[2])
-             for (xyz[1] = 0; xyz[1] < Cube1.SidesSize(); ++xyz[1])
-                 if (Cube1.Block_OriginalPosition(xyz) != Cube2.Block_OriginalPosition(xyz) ||
-                    !CompareBlocks(xyz, Cube1, Cube2))
-                    return true;
-
-     return false;
-}
+#endif

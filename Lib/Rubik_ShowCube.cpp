@@ -1,9 +1,7 @@
 /**
-    File    : Rubik_run_AuxFuncs.cpp
+    File    : Rubik_ShowCube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.4.1
-
-    Rubik Engine - auxiliary functions to test Cube
+    Created : 2019.10.27            Version: 20200405.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -16,29 +14,18 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+    OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+    SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#include "Rubik_run_AuxFuncs.h"
-
-void PressEnter() { cout << "\n\nPress <ENTER> to continue..."; cin.get(); }
-
-string StepCounter(bool Reset) {
-       static uint16_t Counter = 0;
-
-       if (Reset)
-          Counter = 0;
-
-       return string("step X - ").replace(5, 1, to_string(++Counter));
-}
+#include "Rubik_ShowCube.h"
 
 const char* TheColorIs(const uint8_t C) noexcept {
       switch (C) {
@@ -72,10 +59,13 @@ static string CubeIsFinishORNot(const Rubik_Engine& Cube) {
 }
 
 void ShowCube(const Rubik_Engine& Cube, const bool ShowSize, const bool ShowColorsAndPositions, const bool ShowPercentual) {
-     if (ShowSize)
-        cout << "Cube size is: " << Cube.TotalOfBlocks() << '\n';
+     cout << '\n';
+     if (ShowSize) {
+        StepCounterInfo("Cube size is"); cout << Cube.TotalOfBlocks() << '\n';
+     }
 
      if (ShowColorsAndPositions) {
+        cout << '\n';
         for (Coord_T xyz({0, 0, 0}); xyz[2] < Cube.SidesSize(); ++xyz[2])
             for (xyz[0] = 0; xyz[0] < Cube.SidesSize(); ++xyz[0])
                 for (xyz[1] = 0; xyz[1] < Cube.SidesSize(); ++xyz[1]) {
@@ -89,7 +79,6 @@ void ShowCube(const Rubik_Engine& Cube, const bool ShowSize, const bool ShowColo
                     for (auto& Z : BlocksColors)
                         cout << "\n\t\t" << TheColorIs(Z.first) << ' ' << ThePositionIs(Z.second);
                 }
-        cout << '\n';
      } else {
           const uint8_t ascii = Cube.SidesSize() == 3 ? 97 :
                                (Cube.SidesSize() == 4 ? 48 : 33);
@@ -104,7 +93,8 @@ void ShowCube(const Rubik_Engine& Cube, const bool ShowSize, const bool ShowColo
           }
      }
 
-     if (ShowPercentual)
-        cout << "Percentual Resolved: " << setprecision(3) << Cube.PercentualDone() << "%. " << CubeIsFinishORNot(Cube) << '\n';
+     if (ShowPercentual) {
+        StepCounterInfo("Percentual Resolved:"); cout << setprecision(3) << Cube.PercentualDone() << "%. " << CubeIsFinishORNot(Cube) << '\n';
+     }
 }
 

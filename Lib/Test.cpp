@@ -1,9 +1,7 @@
 /**
-    File    : Rubik_run_AuxFuncs_CompareCubes.cpp
+    File    : Test.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200206.3.1
-
-    Rubik Engine - auxiliary functions to test Cube
+    Created : 2019.11.15            Version: 20200419.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -27,29 +25,23 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#include "Rubik_run_AuxFuncs_CompareCubes.h"
+#include "Test.h"
 
-static bool CompareBlocks(const Coord_T& xyz, const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-       FaceList_T blk1_ColPosList = Cube1.Block_FacesList(xyz);
-       FaceList_T blk2_ColPosList = Cube2.Block_FacesList(xyz);
+static uint16_t Counter = 0;
 
-       if (blk1_ColPosList.size() != blk2_ColPosList.size()) return false;
+void PressEnter() noexcept { cout << "\n\nPress <ENTER> to continue..."; cin.get(); }
 
-       for (auto& C1_CP : blk1_ColPosList)
-           if (find(blk2_ColPosList.cbegin(), blk2_ColPosList.cend(), C1_CP) == blk2_ColPosList.cend()) return false;
+string StepCounter(bool Reset) noexcept {
+       if (Reset)
+          Counter = 0;
 
-       return true;
+       return string("step X - ").replace(5, 1, to_string(++Counter));
 }
 
-bool AreThesesCubesDifferent(const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
-     if (Cube1.TotalOfBlocks() != Cube2.TotalOfBlocks()) return false;
+void StepCounterMsg(const string& Msg) noexcept {
+     cout << '\n' << StepCounter() << Msg << ": " << flush;
+}
 
-     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SidesSize(); ++xyz[0])
-         for (xyz[2] = 0; xyz[2] < Cube1.SidesSize(); ++xyz[2])
-             for (xyz[1] = 0; xyz[1] < Cube1.SidesSize(); ++xyz[1])
-                 if (Cube1.Block_OriginalPosition(xyz) != Cube2.Block_OriginalPosition(xyz) ||
-                    !CompareBlocks(xyz, Cube1, Cube2))
-                    return true;
-
-     return false;
+void StepCounterInfo(const string& Msg) noexcept {
+     cout << '\n' << string(8 + QofDigitsOf(Counter), ' ') << Msg << ": ";
 }

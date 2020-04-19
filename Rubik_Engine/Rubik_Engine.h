@@ -1,9 +1,7 @@
 /**
     File    : Rubik_Engine.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200318.2
-
-    Rubik Engine
+    Created : 2019.10.22            Version: 20200318.2.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -16,15 +14,15 @@
        this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+    OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+    SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+    OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
 ///ATTENTION: The procedure to scan the cube:
@@ -43,7 +41,7 @@
 #include <iostream>
 
 #include "Rubik_Engine_Global.h"
-#include "Rubik_Engine_SpinTo.h"
+#include "Rubik_Engine_MoveTypes.h"
 #include "Rubik_Engine_ScanFaces.h"
 
 typedef BlkPosition_T QofBlocks_T;        //CubeSideSize_T(255) ^ 3 = 16,581,375 free to use
@@ -85,12 +83,12 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
             bool commitScannedFaces() noexcept;                                      //Inconsistences can be fixed just pass to scan the correction of ill-scanned Faces
 
        //others actions
-            Cube_T randomize(uint16_t NoInterations) noexcept;       //Automatically save this new randomization
-            void operator()(const Rubik_Engine& OriCube) noexcept;   //Copy Cube
+            Cube_T randomize(uint16_t NoInterations) noexcept;                       //Automatically save this new randomization
+            void operator()(const Rubik_Engine& OriCube) noexcept;                   //Copy Cube
             void reset() noexcept;
 
     private:
-        const CubeSideSize_T SideSize;                              //The max blocks is 255 not 256. This last value is reserved to internal use of this class
+        const CubeSideSize_T SideSize;                                      //The max blocks is 255 not 256. This last value is reserved to internal use of this class
         const QofBlocks_T TofBlocks;
         Cube_T Cube;
 
@@ -109,7 +107,7 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
             BlkPosition_T spin_CalcBlockPosition(const AxisPosition_T AxesHV) noexcept;
 
         //General
-            function<BlkPosition_T(const Coord_T&)> Block_Coordenate;  //Calculate the block position in the cube - will be passed to ScannedFaces
+            function<BlkPosition_T(const Coord_T&)> Block_Coordenate;   //Calculate the block position in the cube - will be passed to ScannedFaces
 
 
             unique_ptr<ScanFaces> ScannedFaces;                         //Used only when the user wants to scan a real cube
