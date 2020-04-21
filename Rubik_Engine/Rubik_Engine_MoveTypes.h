@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_MoveTypes.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200313.1.4
+    Created : 2019.10.22            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -48,13 +48,6 @@ struct TurnTo_T {
        const TurnBlock isClockWise;
 };
 
-using LofTurns_T = vector<TurnTo_T>;
 using LofSpins_T = vector<SpinTo_T>;
-
-struct AllMoves_T {
-       AllMoves_T() : Turns(nullopt), Spins(nullopt) {}
-       optional<LofTurns_T> Turns;
-       optional<LofSpins_T> Spins;
-};
 
 #endif

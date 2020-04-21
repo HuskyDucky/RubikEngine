@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200222.3.3
+    Created : 2019.10.23            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -27,7 +27,6 @@
 **/
 #include "Rubik_Block.h"
 
-BlkPosition_T ClassBlock::Block::OriginalBlockPosition() const noexcept { return this->originalBlockPosition; }
 FaceList_T ClassBlock::Block::FacesList() const noexcept { return this->FaceList; }
 
 bool ClassBlock::Block::HasColors(const FaceList_T& colors) const noexcept {
@@ -37,7 +36,7 @@ bool ClassBlock::Block::HasColors(const FaceList_T& colors) const noexcept {
      NofFaces_T FacesFound = 0;
      for (auto& CPList : this->FaceList)
          for (auto& Clrs : colors)
-             if (CPList.first == Clrs.first) ++FacesFound;
+             if (CPList.Color == Clrs.Color) ++FacesFound;
 
      return FacesFound == this->FaceList.size();
 }
@@ -47,7 +46,7 @@ bool ClassBlock::Block::operator!=(const FaceList_T& FaceList2Comp) const noexce
      if (this->FaceList.size() != FaceList2Comp.size()) return false;
      for (auto& face : this->FaceList)
          if (none_of(FaceList2Comp.cbegin(), FaceList2Comp.cend(),
-                     [&face](const Face_T f) { return face.first == f.first && face.second == f.second; }))
+                     [&face](const Face_T f) { return face.Color == f.Color && face.Position == f.Position; }))
              return true;
 
      return false;
@@ -59,51 +58,51 @@ void ClassBlock::Block::moveColors(const SpinBlocksAt BlockGroupDir, const TurnB
      if (BlockGroupDir == SpinBlocksAt::LINE) {
         if (isClockWise)
            for (; Pos < this->FaceList.size(); ++Pos)
-               switch (this->FaceList[Pos].second) {
-                       case FacePosition_E::FRONT : this->FaceList[Pos].second = FacePosition_E::LEFT;  break;
-                       case FacePosition_E::LEFT  : this->FaceList[Pos].second = FacePosition_E::BACK;  break;
-                       case FacePosition_E::BACK  : this->FaceList[Pos].second = FacePosition_E::RIGHT; break;
-                       case FacePosition_E::RIGHT : this->FaceList[Pos].second = FacePosition_E::FRONT;
+               switch (this->FaceList[Pos].Position) {
+                       case FacePosition_E::FRONT : this->FaceList[Pos].Position = FacePosition_E::LEFT;  break;
+                       case FacePosition_E::LEFT  : this->FaceList[Pos].Position = FacePosition_E::BACK;  break;
+                       case FacePosition_E::BACK  : this->FaceList[Pos].Position = FacePosition_E::RIGHT; break;
+                       case FacePosition_E::RIGHT : this->FaceList[Pos].Position = FacePosition_E::FRONT;
                }
         else
            for (; Pos < this->FaceList.size(); ++Pos)
-               switch (this->FaceList[Pos].second) {
-                       case FacePosition_E::FRONT : this->FaceList[Pos].second = FacePosition_E::RIGHT; break;
-                       case FacePosition_E::RIGHT : this->FaceList[Pos].second = FacePosition_E::BACK;  break;
-                       case FacePosition_E::BACK  : this->FaceList[Pos].second = FacePosition_E::LEFT;  break;
-                       case FacePosition_E::LEFT  : this->FaceList[Pos].second = FacePosition_E::FRONT;
+               switch (this->FaceList[Pos].Position) {
+                       case FacePosition_E::FRONT : this->FaceList[Pos].Position = FacePosition_E::RIGHT; break;
+                       case FacePosition_E::RIGHT : this->FaceList[Pos].Position = FacePosition_E::BACK;  break;
+                       case FacePosition_E::BACK  : this->FaceList[Pos].Position = FacePosition_E::LEFT;  break;
+                       case FacePosition_E::LEFT  : this->FaceList[Pos].Position = FacePosition_E::FRONT;
                }
      } else if (BlockGroupDir == SpinBlocksAt::COLUMN) {
             if (isClockWise)
                for (; Pos < this->FaceList.size(); ++Pos)
-                   switch (this->FaceList[Pos].second) {
-                           case FacePosition_E::FRONT  : this->FaceList[Pos].second = FacePosition_E::BOTTOM; break;
-                           case FacePosition_E::BOTTOM : this->FaceList[Pos].second = FacePosition_E::BACK;   break;
-                           case FacePosition_E::BACK   : this->FaceList[Pos].second = FacePosition_E::TOP;    break;
-                           case FacePosition_E::TOP    : this->FaceList[Pos].second = FacePosition_E::FRONT;
+                   switch (this->FaceList[Pos].Position) {
+                           case FacePosition_E::FRONT  : this->FaceList[Pos].Position = FacePosition_E::BOTTOM; break;
+                           case FacePosition_E::BOTTOM : this->FaceList[Pos].Position = FacePosition_E::BACK;   break;
+                           case FacePosition_E::BACK   : this->FaceList[Pos].Position = FacePosition_E::TOP;    break;
+                           case FacePosition_E::TOP    : this->FaceList[Pos].Position = FacePosition_E::FRONT;
                    }
             else
                for (; Pos < this->FaceList.size(); ++Pos)
-                   switch (this->FaceList[Pos].second) {
-                           case FacePosition_E::FRONT  : this->FaceList[Pos].second = FacePosition_E::TOP;    break;
-                           case FacePosition_E::TOP    : this->FaceList[Pos].second = FacePosition_E::BACK;   break;
-                           case FacePosition_E::BACK   : this->FaceList[Pos].second = FacePosition_E::BOTTOM; break;
-                           case FacePosition_E::BOTTOM : this->FaceList[Pos].second = FacePosition_E::FRONT;
+                   switch (this->FaceList[Pos].Position) {
+                           case FacePosition_E::FRONT  : this->FaceList[Pos].Position = FacePosition_E::TOP;    break;
+                           case FacePosition_E::TOP    : this->FaceList[Pos].Position = FacePosition_E::BACK;   break;
+                           case FacePosition_E::BACK   : this->FaceList[Pos].Position = FacePosition_E::BOTTOM; break;
+                           case FacePosition_E::BOTTOM : this->FaceList[Pos].Position = FacePosition_E::FRONT;
                    }
      } else if (isClockWise)
             for (; Pos < this->FaceList.size(); ++Pos)
-                switch (this->FaceList[Pos].second) {
-                        case FacePosition_E::TOP    : this->FaceList[Pos].second = FacePosition_E::RIGHT;  break;
-                        case FacePosition_E::RIGHT  : this->FaceList[Pos].second = FacePosition_E::BOTTOM; break;
-                        case FacePosition_E::BOTTOM : this->FaceList[Pos].second = FacePosition_E::LEFT;   break;
-                        case FacePosition_E::LEFT   : this->FaceList[Pos].second = FacePosition_E::TOP;
+                switch (this->FaceList[Pos].Position) {
+                        case FacePosition_E::TOP    : this->FaceList[Pos].Position = FacePosition_E::RIGHT;  break;
+                        case FacePosition_E::RIGHT  : this->FaceList[Pos].Position = FacePosition_E::BOTTOM; break;
+                        case FacePosition_E::BOTTOM : this->FaceList[Pos].Position = FacePosition_E::LEFT;   break;
+                        case FacePosition_E::LEFT   : this->FaceList[Pos].Position = FacePosition_E::TOP;
                 }
        else
             for (; Pos < this->FaceList.size(); ++Pos)
-                switch (this->FaceList[Pos].second) {
-                        case FacePosition_E::TOP    : this->FaceList[Pos].second = FacePosition_E::LEFT;   break;
-                        case FacePosition_E::LEFT   : this->FaceList[Pos].second = FacePosition_E::BOTTOM; break;
-                        case FacePosition_E::BOTTOM : this->FaceList[Pos].second = FacePosition_E::RIGHT;  break;
-                        case FacePosition_E::RIGHT  : this->FaceList[Pos].second = FacePosition_E::TOP;
+                switch (this->FaceList[Pos].Position) {
+                        case FacePosition_E::TOP    : this->FaceList[Pos].Position = FacePosition_E::LEFT;   break;
+                        case FacePosition_E::LEFT   : this->FaceList[Pos].Position = FacePosition_E::BOTTOM; break;
+                        case FacePosition_E::BOTTOM : this->FaceList[Pos].Position = FacePosition_E::RIGHT;  break;
+                        case FacePosition_E::RIGHT  : this->FaceList[Pos].Position = FacePosition_E::TOP;
                 }
 }

@@ -1,7 +1,7 @@
 /**
     File    : Test.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200419.1
+    Created : 2019.11.15            Version: 20200419.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -31,17 +31,19 @@ static uint16_t Counter = 0;
 
 void PressEnter() noexcept { cout << "\n\nPress <ENTER> to continue..."; cin.get(); }
 
-string StepCounter(bool Reset) noexcept {
+string Test_StepCounter(bool Reset) noexcept {
        if (Reset)
           Counter = 0;
 
        return string("step X - ").replace(5, 1, to_string(++Counter));
 }
 
-void StepCounterMsg(const string& Msg) noexcept {
-     cout << '\n' << StepCounter() << Msg << ": " << flush;
+void Test_StepCounterMsg(const string& Msg) noexcept {
+     cout << '\n' << Test_StepCounter() << Msg << ": " << flush;
 }
 
-void StepCounterInfo(const string& Msg) noexcept {
-     cout << '\n' << string(8 + QofDigitsOf(Counter), ' ') << Msg << ": ";
+void Test_StepCounterInfo(const string& Msg) noexcept {
+     cout << '\n' << string(8 + QofDigitsOf(Counter), ' ');
+     if (Msg.size())
+        cout << Msg << ": ";
 }

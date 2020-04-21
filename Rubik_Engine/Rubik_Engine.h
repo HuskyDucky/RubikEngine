@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200318.2.2
+    Created : 2019.10.22            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -48,7 +48,6 @@ typedef BlkPosition_T QofBlocks_T;        //CubeSideSize_T(255) ^ 3 = 16,581,375
 
 using From_To = pair<CubeSideSize_T, CubeSideSize_T>;
 using AxisPosition_T = pair<CubeSideSize_T, CubeSideSize_T>;
-using NofSteps_T = int8_t;
 
 #define Layer0to0 {0, 0}
 #define Layer0toL {0, this->SideSize-1}
@@ -64,19 +63,15 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
        QofBlocks_T TotalOfBlocks() const noexcept;
 
        //Cube info
-            bool isFinished() const noexcept;
-            float PercentualDone() const noexcept;
+            bool isFinished() noexcept;
             bool operator==(const Rubik_Engine& CompCube) noexcept;
 
        //Block info
-            bool isBlockInPosition(const Coord_T& xyz) const noexcept;
             FaceList_T Block_FacesList(const Coord_T& xyz) const noexcept;
-            BlkPosition_T Block_OriginalPosition(const Coord_T& xyz) const noexcept;
 
        //Moves
             void spin(const SpinTo_T& SpinThe) noexcept;
             void spin(const SpinBlocksAt Layer, const CubeSideSize_T Level, const TurnBlock isClockWise) noexcept;
-            LofTurns_T TurnCubeToStartPosition() noexcept;
 
        //feed the class with a real Rubik Cube
             bool scan(const FacePosition_E Face, vector<Color_E>&& Colors) noexcept; //If some Face was ill-scanned just pass it again to scan
@@ -91,6 +86,8 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
         const CubeSideSize_T SideSize;                                      //The max blocks is 255 not 256. This last value is reserved to internal use of this class
         const QofBlocks_T TofBlocks;
         Cube_T Cube;
+
+        vector<Face_T> AuxisFinishedCheck;                                  //auxiliary vector to function member isFinished()
 
         //Cube Aux variables
             Coord_T XYZ;

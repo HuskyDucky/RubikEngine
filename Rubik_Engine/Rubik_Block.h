@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Block.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.23            Version: 20200222.4.1
+    Created : 2019.10.23            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -73,15 +73,18 @@ using TurnBlock = bool;
 constexpr TurnBlock CLOCKWISE = true;
 constexpr TurnBlock COUNTERCLOCKWISE = false;
 
-using Face_T = pair<Color_E, FacePosition_T>;
+struct Face_T {
+       Face_T(Color_E color, FacePosition_T pos) : Color(color), Position(pos) {}
+       Color_E Color;
+       FacePosition_T Position;
+
+       bool operator==(const Face_T face) const noexcept { return this->Color == face.Color && this->Position == face.Position; }
+};
 using FaceList_T = vector<Face_T>;
 
 struct ClassBlock {
        struct Block {
-              Block(const BlkPosition_T BlockP, FaceList_T&& ColorPos) : originalBlockPosition(BlockP),
-                                                                         FaceList(ColorPos) {}
-
-           BlkPosition_T OriginalBlockPosition() const noexcept;
+              Block(FaceList_T&& ColorPos) : FaceList(ColorPos) {}
 
            bool HasColors(const FaceList_T& colors) const noexcept;
            bool operator!=(const FaceList_T& FaceList2Comp) const noexcept;
@@ -90,7 +93,6 @@ struct ClassBlock {
            void moveColors(const SpinBlocksAt BlockGroupDir, const TurnBlock isClockWise) noexcept;
 
            private:
-               BlkPosition_T originalBlockPosition;
                FaceList_T FaceList;
        };
 };

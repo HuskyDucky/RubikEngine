@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.4
+    Created : 2019.10.22            Version: 20200206.5
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -48,6 +48,8 @@ void Rubik_Engine::Rubik_Engine_Initializer() noexcept {
         cout << "\n\nThis rubik cube can have 3 to " << static_cast<uint64_t>(numeric_limits<CubeSideSize_T>::max()-2) << " blocks size to every face only\n" << endl;
         abort();
      }
+     this->AuxisFinishedCheck.reserve(TofFACES);
+
      //It could be a regular function but inheritaged class will use it by passing it as parameter (better than use friend)
      this->Block_Coordenate = [&](const Coord_T& xyz) -> BlkPosition_T {
                                                          return xyz[LINE  ] * this->SideSize +

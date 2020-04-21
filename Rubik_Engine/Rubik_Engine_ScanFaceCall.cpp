@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_ScanFaceCall.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200222.3
+    Created : 2019.10.22            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -42,9 +42,8 @@ bool Rubik_Engine::commitScannedFaces() noexcept {
            BlkPosition_T ProtoBlkIndex = 0;
            do {
                for (auto& oldBlock : this->Cube)
-                   if (oldBlock.HasColors(ProtoCube[ProtoBlkIndex]) &&
-                      none_of(NewCube.cbegin(), NewCube.cend(), [&](const Block& b) { return b.OriginalBlockPosition() == oldBlock.OriginalBlockPosition(); })) {
-                      NewCube.emplace_back(oldBlock.OriginalBlockPosition(), move(ProtoCube[ProtoBlkIndex]));
+                   if (oldBlock.HasColors(ProtoCube[ProtoBlkIndex])) {
+                      NewCube.emplace_back(move(ProtoCube[ProtoBlkIndex]));
                       break;
                    }
 

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_OtherFunctions.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200222.4
+    Created : 2019.10.22            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -55,7 +55,7 @@ void Rubik_Engine::operator()(const Rubik_Engine& OriCube) noexcept {
             do {
                 this->XYZ[COLUMN] = 0;
                 do {
-                    this->Cube.emplace_back(OriCube.Block_OriginalPosition(XYZ), OriCube.Block_FacesList(XYZ));
+                    this->Cube.emplace_back(OriCube.Block_FacesList(XYZ));
                 } while (++this->XYZ[COLUMN] != this->SideSize);
             } while (++this->XYZ[LINE] != this->SideSize);
         } while (++this->XYZ[LAYER] != this->SideSize);
@@ -66,7 +66,6 @@ void Rubik_Engine::reset() noexcept {
      this->Cube.clear();
      this->Cube.reserve(this->TofBlocks);
 
-     BlkPosition_T BlockPos = 0;
      this->XYZ[LINE] = 0;
      do {
         this->XYZ[COLUMN] = 0;
@@ -90,7 +89,7 @@ void Rubik_Engine::reset() noexcept {
                  else if (this->XYZ[LAYER ] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::GREEN, FacePosition_E::RIGHT);
 
-                 this->Cube.emplace_back(BlockPos++, move(ColorPos));
+                 this->Cube.emplace_back(move(ColorPos));
 
              } while (++this->XYZ[LAYER] != this->SideSize);
          } while (++this->XYZ[COLUMN] != this->SideSize);

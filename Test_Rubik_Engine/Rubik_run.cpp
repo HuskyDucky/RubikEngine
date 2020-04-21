@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.30            Version: 20200417.2
+    Created : 2019.10.30            Version: 20200421.1
 
     Test Rubik Engine
 
@@ -31,6 +31,7 @@
 #include "../Rubik_Engine/Rubik_Engine.h"
 
 extern TestFunction<Rubik_Engine> Test_CreationCube;
+extern TestFunction<Rubik_Engine> Test_TurnedCubeisFinished;
 extern TestFunction<Rubik_Engine> Test_CompareCube;
 extern TestFunction<Rubik_Engine> Test_RandomizeCube;
 extern TestFunction<Rubik_Engine> Test_CopyCube;
@@ -41,29 +42,24 @@ extern TestFunction<Rubik_Engine> Test_ScannedFaces_InvalidRandomScanFaces3x3;
 extern TestFunction<Rubik_Engine> Test_ScannedFaces_NoScannedFace3x3;
 extern TestFunction<Rubik_Engine> Test_ScannedFaces_WrongSizeScanFaces3x3;
 extern TestFunction<Rubik_Engine> Test_ScannedFaces_commitScannedFaces3x3;
-extern TestFunction<Rubik_Engine> Test_Turn2StartPosition3x3;
 //Invalid color test doesn't compile due to Color_E enum
-
-void ShowSpinnedCube();
 
 int main() {
     constexpr char CName[] = "Cube Engine";
     bool result = true;
 
     result &= Test("Cube Properties - Creating a Cube", CName, Test_CreationCube);
+    result &= Test("Cube Properties - Turnned Cube is finished?", CName, Test_TurnedCubeisFinished);
     result &= Test("Cube Properties - Randomize a Cube", CName, Test_RandomizeCube);
     result &= Test("Cube Properties - Compare Cubes", CName, Test_CompareCube);
     result &= Test("Cube Properties - Copy a Cube", CName, Test_CopyCube);
     result &= Test("Cube Properties - Initialize a Copied Cube", CName, Test_InitCopyCube);
     result &= Test("Cube Properties - Reset Cube", CName, Test_ResetCube);
-    result &= Test("Cube Properties - Turn Cube", CName, Test_Turn2StartPosition3x3);
     result &= Test("Cube Properties - Scan Cube Faces - Pass a valid randomize Cube -Cube3x3"     , CName, Test_ScannedFaces_ValidRandomScanFaces3x3);
     result &= Test("Cube Properties - Scan Cube Faces - Pass a INvalid randomize Cube -Cube3x3"   , CName, Test_ScannedFaces_InvalidRandomScanFaces3x3);
     result &= Test("Cube Properties - Scan Cube Faces - Commit without all faces scanned -Cube3x3", CName, Test_ScannedFaces_NoScannedFace3x3);
     result &= Test("Cube Properties - Scan Cube Faces - Pass a face with a wrong size -Cube3x3"   , CName, Test_ScannedFaces_WrongSizeScanFaces3x3);
     result &= Test("Cube Properties - Scan Cube Faces - Commit the scanned faces -Cube3x3"        , CName, Test_ScannedFaces_commitScannedFaces3x3);
-
-    if (result) ShowSpinnedCube();
 
     return !result;
 }

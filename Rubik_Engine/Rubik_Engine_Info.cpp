@@ -30,22 +30,24 @@
 CubeSideSize_T Rubik_Engine::SidesSize() const noexcept { return this->SideSize; }
 QofBlocks_T Rubik_Engine::TotalOfBlocks() const noexcept { return this->TofBlocks; }
 
-bool Rubik_Engine::isFinished() const noexcept {
+bool Rubik_Engine::isFinished() noexcept {
+     this->AuxisFinishedCheck.clear();
      QofBlocks_T Scan = 0;
+     do {
+         for (auto& face : this->Cube[Scan].FacesList()) {
+             bool NOTFound = true;
+             for (auto& Check : this->AuxisFinishedCheck)
+                 if (Check.Color == face.Color) {
+                    if (Check.Position != face.Position)
+                       return false;
+                    NOTFound = false;
+                 }
+             if (NOTFound)
+                AuxisFinishedCheck.push_back(face);
+         }
+     } while (++Scan < this->TofBlocks);
 
-     while (Scan < this->TofBlocks && Scan == this->Cube[Scan].OriginalBlockPosition()) ++Scan;
-
-     return Scan == this->TofBlocks;
-}
-
-float Rubik_Engine::PercentualDone() const noexcept {
-      QofBlocks_T Done = 0;
-
-      for (QofBlocks_T Scan = 0; Scan < this->TofBlocks; ++Scan)
-          if (Scan == this->Cube[Scan].OriginalBlockPosition())
-             ++Done;
-
-      return 100.0 * Done / this->TofBlocks;
+     return true;
 }
 
 bool Rubik_Engine::operator==(const Rubik_Engine& CompCube) noexcept {
@@ -66,15 +68,6 @@ bool Rubik_Engine::operator==(const Rubik_Engine& CompCube) noexcept {
      return true;
 }
 
-bool Rubik_Engine::isBlockInPosition(const Coord_T& xyz) const noexcept {
-     const QofBlocks_T Pos = this->Block_Coordenate(xyz);
-     return Pos < this->TofBlocks && Pos == this->Cube[Pos].OriginalBlockPosition();
-}
-
 FaceList_T Rubik_Engine::Block_FacesList(const Coord_T& xyz) const noexcept {
            return this->Cube[this->Block_Coordenate(xyz)].FacesList();
-}
-
-BlkPosition_T Rubik_Engine::Block_OriginalPosition(const Coord_T& xyz) const noexcept {
-              return this->Cube[this->Block_Coordenate(xyz)].OriginalBlockPosition();
 }

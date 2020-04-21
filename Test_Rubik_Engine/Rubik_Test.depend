@@ -149,7 +149,7 @@
 1585314563 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Cube_StartPosition.cpp
 	"Rubik_Cube.h"
 
-1587121173 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.cpp
+1587390790 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.cpp
 	"Rubik_run_AuxFuncs_CompareCubes.h"
 
 1587121233 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.h
@@ -204,16 +204,16 @@
 1586077424 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_StartPosition.cpp
 	"Rubik_Engine.h"
 
-1587283208 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.cpp
+1587308596 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.cpp
 	"Test.h"
 
-1587284240 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.h
+1587308715 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.h
 	<string>
 	<iostream>
 	<functional>
 	"QofDigitsOf.h"
 
-1587284507 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run.cpp
+1587457076 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run.cpp
 	"../Lib/Test.h"
 	"../Rubik_Engine/Rubik_Engine.h"
 
@@ -221,13 +221,13 @@
 	"../Lib/Rubik_run_AuxFuncs.h"
 	"../Lib/Test.h"
 
-1587284374 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run_Tests.cpp
+1587457038 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run_Tests.cpp
 	"../Lib/Rubik_run_AuxFuncs_CompareCubes.h"
 	"../Rubik_Engine/Rubik_Engine.h"
 	"../Lib/Rubik_ShowCube.h"
 	"../Lib/Test.h"
 
-1587140066 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
+1587396491 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
 	<chrono>
 	<random>
 	<memory>
@@ -241,32 +241,32 @@
 	<algorithm>
 	"Rubik_Block.h"
 
-1587140020 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.h
+1587391750 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.h
 	<vector>
 	<limits>
 	<cinttypes>
 	<algorithm>
 
-1587135286 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_MoveTypes.h
+1587379891 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_MoveTypes.h
 	"Rubik_Engine_Global.h"
 
 1587140151 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces.h
 	<cmath>
 	"Rubik_Engine_Global.h"
 
-1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.cpp
+1587393428 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
+1587328687 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
 	"Rubik_Engine.h"
 
-1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
+1587396546 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
 	"Rubik_Engine.h"
 
-1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_OtherFunctions.cpp
+1587390790 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_OtherFunctions.cpp
 	"Rubik_Engine.h"
 
-1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp
+1587389890 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp
 	"Rubik_Engine.h"
 
 1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp
@@ -281,13 +281,12 @@
 1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Spin.cpp
 	"Rubik_Engine.h"
 
-1587139905 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_StartPosition.cpp
-	"Rubik_Engine.h"
+1587371612 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_StartPosition.cpp
 
-1587285449 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
+1587396597 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
 	"Rubik_ShowCube.h"
 
-1587284706 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
+1587396191 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
 	<iomanip>
 	<iostream>
 	"Test.h"

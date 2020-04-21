@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200419.1
+    Created : 2019.11.15            Version: 20200421.1
 
     Test Rubik Engine
 
@@ -34,31 +34,77 @@
 #include "../Lib/Test.h"
 
 TestFunction<Rubik_Engine> Test_CreationCube = [](Rubik_Engine& Cube) -> bool {
-                           ShowCube(Cube, ShowSize, HideColors, ShowPercentual);
+                           ShowCube(Cube, ShowSize);
                            return pow(Cube.SidesSize(), 3) == Cube.TotalOfBlocks() &&
-                                  Cube.isFinished()                                &&
-                                  Cube.PercentualDone() == 100.0;
+                                  Cube.isFinished();
+};
+
+TestFunction<Rubik_Engine> Test_TurnedCubeisFinished = [](Rubik_Engine& Cube) -> bool {
+                           const string Msg = "Is Cube finished when turn its front face to ";
+
+                           auto CheckTurnCube = [](Rubik_Engine& Cube) -> bool {
+                                bool Result = Cube.isFinished();
+                                cout << "it is";
+                                if (!Result) cout << "n't";
+                                cout << '.' << flush;
+                                return Result;
+                           };
+
+                           //TEST 1
+                               Test_StepCounterMsg(Msg + "bottom");
+                                   for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
+                                       Cube.spin(LINE, 0, CLOCKWISE);
+                                       Cube.spin(LINE, 1, CLOCKWISE);
+                                       Cube.spin(LINE, 2, CLOCKWISE);
+                                   }
+                                   for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
+                                       Cube.spin(LAYER, 0, COUNTERCLOCKWISE);
+                                       Cube.spin(LAYER, 1, COUNTERCLOCKWISE);
+                                       Cube.spin(LAYER, 2, COUNTERCLOCKWISE);
+                                   }
+                                   Cube.spin(COLUMN, 0, CLOCKWISE);
+                                   Cube.spin(COLUMN, 1, CLOCKWISE);
+                                   Cube.spin(COLUMN, 2, CLOCKWISE);
+                               bool result = CheckTurnCube(Cube);
+
+                           //TEST 2
+                               Rubik_Engine Cube2;
+                               Test_StepCounterMsg(Msg + "left");
+                                  for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
+                                      Cube.spin(LAYER, 0, COUNTERCLOCKWISE);
+                                      Cube.spin(LAYER, 1, COUNTERCLOCKWISE);
+                                      Cube.spin(LAYER, 2, COUNTERCLOCKWISE);
+                                  }
+                                  Cube.spin(LINE, 0, CLOCKWISE);
+                                  Cube.spin(LINE, 1, CLOCKWISE);
+                                  Cube.spin(LINE, 2, CLOCKWISE);
+                                  for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
+                                      Cube.spin(COLUMN, 0, CLOCKWISE);
+                                      Cube.spin(COLUMN, 1, CLOCKWISE);
+                                      Cube.spin(COLUMN, 2, CLOCKWISE);
+                                  }
+                          return CheckTurnCube(Cube) && result;
 };
 
 TestFunction<Rubik_Engine> Test_RandomizeCube = [](Rubik_Engine& Cube) -> bool {
-                           ShowCube(Cube, HideSize, HideColors, ShowPercentual);
-                           StepCounterMsg("Randomizing 1000 times");
+                           ShowCube(Cube, HideSize);
+                           Test_StepCounterMsg("Randomizing 1000 times");
                                 Cube.randomize(1000);
                            cout << "done." << flush;
-                           ShowCube(Cube, HideSize, HideColors, ShowPercentual);
+                           ShowCube(Cube, HideSize);
 
-                           return !Cube.isFinished() && Cube.PercentualDone() < 100.0 && AreThesesCubesDifferent(Rubik_Engine(), Cube);
+                           return !Cube.isFinished() && AreThesesCubesDifferent(Rubik_Engine(), Cube);
 };
 
 TestFunction<Rubik_Engine> Test_CompareCube = [](Rubik_Engine& Cube) -> bool {
-                           StepCounterMsg("Creating auxiliary cube");
+                           Test_StepCounterMsg("Creating auxiliary cube");
                                 Rubik_Engine AuxCube;
                            cout << "done." << flush;
-                           StepCounterMsg("Compare cubes");
+                           Test_StepCounterMsg("Compare cubes");
                                if (Cube == AuxCube) {
                                   cout << "done." << flush;
 
-                                  cout << '\n' << StepCounter() << "Make some spins: " << flush;
+                                  cout << '\n' << Test_StepCounter() << "Make some spins: " << flush;
                                   Cube.spin(LINE,   0, CLOCKWISE);
                                   Cube.spin(LINE,   0, CLOCKWISE);
                                   Cube.spin(LAYER,  2, COUNTERCLOCKWISE);
@@ -77,25 +123,24 @@ TestFunction<Rubik_Engine> Test_CompareCube = [](Rubik_Engine& Cube) -> bool {
 };
 
 TestFunction<Rubik_Engine> Test_CopyCube = [](Rubik_Engine& Cube) -> bool {
-                           StepCounterMsg("Creating auxiliary cube");
+                           Test_StepCounterMsg("Creating auxiliary cube");
                                 Rubik_Engine AuxCube;
                            cout << "done." << flush;
-                           StepCounterMsg("Randomizing auxiliary cube 1000 times");
+                           Test_StepCounterMsg("Randomizing auxiliary cube 1000 times");
                                 AuxCube.randomize(1000);
                            cout << "done." << flush;
-                           StepCounterMsg("Copy auxiliary cube to main cube");
+                           Test_StepCounterMsg("Copy auxiliary cube to main cube");
                                 Cube(AuxCube);
                            cout << "done." << flush;
 
                            return AuxCube == Cube; //Also it checks the colors
 };
 
-
 TestFunction<Rubik_Engine> Test_InitCopyCube = [](Rubik_Engine& AuxCube) -> bool {
-                           StepCounterMsg("Randomizing auxiliary cube 1000 times");
+                           Test_StepCounterMsg("Randomizing auxiliary cube 1000 times");
                                 AuxCube.randomize(1000);
                            cout << "done." << flush;
-                           StepCounterMsg("Create a new Cube equal to auxiliary cube");
+                           Test_StepCounterMsg("Create a new Cube equal to auxiliary cube");
                                 Rubik_Engine Cube(AuxCube);
                            cout << "done." << flush;
 
@@ -103,88 +148,14 @@ TestFunction<Rubik_Engine> Test_InitCopyCube = [](Rubik_Engine& AuxCube) -> bool
 };
 
 TestFunction<Rubik_Engine> Test_ResetCube = [](Rubik_Engine& Cube) -> bool {
-                           StepCounterMsg("Randomizing 1000 times");
+                           Test_StepCounterMsg("Randomizing 1000 times");
                                 Cube.randomize(1000);
                            cout << "done." << flush;
-                           StepCounterMsg("Reseting cube");
+                           Test_StepCounterMsg("Reseting cube");
                                 Cube.reset();
                            cout << "done." << flush;
 
-                           return Cube.isFinished() && Cube.PercentualDone() == 100.0 && Rubik_Engine() == Cube;
-};
-
-TestFunction<Rubik_Engine> Test_Turn2StartPosition3x3 = [](Rubik_Engine& Cube) -> bool {
-                           const char Msg[] = "Positioning front face's central block to ";
-
-                           auto TurnCube = [](Rubik_Engine& Cube) -> bool {
-                                cout << "done." << flush;
-                                StepCounterMsg("Turn cube to start position");
-                                    Cube.TurnCubeToStartPosition();
-
-                                    bool Result = Cube.isFinished();
-                                cout << (Result?"pass.":"fail.") << flush;
-
-                                return Result;
-                           };
-
-                           //TEST 1
-                               cout << '\n' << StepCounter() << Msg << "bottom: " << flush;
-                                   for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
-                                       Cube.spin(LINE, 0, CLOCKWISE);
-                                       Cube.spin(LINE, 1, CLOCKWISE);
-                                       Cube.spin(LINE, 2, CLOCKWISE);
-                                   }
-                                   for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
-                                       Cube.spin(LAYER, 0, COUNTERCLOCKWISE);
-                                       Cube.spin(LAYER, 1, COUNTERCLOCKWISE);
-                                       Cube.spin(LAYER, 2, COUNTERCLOCKWISE);
-                                   }
-                                   Cube.spin(COLUMN, 0, CLOCKWISE);
-                                   Cube.spin(COLUMN, 1, CLOCKWISE);
-                                   Cube.spin(COLUMN, 2, CLOCKWISE);
-                               bool result = TurnCube(Cube);
-
-                           //TEST 2
-                               Cube.reset();
-                               cout << '\n' << StepCounter() << Msg << "left: " << flush;
-                                  for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
-                                      Cube.spin(LAYER, 0, COUNTERCLOCKWISE);
-                                      Cube.spin(LAYER, 1, COUNTERCLOCKWISE);
-                                      Cube.spin(LAYER, 2, COUNTERCLOCKWISE);
-                                  }
-                                  Cube.spin(LINE, 0, CLOCKWISE);
-                                  Cube.spin(LINE, 1, CLOCKWISE);
-                                  Cube.spin(LINE, 2, CLOCKWISE);
-                                  for (uint8_t NoTimes = 0; NoTimes < 2; ++NoTimes) {
-                                      Cube.spin(COLUMN, 0, CLOCKWISE);
-                                      Cube.spin(COLUMN, 1, CLOCKWISE);
-                                      Cube.spin(COLUMN, 2, CLOCKWISE);
-                                  }
-                               result &= TurnCube(Cube);
-
-                           //TEST 3
-                               for (uint16_t RandN = 1; RandN < 5; ++RandN) {
-                                  cout << '\n' << StepCounter() << RandN << '/' << 4 << " randomizing cube 1000 times: " << flush;
-                                  Cube.randomize(1000);
-                                  cout << "done." << flush;
-                                  StepCounterInfo("Turning Cube");
-
-                                  Cube.TurnCubeToStartPosition();
-
-                                  bool TmpRes = Cube.isBlockInPosition(Coord_T({1,1,0})) && //Central block of Front face
-                                                Cube.isBlockInPosition(Coord_T({0,1,1})) && //central block of top face
-                                                Cube.isBlockInPosition(Coord_T({1,0,1}));   //central block of left face
-
-                                  cout << (TmpRes?"pass.":"fail.") << flush;
-                                  result &= TmpRes;
-
-                                  Cube.reset();
-                               }
-
-                           //TEST 4
-                              StepCounterMsg("Central blocks are in position already");
-
-                          return TurnCube(Cube) && result;
+                           return Cube.isFinished() && Rubik_Engine() == Cube;
 };
 
 ///Create a general test to ScanFaces to read the scanned faces and commit
@@ -193,7 +164,7 @@ static bool ScanFaces_feedCubeWithFaces(Rubik_Engine& Cube,
                                         vector<vector<Color_E>>&& Faces,
                                         const string_view ComplementaryMsg = "") {
 
-            cout << '\n' << StepCounter() << "Try to feed the cube with the scanned faces";
+            cout << '\n' << Test_StepCounter() << "Try to feed the cube with the scanned faces";
             if (ComplementaryMsg.size() > 0) cout << ' ' << ComplementaryMsg;
             cout << ": " << flush;
 
@@ -261,38 +232,8 @@ TestFunction<Rubik_Engine> Test_ScannedFaces_commitScannedFaces3x3 = [](Rubik_En
                                                                              {ORANGE, YELLOW, BLUE,  GREEN,  GREEN,  YELLOW, RED,    RED,    BLUE  },  //Position__E::LEFT
                                                                              {YELLOW, WHITE,  RED,   BLUE,   RED,    BLUE,   YELLOW, WHITE,  ORANGE},  //Position__E::TOP
                                                                              {YELLOW, RED,    BLUE,  GREEN, ORANGE,  WHITE,  GREEN,  BLUE,  WHITE  }});//Position__E::BOTTOM
-                           StepCounterMsg("Commit the scanned faces");
+                           Test_StepCounterMsg("Commit the scanned faces");
                                 Result = Result && Cube.commitScannedFaces();
                            cout << "done." << flush;
                            return Result;
 };
-
-void ShowSpinnedCube() {
-     cout << "\n\nTest spinping.\n\nCube created:\n";
-
-     Rubik_Engine Cube;
-
-     ShowCube(Cube, HideSize, HideColors, HidePercentual);
-     ShowCube(Cube);
-
-     PressEnter();
-
-     Cube.spin(LAYER,  0, CLOCKWISE);
-     Cube.spin(SpinTo_T(LINE,   1, COUNTERCLOCKWISE));
-     Cube.spin(SpinTo_T(COLUMN, 2, COUNTERCLOCKWISE));
-
-     cout << "\nCube was spinped few times 'manually'\n";
-     ShowCube(Cube, HideSize, HideColors);
-     cout << "(Expected less than 100)";
-
-     PressEnter();
-
-     Cube.randomize(1000);
-     ShowCube(Cube, HideSize, ShowColorsAndPositions, HidePercentual);
-     cout << '\n';
-     ShowCube(Cube, HideSize, HideColors, ShowPercentual);
-
-     cout << "\n\nCube after 1000 spins.";
-
-     PressEnter();
-}

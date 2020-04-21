@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ShowCube.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200419.1
+    Created : 2019.10.27            Version: 20200420.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -33,17 +33,12 @@
 #include "Test.h"
 #include "../Rubik_Engine/Rubik_Engine.h"
 
-constexpr bool HideSize       = false;
-constexpr bool HideColors     = false;
-constexpr bool HidePercentual = false;
-
-constexpr bool ShowSize               = true;
-constexpr bool ShowColorsAndPositions = true;
-constexpr bool ShowPercentual         = true;
+constexpr bool HideSize = false;
+constexpr bool ShowSize = true;
 
 const char* TheColorIs(const uint8_t C) noexcept;
-const char* ThePositionIs(const uint8_t P) noexcept;
+const string ThePositionIs(const uint8_t P) noexcept;
 
-void ShowCube(const Rubik_Engine& Cube, const bool ShowSize = true, const bool ShowColors = true, const bool ShowPercentual = true);
+void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
 
 #endif

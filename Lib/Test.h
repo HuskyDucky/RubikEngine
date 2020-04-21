@@ -1,7 +1,7 @@
 /**
     File    : Test.h
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20190419.1.1
+    Created : 2019.11.15            Version: 20190419.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -39,11 +39,11 @@ using namespace std;
 void PressEnter() noexcept;
 
 constexpr bool RESET = true;
-string StepCounter(bool Reset = false) noexcept;
+string Test_StepCounter(bool Reset = false) noexcept;
 
-void StepCounterMsg(const string& Msg) noexcept;
+void Test_StepCounterMsg(const string& Msg) noexcept;
 
-void StepCounterInfo(const string& Msg) noexcept;
+void Test_StepCounterInfo(const string& Msg = "") noexcept;
 
 template <typename T>
 using TestFunction = function<bool(T& InitObj)>;
@@ -54,7 +54,7 @@ bool Test(const char* Title, const char* ObjName, function<bool(T& InitObj)>& Ex
      cout << '\n' << string(80, '=') << "\nTest " << Title << '\n' << string(80, '-') << "\n\n";
 
 
-     cout << StepCounter(RESET) << "Creating " << ObjName << ": " << flush;
+     cout << Test_StepCounter(RESET) << "Creating " << ObjName << ": " << flush;
 
      T InitObj;
 
@@ -63,7 +63,7 @@ bool Test(const char* Title, const char* ObjName, function<bool(T& InitObj)>& Ex
      bool Result = Execute(InitObj);
 
      cout << '\n' << string(80, '-')
-          << '\n' << StepCounter() << "Test Result:\t<<<" << (Result ? "PASSED" :  "FAILED") << ">>>"
+          << '\n' << Test_StepCounter() << "Test Result:\t<<<" << (Result ? "PASSED" :  "FAILED") << ">>>"
           << '\n' << string(80, '=');
 
      PressEnter();
