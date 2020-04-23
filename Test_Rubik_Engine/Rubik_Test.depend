@@ -213,7 +213,7 @@
 	<functional>
 	"QofDigitsOf.h"
 
-1587457076 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run.cpp
+1587462024 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run.cpp
 	"../Lib/Test.h"
 	"../Rubik_Engine/Rubik_Engine.h"
 
@@ -221,7 +221,7 @@
 	"../Lib/Rubik_run_AuxFuncs.h"
 	"../Lib/Test.h"
 
-1587457038 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run_Tests.cpp
+1587461993 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run_Tests.cpp
 	"../Lib/Rubik_run_AuxFuncs_CompareCubes.h"
 	"../Rubik_Engine/Rubik_Engine.h"
 	"../Lib/Rubik_ShowCube.h"
@@ -294,4 +294,8 @@
 
 1587240095 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/QofDigitsOf.h
 	<type_traits>
+
+1587474477 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_General_Tests.cpp
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Lib/Test.h"
 

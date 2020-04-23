@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200421.1
+    Created : 2019.11.15            Version: 20200421.1.2
 
     Test Rubik Engine
 
@@ -33,22 +33,27 @@
 #include "../Lib/Rubik_ShowCube.h"
 #include "../Lib/Test.h"
 
+//This funcion is located at Lib/Rubik_General_Tests.cpp
+bool Test_Spin3x3x3(Rubik_Engine& Cube, const SpinBlocksAt Layer, const uint8_t OnceTwiceThrice, function<bool(Rubik_Engine&)> Avail, const bool ShowPassFail = true);
+
 TestFunction<Rubik_Engine> Test_CreationCube = [](Rubik_Engine& Cube) -> bool {
                            ShowCube(Cube, ShowSize);
                            return pow(Cube.SidesSize(), 3) == Cube.TotalOfBlocks() &&
                                   Cube.isFinished();
 };
 
+static bool CheckTurned(Rubik_Engine& Cube) noexcept {
+       bool Result = Cube.isFinished();
+
+       cout << "it is";
+       if (!Result) cout << "n't";
+       cout << '.' << flush;
+
+       return Result;
+}
+
 TestFunction<Rubik_Engine> Test_TurnedCubeisFinished = [](Rubik_Engine& Cube) -> bool {
                            const string Msg = "Is Cube finished when turn its front face to ";
-
-                           auto CheckTurnCube = [](Rubik_Engine& Cube) -> bool {
-                                bool Result = Cube.isFinished();
-                                cout << "it is";
-                                if (!Result) cout << "n't";
-                                cout << '.' << flush;
-                                return Result;
-                           };
 
                            //TEST 1
                                Test_StepCounterMsg(Msg + "bottom");
@@ -65,7 +70,7 @@ TestFunction<Rubik_Engine> Test_TurnedCubeisFinished = [](Rubik_Engine& Cube) ->
                                    Cube.spin(COLUMN, 0, CLOCKWISE);
                                    Cube.spin(COLUMN, 1, CLOCKWISE);
                                    Cube.spin(COLUMN, 2, CLOCKWISE);
-                               bool result = CheckTurnCube(Cube);
+                               bool result = CheckTurned(Cube);
 
                            //TEST 2
                                Rubik_Engine Cube2;
@@ -83,7 +88,17 @@ TestFunction<Rubik_Engine> Test_TurnedCubeisFinished = [](Rubik_Engine& Cube) ->
                                       Cube.spin(COLUMN, 1, CLOCKWISE);
                                       Cube.spin(COLUMN, 2, CLOCKWISE);
                                   }
-                          return CheckTurnCube(Cube) && result;
+                          return CheckTurned(Cube) && result;
+};
+
+TestFunction<Rubik_Engine> Test_SpinedCubeisntFinished = [](Rubik_Engine& Cube) -> bool {
+    bool Result = true;
+
+    for (SpinBlocksAt Layer = LINE; Layer != NOSPIN; Layer = static_cast<SpinBlocksAt>(Layer + 1))
+        for (uint8_t nSpins = 1; nSpins < 4; ++nSpins)
+            Result &= Test_Spin3x3x3(Cube, Layer, nSpins, [](Rubik_Engine& Cube) { return !Cube.isFinished(); });
+
+    return Result;
 };
 
 TestFunction<Rubik_Engine> Test_RandomizeCube = [](Rubik_Engine& Cube) -> bool {

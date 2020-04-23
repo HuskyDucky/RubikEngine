@@ -42,8 +42,10 @@ void Test_StepCounterMsg(const string& Msg) noexcept {
      cout << '\n' << Test_StepCounter() << Msg << ": " << flush;
 }
 
+string Test_StepCounterTab() noexcept { return string(8 + QofDigitsOf(Counter), ' '); }
+
 void Test_StepCounterInfo(const string& Msg) noexcept {
-     cout << '\n' << string(8 + QofDigitsOf(Counter), ' ');
+     cout << '\n' << Test_StepCounterTab();
      if (Msg.size())
         cout << Msg << ": ";
 }

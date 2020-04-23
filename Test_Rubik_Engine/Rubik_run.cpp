@@ -32,6 +32,7 @@
 
 extern TestFunction<Rubik_Engine> Test_CreationCube;
 extern TestFunction<Rubik_Engine> Test_TurnedCubeisFinished;
+extern TestFunction<Rubik_Engine> Test_SpinedCubeisntFinished;
 extern TestFunction<Rubik_Engine> Test_CompareCube;
 extern TestFunction<Rubik_Engine> Test_RandomizeCube;
 extern TestFunction<Rubik_Engine> Test_CopyCube;
@@ -50,6 +51,7 @@ int main() {
 
     result &= Test("Cube Properties - Creating a Cube", CName, Test_CreationCube);
     result &= Test("Cube Properties - Turnned Cube is finished?", CName, Test_TurnedCubeisFinished);
+    result &= Test("Cube Properties - Spinned Cube is NOT finished?", CName, Test_SpinedCubeisntFinished);
     result &= Test("Cube Properties - Randomize a Cube", CName, Test_RandomizeCube);
     result &= Test("Cube Properties - Compare Cubes", CName, Test_CompareCube);
     result &= Test("Cube Properties - Copy a Cube", CName, Test_CopyCube);

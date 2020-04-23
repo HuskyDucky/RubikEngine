@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_Cube_Info.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200222.4
+    Created : 2019.10.22            Version: 20200223.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -30,20 +30,22 @@
 CubeSideSize_T Rubik_Engine::SidesSize() const noexcept { return this->SideSize; }
 QofBlocks_T Rubik_Engine::TotalOfBlocks() const noexcept { return this->TofBlocks; }
 
-bool Rubik_Engine::isFinished() noexcept {
-     this->AuxisFinishedCheck.clear();
+bool Rubik_Engine::isFinished() const noexcept {
+     vector<Face_T> FacesColors;
+                    FacesColors.reserve(TofFACES);
+
      QofBlocks_T Scan = 0;
      do {
          for (auto& face : this->Cube[Scan].FacesList()) {
              bool NOTFound = true;
-             for (auto& Check : this->AuxisFinishedCheck)
+             for (auto& Check : FacesColors)
                  if (Check.Color == face.Color) {
                     if (Check.Position != face.Position)
                        return false;
                     NOTFound = false;
                  }
              if (NOTFound)
-                AuxisFinishedCheck.push_back(face);
+                FacesColors.push_back(face);
          }
      } while (++Scan < this->TofBlocks);
 

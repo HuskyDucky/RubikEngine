@@ -32,6 +32,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="../Lib/QofDigitsOf.h" />
+		<Unit filename="../Lib/Rubik_General_Tests.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.h" />
 		<Unit filename="../Lib/Rubik_run_AuxFuncs_CompareCubes.cpp" />

@@ -1,7 +1,7 @@
 /**
     File    : Test.h
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20190419.2
+    Created : 2019.11.15            Version: 20190423.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -42,6 +42,8 @@ constexpr bool RESET = true;
 string Test_StepCounter(bool Reset = false) noexcept;
 
 void Test_StepCounterMsg(const string& Msg) noexcept;
+
+string Test_StepCounterTab() noexcept;
 
 void Test_StepCounterInfo(const string& Msg = "") noexcept;
 

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200420.1
+    Created : 2019.10.22            Version: 20200420.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -63,7 +63,7 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
        QofBlocks_T TotalOfBlocks() const noexcept;
 
        //Cube info
-            bool isFinished() noexcept;
+            bool isFinished() const noexcept;
             bool operator==(const Rubik_Engine& CompCube) noexcept;
 
        //Block info
@@ -86,8 +86,6 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
         const CubeSideSize_T SideSize;                                      //The max blocks is 255 not 256. This last value is reserved to internal use of this class
         const QofBlocks_T TofBlocks;
         Cube_T Cube;
-
-        vector<Face_T> AuxisFinishedCheck;                                  //auxiliary vector to function member isFinished()
 
         //Cube Aux variables
             Coord_T XYZ;
