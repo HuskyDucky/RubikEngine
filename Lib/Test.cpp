@@ -1,7 +1,7 @@
 /**
     File    : Test.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200419.2
+    Created : 2019.11.15            Version: 20200419.3
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -45,7 +45,7 @@ void Test_StepCounterMsg(const string& Msg) noexcept {
 string Test_StepCounterTab() noexcept { return string(8 + QofDigitsOf(Counter), ' '); }
 
 void Test_StepCounterInfo(const string& Msg) noexcept {
-     cout << '\n' << Test_StepCounterTab();
+     cout << '\n' << Test_StepCounterTab() << flush;
      if (Msg.size())
-        cout << Msg << ": ";
+        cout << Msg << ": " << flush;
 }

@@ -26,7 +26,7 @@
 #include "ThreadPool.h"
 
 ThreadPool_T::ThreadPool_T() : EventStop(false) {
-    const size_t iTThreads = thread::hardware_concurrency() * 2;
+    const size_t iTThreads = thread::hardware_concurrency();
     this->ThreadList.reserve(iTThreads);
 
     size_t IIt = 0;

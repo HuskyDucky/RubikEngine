@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_Spinner.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.16            Version: 20200423.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,40 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
+#ifndef SPINNER_H
+#define SPINNER_H
 
-#include <iomanip>
-#include <iostream>
-#include "Test.h"
 #include "../Rubik_Engine/Rubik_Engine.h"
+#include "Rubik_Resolution_ResultManager.h"
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+struct Spinner {
+       Spinner(Rubik_Engine cube,
+               ResultManager& result,
+               const SpinTo_T firstspin);
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
+    bool SearchingforSolution() noexcept;
+
+    private:
+        struct SpinMade;
+
+        Rubik_Engine Cube;
+        ResultManager& Result;
+        vector<SpinMade> StepsMade;
+
+        bool ProposeNewResult() noexcept;
+        bool SpinAgain() noexcept;
+        bool StepBack() noexcept;
+};
+
+struct Spinner::SpinMade {
+                SpinMade (const SpinTo_T& thisSpin, SpinsListBase_T possiblespinslist);
+
+       const SpinTo_T ThisSpin;
+
+       optional<SpinTo_T> NextSpin() noexcept;
+
+       private:
+            SpinsListBase_T SpinsList;
+};
 
 #endif

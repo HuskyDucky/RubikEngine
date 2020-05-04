@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_ResultManager.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.08            Version: 20200420.4
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,42 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
+#ifndef RESULTKEEPER_H
+#define RESULTKEEPER_H
 
-#include <iomanip>
-#include <iostream>
-#include "Test.h"
+#include <cmath>
+#include <atomic>
+#include <forward_list>
 #include "../Rubik_Engine/Rubik_Engine.h"
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+using NofSteps_T = uint16_t;
+using atomic_NofSteps_T = atomic_uint16_t;
+using SpinsListBase_T = forward_list<SpinTo_T>;
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
+constexpr NofSteps_T EXPECTEDMAXSTEPS = 21;         ///IMPORTANT!!!! - Determine the level of the tree
+
+struct ResultManager {
+       ResultManager(const Rubik_Engine& Cube, const NofSteps_T ExpectedMaxSteps = EXPECTEDMAXSTEPS);
+
+    const SpinsListBase_T SpinsListBase;
+
+    //updates
+        void Spins(LofSpins_T&& Steps) noexcept;    //Receive proposals for new results
+
+    //info
+        NofSteps_T QuantOfSteps() const noexcept;   //Number of steps of the result. Returns 255 if no result was proposed
+        bool hasMoves() const noexcept;             //check if the ResultManager already keeps turns and/or spins
+
+    //results
+        LofSpins_T AllMovesMade() const noexcept;
+
+    private:
+        atomic_flag Lock = ATOMIC_FLAG_INIT;
+        atomic_NofSteps_T StepsMade;
+
+        optional<LofSpins_T> AllMoves;
+
+        SpinsListBase_T GenerateListOfMoves(const Rubik_Engine& Cube) const noexcept;
+};
 
 #endif

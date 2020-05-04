@@ -204,10 +204,10 @@
 1586077424 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine_StartPosition.cpp
 	"Rubik_Engine.h"
 
-1587308596 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.cpp
+1587733805 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.cpp
 	"Test.h"
 
-1587308715 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.h
+1587666215 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.h
 	<string>
 	<iostream>
 	<functional>
@@ -227,7 +227,7 @@
 	"../Lib/Rubik_ShowCube.h"
 	"../Lib/Test.h"
 
-1587396491 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
+1588344249 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
 	<chrono>
 	<random>
 	<memory>
@@ -236,7 +236,7 @@
 	"Rubik_Engine_MoveTypes.h"
 	"Rubik_Engine_ScanFaces.h"
 
-1587140091 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Global.h
+1587807358 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Global.h
 	<vector>
 	<algorithm>
 	"Rubik_Block.h"
@@ -250,17 +250,17 @@
 1587379891 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_MoveTypes.h
 	"Rubik_Engine_Global.h"
 
-1587140151 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces.h
+1587807358 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces.h
 	<cmath>
 	"Rubik_Engine_Global.h"
 
 1587393428 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.cpp
 	"Rubik_Block.h"
 
-1587328687 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
+1587641300 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
 	"Rubik_Engine.h"
 
-1587396546 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
+1587641686 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
 	"Rubik_Engine.h"
 
 1587390790 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_OtherFunctions.cpp
@@ -283,10 +283,10 @@
 
 1587371612 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_StartPosition.cpp
 
-1587396597 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
+1587814198 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
 	"Rubik_ShowCube.h"
 
-1587396191 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
+1587814073 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
 	<iomanip>
 	<iostream>
 	"Test.h"

@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200420.2
+    Created : 2019.10.22            Version: 20200501.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,13 +25,6 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-///ATTENTION: The procedure to scan the cube:
-///           1. The faces is always scanned from the block on Left|Top to Right|Down.
-///           2. Turn the cube:
-///           2.1 choose any face to be a face base. That is the FRONT - Scan this face.
-///           2.2 turn cube clockwise to scan the next faces RIGHT, BACK and LEFT
-///           2.3 turn back to FRONT face (one more turn clockwise). Turn the cube down in its horizontal axis and scan the TOP face
-///           2.4 turn the cube up in its horizontal axis twice and scan the BOTTOM face
 #ifndef RUBIKENGINE_H
 #define RUBIKENGINE_H
 
@@ -71,6 +64,7 @@ struct Rubik_Engine : private ClassBlock, ClassScanFaces {
 
        //Moves
             void spin(const SpinTo_T& SpinThe) noexcept;
+            void spinback(const SpinTo_T& spinThe) noexcept;
             void spin(const SpinBlocksAt Layer, const CubeSideSize_T Level, const TurnBlock isClockWise) noexcept;
 
        //feed the class with a real Rubik Cube

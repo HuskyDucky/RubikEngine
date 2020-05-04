@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_OtherFunctions.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200420.1
+    Created : 2019.10.22            Version: 20200420.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -39,7 +39,7 @@ Cube_T Rubik_Engine::randomize(uint16_t NoInterations) noexcept {
              --NoInterations;
              this->spin(SpinTo_T(static_cast<SpinBlocksAt>(Layer(RandBase)),
                         Level(RandBase),
-                        static_cast<TurnBlock>(isClockWise(RandBase))));
+                        isClockWise(RandBase)));
        }
 
        return this->Cube;

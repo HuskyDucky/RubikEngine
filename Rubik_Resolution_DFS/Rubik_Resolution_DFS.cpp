@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_DFS.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.06            Version: 20200425.4
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,30 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
+#include <thread>
+#include "Rubik_Resolution_DFS.h"
+#include "../Lib/ThreadPool.h"
+#include "../Lib/Test.h"
 
-#include <iomanip>
-#include <iostream>
-#include "Test.h"
-#include "../Rubik_Engine/Rubik_Engine.h"
+LofSpins_T DFS_ResolveThe(Rubik_Engine& Cube) noexcept {
+           ResultManager Result(Cube);
+           auto SpinningUp = [](const Rubik_Engine& Cube, ResultManager& Result, const SpinTo_T firstspin) {
+                                Spinner Spinning(Cube, Result, firstspin);
+                                while (Spinning.SearchingforSolution());
+           };
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+           if (Cube.isFinished())
+               Result.Spins(LofSpins_T());
+           else {
+                ThreadPool_T ThreadPool;
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
+                SpinsListBase_T SpinsListBase(Result.SpinsListBase);
 
-#endif
+                do {
+                    ThreadPool.Enqueue(SpinningUp, ref(Cube), ref(Result), move(SpinsListBase.front()));
+                    SpinsListBase.pop_front();
+                } while (!SpinsListBase.empty());
+           }
+
+     return Result.AllMovesMade();
+}

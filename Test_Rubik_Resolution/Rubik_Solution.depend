@@ -1,0 +1,221 @@
+# depslib dependency file v1.0
+1586177817 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs.cpp
+	"Rubik_run_AuxFuncs.h"
+
+1586449090 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs.h
+	<iomanip>
+	<iostream>
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1588344249 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
+	<chrono>
+	<random>
+	<memory>
+	<iostream>
+	"Rubik_Engine_Global.h"
+	"Rubik_Engine_MoveTypes.h"
+	"Rubik_Engine_ScanFaces.h"
+
+1587807358 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Global.h
+	<vector>
+	<algorithm>
+	"Rubik_Block.h"
+
+1587391750 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.h
+	<vector>
+	<limits>
+	<cinttypes>
+	<algorithm>
+
+1587379891 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_MoveTypes.h
+	"Rubik_Engine_Global.h"
+
+1587807358 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces.h
+	<cmath>
+	"Rubik_Engine_Global.h"
+
+1588355292 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.cpp
+	"Test.h"
+
+1588355292 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Test.h
+	<string>
+	<iostream>
+	<functional>
+	"QofDigitsOf.h"
+
+1587734937 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/ThinkShow.cpp
+	"ThinkShow.h"
+
+1587734937 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/ThinkShow.h
+	<iostream>
+
+1587393428 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.cpp
+	"Rubik_Block.h"
+
+1587641300 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
+	"Rubik_Engine.h"
+
+1587641686 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
+	"Rubik_Engine.h"
+
+1588345007 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_OtherFunctions.cpp
+	"Rubik_Engine.h"
+
+1587389890 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp
+	"Rubik_Engine.h"
+
+1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1587120702 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1588344249 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Spin.cpp
+	"Rubik_Engine.h"
+
+1587371612 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_StartPosition.cpp
+
+1588356324 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution.cpp
+	"Rubik_Resolution.h"
+
+1588355404 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution.h
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1587665824 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_Spinner.h
+	"../Rubik_Engine/Rubik_Engine.h"
+	"Rubik_Resolution_ResultManager.h"
+
+1586450617 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_SpinKeeper.h
+	<optional>
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1587664838 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_ResultManager.h
+	<cmath>
+	<atomic>
+	<forward_list>
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1587665306 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_ResultManager.cpp
+	"Rubik_Resolution_ResultManager.h"
+	<iostream>
+
+1586077484 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_SpinKeeper.cpp
+	"Rubik_Resolution_SpinKeeper.h"
+
+1588345713 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_Spinner.cpp
+	"Rubik_Resolution_Spinner.h"
+
+1586525510 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Run_Resolution.cpp
+	"../Lib/Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1586513782 /home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Run_Resolution_Tests.h
+	"../Lib/Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Rubik_Resolution/Rubik_Solution.h"
+
+1586461495 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Solution.h
+	<thread>
+	<chrono>
+	<iostream>
+	"Rubik_Resolution.h"
+
+1588585466 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Run_Resolution_Tests.cpp
+	"../Lib/Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1586512854 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Solution.cpp
+	"Rubik_Solution.h"
+	"../Lib/ThinkShow.h"
+	"../Lib/Test.h"
+	"../Lib/Rubik_run_AuxFuncs.h"
+
+1586793087 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_ResolveCube.cpp
+	"Rubik_Resolution.h"
+	"../Lib/ThinkShow.h"
+	"../Test_Rubik_Resolution/Rubik_TestSolution.h"
+
+1588587022 /home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_TestSolution.h
+	<iomanip>
+	"../Lib/Test.h"
+	"../Rubik_Resolution_BFS/Rubik_Resolution_BFS.h"
+	"../Rubik_Resolution_DFS/Rubik_Resolution_DFS.h"
+
+1588585398 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Resolution_Tests.cpp
+	"Rubik_TestSolution.h"
+
+1588586941 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_TestSolution.cpp
+	<thread>
+	"Rubik_TestSolution.h"
+	"../Lib/ThinkShow.h"
+
+1587665258 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution/Rubik_Resolution_Spinner_SpinMade.cpp
+	"Rubik_Resolution_Spinner.h"
+
+1587814198 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
+	"Rubik_ShowCube.h"
+
+1587814073 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
+	<iomanip>
+	<iostream>
+	"Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1587240095 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/QofDigitsOf.h
+	<type_traits>
+
+1587474477 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_General_Tests.cpp
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Lib/Test.h"
+
+1587729242 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/ThreadPool.cpp
+	"ThreadPool.h"
+
+1587646160 /home/thearquitect/Desktop/C++_Projects/Rubik/Lib/ThreadPool.h
+	<mutex>
+	<thread>
+	<memory>
+	<future>
+	<vector>
+	<functional>
+	<forward_list>
+	<condition_variable>
+
+1588586639 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_BFS/Rubik_Resolution_BFS.h
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1588586676 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp
+	"Rubik_Resolution_BFS.h"
+
+1588586348 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_DFS.cpp
+	<thread>
+	"Rubik_Resolution_DFS.h"
+	"../Lib/ThreadPool.h"
+	"../Lib/Test.h"
+
+1588586271 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_DFS.h
+	"Rubik_Resolution_Spinner.h"
+
+1587665824 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_Spinner.h
+	"../Rubik_Engine/Rubik_Engine.h"
+	"Rubik_Resolution_ResultManager.h"
+
+1588586221 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.h
+	<cmath>
+	<atomic>
+	<forward_list>
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1588586117 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.cpp
+	"Rubik_Resolution_ResultManager.h"
+	<iostream>
+
+1588345713 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_Spinner.cpp
+	"Rubik_Resolution_Spinner.h"
+
+1587665258 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_Spinner_SpinMade.cpp
+	"Rubik_Resolution_Spinner.h"
+

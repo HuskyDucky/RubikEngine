@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_ShowResults.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.06            Version: 20200503.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,22 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
-
-#include <iomanip>
 #include <iostream>
-#include "Test.h"
-#include "../Rubik_Engine/Rubik_Engine.h"
+#include "../Rubik_Engine/Rubik_Engine_MoveTypes.h"
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+void ShowSolution(const LofSpins_T& AllMoves) noexcept {
+     auto LayerOf = [](const SpinBlocksAt L) -> const char* { switch (L) {
+                                                                     case LINE   : return "Line";
+                                                                     case COLUMN : return "Column";
+                                                                     default     : return "Axis";
+                                                            } };
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
-
-#endif
+     if (AllMoves.size()) {
+        std::cout << "\n\nBelow the " << AllMoves.size() << " steps to solve the cube:";
+        for (SpinTo_T spin : AllMoves)
+            std::cout << "\n\t" << LayerOf(spin.Layer)  << ' '
+                      << static_cast<uint16_t>(spin.Level) << ' '
+                      << (spin.isClockWise?"Clockwise":"Counterclockwise");
+     } else
+       std::cout << "\n\nERROR - I couldn't show the list of moves to solution the cube.";
+}

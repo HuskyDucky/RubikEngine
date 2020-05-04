@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_BFS.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.06            Version: 20200503.3
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,32 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
+#ifndef BFSRESOLUTION_H
+#define BFSRESOLUTION_H
 
-#include <iomanip>
-#include <iostream>
-#include "Test.h"
 #include "../Rubik_Engine/Rubik_Engine.h"
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+using Steps_T = uint16_t;
+using ListBaseOfSpins_T = vector<SpinTo_T>;
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
+void ShowSolution(const LofSpins_T& AllMoves) noexcept;
+
+struct BFS_ResolveThe {
+       BFS_ResolveThe(const Rubik_Engine& cube);
+
+    LofSpins_T Now() noexcept;
+
+    private:
+        Rubik_Engine Cube;
+        const ListBaseOfSpins_T SpinsListBase;
+        vector<Steps_T> Steps;
+        vector<Steps_T> DSteps2Solution;
+
+        ListBaseOfSpins_T GenerateListOfMoves() const noexcept;
+        bool LeavesIteration() noexcept;
+        void BranchesInteration() noexcept;
+        LofSpins_T CreateSolutionSteps() const noexcept;
+};
+
 
 #endif

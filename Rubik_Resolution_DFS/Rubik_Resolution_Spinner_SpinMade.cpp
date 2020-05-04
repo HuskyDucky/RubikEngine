@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_ShowCube.h
+    File    : Rubik_Resolution_Spinner_SpinMade.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2020.02.06            Version: 20200412.7.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,17 +25,17 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#ifndef SHOWCUBE_H
-#define SHOWCUBE_H
+#include "Rubik_Resolution_Spinner.h"
 
-#include <iomanip>
-#include <iostream>
-#include "Test.h"
-#include "../Rubik_Engine/Rubik_Engine.h"
+Spinner::SpinMade::SpinMade (const SpinTo_T& thisspin,
+                             SpinsListBase_T possiblespinslist) : ThisSpin(thisspin),
+                                                                  SpinsList(move(possiblespinslist)) {}
 
-constexpr bool HideSize = false;
-constexpr bool ShowSize = true;
+optional<SpinTo_T> Spinner::SpinMade::NextSpin() noexcept {
+                   if (this->SpinsList.empty()) return nullopt;
 
-void ShowCube(Rubik_Engine& Cube, const bool ShowSize = true);
+                   optional<SpinTo_T> nextspin(move(this->SpinsList.front()));
+                   this->SpinsList.pop_front();
 
-#endif
+                   return nextspin;
+}

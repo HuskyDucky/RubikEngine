@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ShowCube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.1
+    Created : 2019.10.27            Version: 20200420.2
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -27,25 +27,25 @@
 **/
 #include "Rubik_ShowCube.h"
 
-const string ThePositionIs(const uint8_t P) noexcept {
-      switch (P) {
-             case FacePosition_E::TOP   : return "TOP";
-             case FacePosition_E::BACK  : return "BACK";
-             case FacePosition_E::LEFT  : return "LEFT";
-             case FacePosition_E::FRONT : return "FRONT";
-             case FacePosition_E::RIGHT : return "RIGHT";
-             default:                     return "BOTTOM";
-      }
+static const string ThePositionIs(const FacePosition_T P) noexcept {
+       switch (P) {
+              case FacePosition_E::TOP   : return "TOP";
+              case FacePosition_E::BACK  : return "BACK";
+              case FacePosition_E::LEFT  : return "LEFT";
+              case FacePosition_E::FRONT : return "FRONT";
+              case FacePosition_E::RIGHT : return "RIGHT";
+              default:                     return "BOTTOM";
+       }
 }
 
-const string TheColorLetterIs(const Color_E C) noexcept {
-      switch (C) {
-             case Color_E::WHITE  : return "W";
-             case Color_E::YELLOW : return "Y";
-             case Color_E::RED    : return "R";
-             case Color_E::ORANGE : return "O";
-             case Color_E::GREEN  : return "G";
-             default:               return "B";
+static const string TheColorLetterIs(const Color_E C) noexcept {
+       switch (C) {
+              case Color_E::WHITE  : return "W";
+              case Color_E::YELLOW : return "Y";
+              case Color_E::RED    : return "R";
+              case Color_E::ORANGE : return "O";
+              case Color_E::GREEN  : return "G";
+              default:               return "B";
       }
 }
 

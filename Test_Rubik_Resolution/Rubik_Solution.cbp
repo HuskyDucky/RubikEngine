@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Rubik Solution" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="~/Desktop/bin/Rubik_Solution" prefix_auto="1" extension_auto="1" />
+				<Option object_output="~/Desktop/obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-O3" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-std=c++1z" />
+					<Add option="-m64" />
+					<Add option="-fno-exceptions" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-m64" />
+					<Add option="-pthread" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="../Lib/Rubik_General_Tests.cpp" />
+		<Unit filename="../Lib/Rubik_Resolution_ShowResults.cpp" />
+		<Unit filename="../Lib/Rubik_ShowCube.cpp" />
+		<Unit filename="../Lib/Rubik_ShowCube.h" />
+		<Unit filename="../Lib/Test.cpp" />
+		<Unit filename="../Lib/Test.h" />
+		<Unit filename="../Lib/ThinkShow.cpp" />
+		<Unit filename="../Lib/ThinkShow.h" />
+		<Unit filename="../Lib/ThreadPool.cpp" />
+		<Unit filename="../Lib/ThreadPool.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Block.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Block.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Global.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Info.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_MoveTypes.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_OtherFunctions.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces.h" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_Spin.cpp" />
+		<Unit filename="../Rubik_Engine/Rubik_Engine_StartPosition.cpp" />
+		<Unit filename="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp" />
+		<Unit filename="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.h" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.cpp" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.h" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.cpp" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.h" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_Spinner.cpp" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_Spinner.h" />
+		<Unit filename="../Rubik_Resolution_DFS/Rubik_Resolution_Spinner_SpinMade.cpp" />
+		<Unit filename="Rubik_Resolution_Tests.cpp" />
+		<Unit filename="Rubik_Run_Resolution_Tests.cpp" />
+		<Unit filename="Rubik_TestSolution.cpp" />
+		<Unit filename="Rubik_TestSolution.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

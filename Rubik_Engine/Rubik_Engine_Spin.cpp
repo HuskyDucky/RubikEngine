@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_Spin.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200222.3
+    Created : 2019.10.22            Version: 20200501.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -30,8 +30,14 @@
 void Rubik_Engine::spin(const SpinBlocksAt Layer, const CubeSideSize_T Level, const TurnBlock isClockWise) noexcept {
      this->spin(SpinTo_T(Layer, Level, isClockWise));
 }
-void Rubik_Engine::spin(const SpinTo_T& spinThe) noexcept {
 
+void Rubik_Engine::spinback(const SpinTo_T& spinThe) noexcept {
+     this->spin(spinThe.Layer,
+                spinThe.Level,
+               !spinThe.isClockWise);
+}
+
+void Rubik_Engine::spin(const SpinTo_T& spinThe) noexcept {
      if (spinThe.Level < this->SideSize) {
 
         this->CurrLayer2Move = spinThe.Layer;
