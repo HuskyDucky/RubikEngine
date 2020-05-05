@@ -138,13 +138,13 @@
 	"../Lib/ThinkShow.h"
 	"../Test_Rubik_Resolution/Rubik_TestSolution.h"
 
-1588587022 /home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_TestSolution.h
+1588587634 /home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_TestSolution.h
 	<iomanip>
 	"../Lib/Test.h"
 	"../Rubik_Resolution_BFS/Rubik_Resolution_BFS.h"
 	"../Rubik_Resolution_DFS/Rubik_Resolution_DFS.h"
 
-1588585398 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Resolution_Tests.cpp
+1588668789 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_Resolution_Tests.cpp
 	"Rubik_TestSolution.h"
 
 1588586941 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Test_Rubik_Resolution/Rubik_TestSolution.cpp
@@ -187,7 +187,7 @@
 1588586639 /home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_BFS/Rubik_Resolution_BFS.h
 	"../Rubik_Engine/Rubik_Engine.h"
 
-1588586676 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp
+1588587421 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp
 	"Rubik_Resolution_BFS.h"
 
 1588586348 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_DFS.cpp
@@ -218,4 +218,16 @@
 
 1587665258 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Rubik_Resolution_DFS/Rubik_Resolution_Spinner_SpinMade.cpp
 	"Rubik_Resolution_Spinner.h"
+
+1588587600 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_Resolution_ShowResults.cpp
+	<iostream>
+	"../Rubik_Engine/Rubik_Engine_MoveTypes.h"
+
+1588669041 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_ShowSolution.cpp
+	"Test.h"
+	"../Rubik_Engine/Rubik_Engine_MoveTypes.h"
+
+1588668527 source:/home/thearquitect/Desktop/C++_Projects/Rubik/Lib/Rubik_Resolution_General_Tests.cpp
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Lib/Test.h"
 

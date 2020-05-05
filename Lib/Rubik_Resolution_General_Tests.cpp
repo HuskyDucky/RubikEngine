@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_General_Tests.cpp
+    File    : Rubik_Resolution_General_Tests.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.11.15            Version: 20200421.1
+    Created : 2019.11.15            Version: 20200421.2
 
     Test Rubik Engine
 

@@ -1,7 +1,7 @@
 /**
-    File    : Rubik_Resolution_ShowResults.cpp
+    File    : Rubik_ShowSolution.cpp
     Author  : Menashe Rosemberg
-    Created : 2020.02.06            Version: 20200503.2
+    Created : 2020.02.06            Version: 20200505.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -25,7 +25,7 @@
     NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **/
-#include <iostream>
+#include "Test.h"
 #include "../Rubik_Engine/Rubik_Engine_MoveTypes.h"
 
 void ShowSolution(const LofSpins_T& AllMoves) noexcept {
@@ -36,11 +36,11 @@ void ShowSolution(const LofSpins_T& AllMoves) noexcept {
                                                             } };
 
      if (AllMoves.size()) {
-        std::cout << "\n\nBelow the " << AllMoves.size() << " steps to solve the cube:";
+        Test_StepCounterInfo("Below the " + to_string(AllMoves.size()) + " steps to solve the cube");
         for (SpinTo_T spin : AllMoves)
-            std::cout << "\n\t" << LayerOf(spin.Layer)  << ' '
-                      << static_cast<uint16_t>(spin.Level) << ' '
-                      << (spin.isClockWise?"Clockwise":"Counterclockwise");
+            Test_StepCounterInfo(string("\t") + LayerOf(spin.Layer) + " " +
+                                 to_string(spin.Level) + " " +
+                                 (spin.isClockWise?"Clockwise":"Counterclockwise"));
      } else
-       std::cout << "\n\nERROR - I couldn't show the list of moves to solution the cube.";
+       Test_StepCounterInfo("\nERROR - I couldn't show the list of moves to solution the cube.");
 }

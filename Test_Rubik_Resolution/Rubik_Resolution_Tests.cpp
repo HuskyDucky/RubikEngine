@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Resolution_ShowResults.cpp
     Author  : Menashe Rosemberg
-    Created : 2020.02.06            Version: 20200425.2.2
+    Created : 2020.02.06            Version: 20200505.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -110,13 +110,24 @@ TestFunction<Rubik_Engine> Test_SpinLAYERTwice    = [](Rubik_Engine& Cube) { Qof
 TestFunction<Rubik_Engine> Test_SpinLAYERThrice   = [](Rubik_Engine& Cube) { QofMovesExpected = 1; return Test_Spin3x3x3(Cube, LAYER, 3, lambda); };
 
 TestFunction<Rubik_Engine> Test_SpinLevels = [](Rubik_Engine& Cube) {
-                           Test_StepCounterMsg("Spin Diferent levels");
+                           Test_StepCounterMsg("Spinning 3 Diferent levels");
 
+                           Test_StepCounterInfo("\t1st - line   level 0 clockwise");
+                           Test_StepCounterInfo("\t2nd - column level 1 counterclockwise");
+                           Test_StepCounterInfo("\t3rd - axis   level 2 counterclockwise");
                            Cube.spin(LINE,   0, CLOCKWISE);
                            Cube.spin(COLUMN, 1, COUNTERCLOCKWISE);
                            Cube.spin(LAYER,  2, COUNTERCLOCKWISE);
 
-                           bool Result = TestSolutionTo(Cube).CheckSolution(3);
+                           TestSolutionTo scrambledCube(Cube);
+                           LofSpins_T MovesToSolveTheCube = scrambledCube.ResolveIt();
+
+                           scrambledCube.AvaliateSolution(3);
+
+                           bool Result = scrambledCube.ApplyingSolution();
+
+                           Test_StepCounterMsg("Show Results");
+                           ShowSolution(MovesToSolveTheCube);
 
                            return Result;
 };

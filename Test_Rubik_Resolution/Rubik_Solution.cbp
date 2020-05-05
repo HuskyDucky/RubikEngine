@@ -33,10 +33,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../Lib/Rubik_General_Tests.cpp" />
-		<Unit filename="../Lib/Rubik_Resolution_ShowResults.cpp" />
+		<Unit filename="../Lib/Rubik_Resolution_General_Tests.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.h" />
+		<Unit filename="../Lib/Rubik_ShowSolution.cpp" />
 		<Unit filename="../Lib/Test.cpp" />
 		<Unit filename="../Lib/Test.h" />
 		<Unit filename="../Lib/ThinkShow.cpp" />
