@@ -17,7 +17,7 @@
 					<Add option="-pedantic" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
-					<Add option="-std=c++1z" />
+					<Add option="-std=c++20" />
 					<Add option="-m64" />
 					<Add option="-fno-exceptions" />
 				</Compiler>
@@ -71,10 +71,6 @@
 		<Unit filename="Rubik_Run_Resolution_Tests.cpp" />
 		<Unit filename="Rubik_TestSolution.cpp" />
 		<Unit filename="Rubik_TestSolution.h" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

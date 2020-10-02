@@ -2,19 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Release" />
-	<File name="../Lib/Rubik_ShowCube.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Engine/Rubik_Engine_OtherFunctions.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1099" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/ThinkShow.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="307" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/Rubik_Resolution_General_Tests.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="282" topLine="0" />
+			<Cursor1 position="1622" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../Rubik_Engine/Rubik_Engine.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -22,54 +12,19 @@
 			<Cursor1 position="1561" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="132" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/Rubik_ShowCube.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="346" topLine="8" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="130" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/Rubik_ShowSolution.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="128" topLine="13" />
-		</Cursor>
-	</File>
 	<File name="../Rubik_Engine/Rubik_Engine_Global.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="129" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Lib/ThreadPool.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2317" topLine="0" />
+			<Cursor1 position="128" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Lib/Rubik_ShowSolution.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1716" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2353" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_StartPosition.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="389" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Rubik_Run_Resolution_Tests.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3" topLine="20" />
+			<Cursor1 position="128" topLine="11" />
 		</Cursor>
 	</File>
 	<File name="../Lib/Test.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -77,24 +32,9 @@
 			<Cursor1 position="1525" topLine="18" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Lib/ThinkShow.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="324" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_MoveTypes.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2441" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="130" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/Test.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1644" topLine="36" />
+			<Cursor1 position="307" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../Rubik_Engine/Rubik_Engine.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -102,69 +42,34 @@
 			<Cursor1 position="352" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Engine/Rubik_Block.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Engine/Rubik_Engine_MoveTypes.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="373" topLine="0" />
+			<Cursor1 position="2441" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_OtherFunctions.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Rubik_Run_Resolution_Tests.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1622" topLine="0" />
+			<Cursor1 position="3" topLine="20" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_Info.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Lib/Test.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="632" topLine="0" />
+			<Cursor1 position="1644" topLine="36" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Lib/ThreadPool.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="128" topLine="0" />
+			<Cursor1 position="2317" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Rubik_TestSolution.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="358" topLine="0" />
+			<Cursor1 position="2353" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Lib/ThinkShow.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1616" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="499" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="426" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Lib/ThreadPool.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="121" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1753" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="../Rubik_Engine/Rubik_Engine_Spin.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="386" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Rubik_Resolution_Tests.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7391" topLine="99" />
-		</Cursor>
-	</File>
-	<File name="Rubik_TestSolution.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="49" topLine="0" />
+			<Cursor1 position="132" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../Rubik_Engine/Rubik_Block.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -172,9 +77,104 @@
 			<Cursor1 position="441" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="499" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Lib/ThreadPool.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="121" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Lib/Rubik_ShowCube.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="346" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="Rubik_TestSolution.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="49" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Lib/ThinkShow.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1616" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_DFS.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="130" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Engine_Spin.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="386" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Engine_Info.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="632" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="324" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Rubik_Resolution_Tests.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7391" topLine="99" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1716" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Block.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="373" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Resolution_DFS/Rubik_Resolution_ResultManager.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1753" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="130" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Lib/Rubik_Resolution_General_Tests.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="282" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Engine_StartPosition.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="389" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="426" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Rubik_Resolution_BFS/Rubik_Resolution_BFS.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="128" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../Lib/Rubik_ShowCube.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1099" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Rubik_TestSolution.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="358" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

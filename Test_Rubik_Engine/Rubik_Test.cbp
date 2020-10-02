@@ -16,12 +16,13 @@
 					<Add option="-pedantic" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
-					<Add option="-std=c++1z" />
+					<Add option="-std=gnu++20" />
 					<Add option="-m64" />
 					<Add option="-fno-exceptions" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-static-libstdc++" />
 					<Add option="-m64" />
 					<Add option="-pthread" />
 				</Linker>
@@ -32,7 +33,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="../Lib/QofDigitsOf.h" />
-		<Unit filename="../Lib/Rubik_General_Tests.cpp" />
+		<Unit filename="../Lib/Rubik_Resolution_General_Tests.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.cpp" />
 		<Unit filename="../Lib/Rubik_ShowCube.h" />
 		<Unit filename="../Lib/Rubik_run_AuxFuncs_CompareCubes.cpp" />
@@ -56,10 +57,6 @@
 		<Unit filename="../Rubik_Engine/Rubik_Engine_StartPosition.cpp" />
 		<Unit filename="Rubik_run.cpp" />
 		<Unit filename="Rubik_run_Tests.cpp" />
-		<Extensions>
-			<code_completion />
-			<debugger />
-			<envvars />
-		</Extensions>
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
