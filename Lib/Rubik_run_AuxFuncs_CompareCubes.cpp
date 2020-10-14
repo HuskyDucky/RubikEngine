@@ -1,7 +1,7 @@
 /**
     File    : Rubik_run_AuxFuncs_CompareCubes.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.1
+    Created : 2019.10.27            Version: 20201014.1
 
     Rubik Engine - auxiliary functions to test Cube
 
@@ -44,7 +44,7 @@ static bool CompareBlocks(const Coord_T& xyz, const Rubik_Engine& Cube1, const R
 bool AreThesesCubesDifferent(const Rubik_Engine& Cube1, const Rubik_Engine& Cube2) {
      if (Cube1.TotalOfBlocks() != Cube2.TotalOfBlocks()) return false;
 
-     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube1.SidesSize(); ++xyz[0])
+     for (Coord_T xyz{0}; xyz[0] < Cube1.SidesSize(); ++xyz[0])
          for (xyz[2] = 0; xyz[2] < Cube1.SidesSize(); ++xyz[2])
              for (xyz[1] = 0; xyz[1] < Cube1.SidesSize(); ++xyz[1])
                  if (!CompareBlocks(xyz, Cube1, Cube2))

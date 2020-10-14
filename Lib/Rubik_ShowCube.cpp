@@ -1,7 +1,7 @@
 /**
     File    : Rubik_ShowCube.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.27            Version: 20200420.2
+    Created : 2019.10.27            Version: 20201014.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -55,7 +55,7 @@ void ShowCube(Rubik_Engine& Cube, const bool ShowSize) {
         cout << Cube.TotalOfBlocks() << '\n';
      }
      array<vector<Color_E>, TofFACES> Faces;
-     for (Coord_T xyz({0, 0, 0}); xyz[0] < Cube.SidesSize(); ++xyz[0])
+     for (Coord_T xyz{0}; xyz[0] < Cube.SidesSize(); ++xyz[0])
          for (xyz[2] = 0; xyz[2] < Cube.SidesSize(); ++xyz[2])
              for (xyz[1] = 0; xyz[1] < Cube.SidesSize(); ++xyz[1])
                  for (auto& facelist : Cube.Block_FacesList(xyz))

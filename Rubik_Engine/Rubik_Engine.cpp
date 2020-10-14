@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200206.6
+    Created : 2019.10.22            Version: 20201014.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -28,16 +28,14 @@
 #include "Rubik_Engine.h"
 
 Rubik_Engine::Rubik_Engine() : SideSize(3),   //This class is not ready yet to more than 3 blocks per corner
-                               TofBlocks(pow(SideSize, 3)),
-                               XYZ({0,0,0}) {
+                               TofBlocks(pow(SideSize, 3)) {
       this->Rubik_Engine_Initializer();
 
       this->reset();
 }
 
 Rubik_Engine::Rubik_Engine(const Rubik_Engine& OriCube) : SideSize(3),   //This class is not ready yet to more than 3 blocks per corner
-                                                          TofBlocks(pow(SideSize, 3)),
-                                                          XYZ({0,0,0}) {
+                                                          TofBlocks(pow(SideSize, 3)) {
       this->Rubik_Engine_Initializer();
 
       this->operator()(OriCube);

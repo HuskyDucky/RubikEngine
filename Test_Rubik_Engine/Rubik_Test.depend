@@ -397,3 +397,101 @@
 	"../Lib/Rubik_ShowCube.h"
 	"../Lib/Test.h"
 
+1588668527 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Rubik_Resolution_General_Tests.cpp
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Lib/Test.h"
+
+1602692367 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.h
+	<chrono>
+	<random>
+	<memory>
+	<iostream>
+	"Rubik_Engine_Global.h"
+	"Rubik_Engine_MoveTypes.h"
+	"Rubik_Engine_ScanFaces.h"
+
+1602688522 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Global.h
+	<vector>
+	<algorithm>
+	"Rubik_Block.h"
+
+1587391750 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.h
+	<vector>
+	<limits>
+	<cinttypes>
+	<algorithm>
+
+1587379891 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_MoveTypes.h
+	"Rubik_Engine_Global.h"
+
+1587807358 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces.h
+	<cmath>
+	"Rubik_Engine_Global.h"
+
+1588355292 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Test.h
+	<string>
+	<iostream>
+	<functional>
+	"QofDigitsOf.h"
+
+1587240095 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/QofDigitsOf.h
+	<type_traits>
+
+1602689171 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.cpp
+	"Rubik_run_AuxFuncs_CompareCubes.h"
+
+1587121233 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Rubik_run_AuxFuncs_CompareCubes.h
+	<algorithm>
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1602689171 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Rubik_ShowCube.cpp
+	"Rubik_ShowCube.h"
+
+1587814073 /home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Rubik_ShowCube.h
+	<iomanip>
+	<iostream>
+	"Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1588355292 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Lib/Test.cpp
+	"Test.h"
+
+1587393428 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Block.cpp
+	"Rubik_Block.h"
+
+1602689171 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine.cpp
+	"Rubik_Engine.h"
+
+1602688607 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Info.cpp
+	"Rubik_Engine.h"
+
+1602689171 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_OtherFunctions.cpp
+	"Rubik_Engine.h"
+
+1587389890 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaceCall.cpp
+	"Rubik_Engine.h"
+
+1587120702 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_Commit.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1587120702 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_CreateProtoCube.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1587120702 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_ScanFaces_Scan.cpp
+	"Rubik_Engine_ScanFaces.h"
+
+1602692309 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_Spin.cpp
+	"Rubik_Engine.h"
+
+1587371612 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Rubik_Engine/Rubik_Engine_StartPosition.cpp
+
+1587462024 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run.cpp
+	"../Lib/Test.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+
+1587641464 source:/home/administrator/Desktop/Projects/C++_Projects/Rubik/Test_Rubik_Engine/Rubik_run_Tests.cpp
+	"../Lib/Rubik_run_AuxFuncs_CompareCubes.h"
+	"../Rubik_Engine/Rubik_Engine.h"
+	"../Lib/Rubik_ShowCube.h"
+	"../Lib/Test.h"
+

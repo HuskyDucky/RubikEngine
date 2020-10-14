@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Cube_OtherFunctions.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200420.2
+    Created : 2019.10.22            Version: 20201014.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -49,16 +49,17 @@ void Rubik_Engine::operator()(const Rubik_Engine& OriCube) noexcept {
      if (OriCube.TofBlocks == this->TofBlocks) {
         this->Cube.clear();
 
-        this->XYZ[LAYER] = 0;
+        Coord_T xyz{0};
+        //xyz[LAYER] = 0;
         do {
-            this->XYZ[LINE] = 0;
+            xyz[LINE] = 0;
             do {
-                this->XYZ[COLUMN] = 0;
+                xyz[COLUMN] = 0;
                 do {
-                    this->Cube.emplace_back(OriCube.Block_FacesList(XYZ));
-                } while (++this->XYZ[COLUMN] != this->SideSize);
-            } while (++this->XYZ[LINE] != this->SideSize);
-        } while (++this->XYZ[LAYER] != this->SideSize);
+                    this->Cube.emplace_back(OriCube.Block_FacesList(xyz));
+                } while (++xyz[COLUMN] != this->SideSize);
+            } while (++xyz[LINE] != this->SideSize);
+        } while (++xyz[LAYER] != this->SideSize);
      }
 }
 
@@ -66,32 +67,33 @@ void Rubik_Engine::reset() noexcept {
      this->Cube.clear();
      this->Cube.reserve(this->TofBlocks);
 
-     this->XYZ[LINE] = 0;
+     Coord_T xyz{0};
+     //xyz[LINE] = 0;
      do {
-        this->XYZ[COLUMN] = 0;
+        xyz[COLUMN] = 0;
          do {
-             this->XYZ[LAYER] = 0;
+             xyz[LAYER] = 0;
              do {
                  FaceList_T ColorPos;
 
-                 if (this->XYZ[LINE] == 0)
+                 if (xyz[LINE] == 0)
                     ColorPos.emplace_back(Color_E::WHITE, FacePosition_E::FRONT);
-                 else if (this->XYZ[LINE] == this->SideSize-1)
+                 else if (xyz[LINE] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::YELLOW, FacePosition_E::BACK);
 
-                 if (this->XYZ[COLUMN] == 0)
+                 if (xyz[COLUMN] == 0)
                     ColorPos.emplace_back(Color_E::RED, FacePosition_E::TOP);
-                 else if (this->XYZ[COLUMN] == this->SideSize-1)
+                 else if (xyz[COLUMN] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::ORANGE, FacePosition_E::BOTTOM);
 
-                 if (this->XYZ[LAYER ] == 0)
+                 if (xyz[LAYER ] == 0)
                     ColorPos.emplace_back(Color_E::BLUE, FacePosition_E::LEFT);
-                 else if (this->XYZ[LAYER ] == this->SideSize-1)
+                 else if (xyz[LAYER ] == this->SideSize-1)
                          ColorPos.emplace_back(Color_E::GREEN, FacePosition_E::RIGHT);
 
                  this->Cube.emplace_back(move(ColorPos));
 
-             } while (++this->XYZ[LAYER] != this->SideSize);
-         } while (++this->XYZ[COLUMN] != this->SideSize);
-     } while (++this->XYZ[LINE] != this->SideSize);
+             } while (++xyz[LAYER] != this->SideSize);
+         } while (++xyz[COLUMN] != this->SideSize);
+     } while (++xyz[LINE] != this->SideSize);
 }

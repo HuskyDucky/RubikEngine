@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_Global.h
     Author  : Menashe Rosemberg
-    Created : 2019.10.26            Version: 20191228.3.4
+    Created : 2019.10.26            Version: 20201014.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -39,7 +39,7 @@ typedef uint16_t QofBlksPerFace_T;        //255 x 255 = 65.025 free to use
 
 //Cube (and ScanFaces)
     using Cube_T = vector<ClassBlock::Block>;
-    using Coord_T = array<CubeSideSize_T, 3>;
+    using Coord_T = CubeSideSize_T[3];
 
 //Scanfaces (and Cube)
     using BlocksPosToFace_T = vector<QofBlksPerFace_T>;

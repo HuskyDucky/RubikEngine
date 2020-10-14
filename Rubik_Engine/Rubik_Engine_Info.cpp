@@ -1,7 +1,7 @@
 /**
     File    : Rubik_Engine_Cube_Info.cpp
     Author  : Menashe Rosemberg
-    Created : 2019.10.22            Version: 20200223.1
+    Created : 2019.10.22            Version: 20201014.1
 
     Copyright (c) 2019 TheArquitect (Menashe Rosemberg) rosemberg@ymail.com
 
@@ -54,17 +54,18 @@ bool Rubik_Engine::isFinished() const noexcept {
 
 bool Rubik_Engine::operator==(const Rubik_Engine& CompCube) noexcept {
      if (CompCube.TotalOfBlocks() == this->TofBlocks) {
-        this->XYZ[LAYER] = 0;
+        Coord_T xyz(0);
+        xyz[LAYER] = 0;
         do {
-            this->XYZ[LINE] = 0;
+            xyz[LINE] = 0;
             do {
-                this->XYZ[COLUMN] = 0;
+                xyz[COLUMN] = 0;
                 do {
-                    if (this->Cube[this->Block_Coordenate(XYZ)] != CompCube.Block_FacesList(XYZ))
+                    if (this->Cube[this->Block_Coordenate(xyz)] != CompCube.Block_FacesList(xyz))
                         return false;
-                } while (++this->XYZ[COLUMN] != this->SideSize);
-            } while (++this->XYZ[LINE] != this->SideSize);
-        } while (++this->XYZ[LAYER] != this->SideSize);
+                } while (++xyz[COLUMN] != this->SideSize);
+            } while (++xyz[LINE] != this->SideSize);
+        } while (++xyz[LAYER] != this->SideSize);
      }
 
      return true;
